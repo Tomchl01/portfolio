@@ -1,0 +1,32 @@
+/* Reset + base */
+* { box-sizing: border-box; }
+body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; color: #1f2937; background: #fff; line-height: 1.6; }
+
+/* Header + nav */
+.site-header { background: #fafafa; border-bottom: 1px solid #e5e7eb; }
+.nav { max-width: 1000px; margin: 0 auto; display: flex; gap: 16px; align-items: center; padding: 12px 20px; }
+.nav .brand { font-weight: 700; text-decoration: none; color: #111827; }
+.nav a { text-decoration: none; color: #334155; }
+.nav a:hover { text-decoration: underline; }
+.nav .spacer { flex: 1; }
+
+/* Hero */
+.hero { max-width: 1000px; margin: 0 auto; padding: 64px 20px; }
+.hero h1 { font-size: 2.4rem; margin-bottom: 8px; }
+.hero p { color: #475569; margin-bottom: 20px; }
+.btn { display: inline-block; padding: 10px 18px; background: #111827; color: #fff; border-radius: 10px; text-decoration: none; }
+.btn:hover { opacity: 0.9; }
+
+/* Sections */
+.section { max-width: 1000px; margin: 0 auto; padding: 48px 20px; }
+.section h2 { margin-top: 0; }
+.section p { margin-bottom: 1em; }
+
+/* Footer */
+.site-footer { border-top: 1px solid #e5e7eb; padding: 20px; text-align: center; color: #64748b; }
+
+/* Responsive */
+@media (max-width: 600px) {
+  .hero h1 { font-size: 1.8rem; }
+  .nav { flex-wrap: wrap; justify-content: center; }
+}
