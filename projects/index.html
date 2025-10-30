@@ -9,7 +9,12 @@
 <body>
   <header class="site-header">
     <nav class="nav">
-      <a class="brand" href="/">tomch.net</a>
+      <a class="brand" href="/" aria-label="Home">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+          <polyline points="9 22 9 12 15 12 15 22"></polyline>
+        </svg>
+      </a>
       <div class="spacer"></div>
       <a href="/projects/">Projects</a>
       <a href="/#about">About</a>
@@ -20,7 +25,7 @@
   <main class="section">
     <div class="section-header">
       <h1>Projects</h1>
-      <p style="color: var(--text-secondary); font-size: 1.1rem; font-weight: 300; max-width: 720px; line-height: 1.8;">Each project explores data, behavior, and visualization from a different angle — from poker analytics to real-time seismic activity.</p>
+      <p style="color: var(--text-secondary); font-size: 1.1rem; font-weight: 300; max-width: 720px; line-height: 1.8;">Each project explores data, behavior, and visualization from a different angle. From poker analytics to real-time seismic activity.</p>
     </div>
 
     <div class="spacer-section" style="height: 48px;"></div>
@@ -44,7 +49,7 @@
   </main>
 
   <footer class="site-footer">
-    <p>© <span id="year"></span> Tom Chévez — Costa Rica</p>
+    <p>© <span id="year"></span> Tom Chévez, Costa Rica</p>
   </footer>
 
   <script src="../script.js"></script>

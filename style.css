@@ -90,10 +90,21 @@ body {
   color: var(--text-primary);
   letter-spacing: -0.3px;
   transition: color var(--transition-exhale);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav .brand svg {
+  transition: transform var(--transition-exhale);
 }
 
 .nav .brand:hover {
   color: var(--accent-blue);
+}
+
+.nav .brand:hover svg {
+  transform: translateY(-2px);
 }
 
 .nav a {
@@ -222,6 +233,22 @@ body {
   gap: var(--space-lg);
   padding-top: var(--space-md);
   padding-bottom: var(--space-xxl);
+  position: relative;
+}
+
+/* About section hover reveal */
+.about-hidden .about-content {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all var(--transition-breath);
+  pointer-events: none;
+}
+
+.about-hidden:hover .about-content,
+.about-hidden:focus-within .about-content {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
 }
 
 .section-header {
