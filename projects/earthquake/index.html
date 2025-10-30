@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Live Earthquake Map | Tom Chévez</title>
+  <link rel="stylesheet" href="../../style.css" />
+  <style>
+    .map-container {
+      background: var(--glass-white);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-md);
+      margin-top: var(--space-md);
+      box-shadow: var(--shadow-md);
+      min-height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .loading {
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav">
+      <a class="brand" href="/">tomch.net</a>
+      <div class="spacer"></div>
+      <a href="/projects/">Projects</a>
+      <a href="/#about">About</a>
+      <a href="/contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main class="section">
+    <h1>Live Earthquake Map</h1>
+    <p>Real-time seismic activity visualization using data from the USGS Earthquake API. Focused on Costa Rica and Central America region.</p>
+
+    <div class="card">
+      <h3>About This Project</h3>
+      <p>This interactive map displays recent earthquake activity, pulling live data from the United States Geological Survey (USGS). The visualization helps identify patterns in seismic activity and provides insights into earthquake magnitude, depth, and location.</p>
+    </div>
+
+    <div class="map-container">
+      <div class="loading">Map visualization coming soon...</div>
+    </div>
+
+    <div class="card">
+      <h3>Technical Details</h3>
+      <p><strong>Data Source:</strong> USGS Earthquake API</p>
+      <p><strong>Technologies:</strong> JavaScript, Leaflet.js, Real-time API integration</p>
+      <p><strong>Focus Region:</strong> Costa Rica and Central America</p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>© <span id="year"></span> Tom Chévez — Costa Rica</p>
+  </footer>
+
+  <script src="../../script.js"></script>
+  <script>document.getElementById("year").textContent=new Date().getFullYear();</script>
+</body>
+</html>

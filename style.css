@@ -1,51 +1,448 @@
-/* Reset + base */
-* { box-sizing: border-box; }
-body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; color: #1f2937; background: #fff; line-height: 1.6; }
+/* ==========================================
+   POWER IN SUBTLETY
+   True authority never shouts
+   ========================================== */
 
-/* Header + nav */
-.site-header { background: #fafafa; border-bottom: 1px solid #e5e7eb; }
-.nav { max-width: 1000px; margin: 0 auto; display: flex; gap: 16px; align-items: center; padding: 12px 20px; }
-.nav .brand { font-weight: 700; text-decoration: none; color: #111827; }
-.nav a { text-decoration: none; color: #334155; }
-.nav a:hover { text-decoration: underline; }
-.nav .spacer { flex: 1; }
-
-/* Hero */
-.hero { max-width: 1000px; margin: 0 auto; padding: 64px 20px; }
-.hero h1 { font-size: 2.4rem; margin-bottom: 8px; }
-.hero p { color: #475569; margin-bottom: 20px; }
-.btn { display: inline-block; padding: 10px 18px; background: #111827; color: #fff; border-radius: 10px; text-decoration: none; }
-.btn:hover { opacity: 0.9; }
-
-/* Sections */
-.section { max-width: 1000px; margin: 0 auto; padding: 48px 20px; }
-.section h2 { margin-top: 0; }
-.section p { margin-bottom: 1em; }
-
-/* Footer */
-.site-footer { border-top: 1px solid #e5e7eb; padding: 20px; text-align: center; color: #64748b; }
-
-/* Responsive */
-@media (max-width: 600px) {
-  .hero h1 { font-size: 1.8rem; }
-  .nav { flex-wrap: wrap; justify-content: center; }
+/* Reset + Base */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
-/* Project cards */
+
+:root {
+  /* Colors - Hierarchy from tone, not brightness */
+  --glass-white: rgba(255, 255, 255, 0.65);
+  --glass-border: rgba(255, 255, 255, 0.18);
+  --text-primary: #1d1d1f;
+  --text-secondary: #6e6e73;
+  --text-tertiary: #86868b;
+  --accent-blue: #0071e3;
+  --accent-hover: #0077ed;
+  --shadow-sm: 0 2px 16px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 8px 32px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.10);
+  
+  /* Spacing - The invisible gestures of respect */
+  --space-xs: 12px;
+  --space-sm: 24px;
+  --space-md: 48px;
+  --space-lg: 96px;
+  --space-xl: 144px;
+  --space-xxl: 192px;
+  
+  /* Radius */
+  --radius-sm: 12px;
+  --radius-md: 18px;
+  --radius-lg: 24px;
+  
+  /* Motion as breath */
+  --transition-breath: 800ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-exhale: 600ms cubic-bezier(0.4, 0, 0.6, 1);
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: var(--text-primary);
+  background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf1 100%);
+  line-height: 1.7;
+  font-size: 17px;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+}
+
+/* ==========================================
+   NAVIGATION - Calm authority
+   ========================================== */
+.site-header {
+  position: relative;
+}
+
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  max-width: 1080px;
+  margin: 0 auto;
+  display: flex;
+  gap: var(--space-md);
+  align-items: center;
+  padding: var(--space-sm) var(--space-md);
+  background: var(--glass-white);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  margin-top: var(--space-sm);
+  margin-left: var(--space-sm);
+  margin-right: var(--space-sm);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-breath);
+}
+
+.nav .brand {
+  font-weight: 500;
+  font-size: 19px;
+  text-decoration: none;
+  color: var(--text-primary);
+  letter-spacing: -0.3px;
+  transition: color var(--transition-exhale);
+}
+
+.nav .brand:hover {
+  color: var(--accent-blue);
+}
+
+.nav a {
+  text-decoration: none;
+  color: var(--text-secondary);
+  font-size: 15px;
+  font-weight: 400;
+  transition: color var(--transition-exhale);
+  position: relative;
+}
+
+.nav a:not(.brand):hover {
+  color: var(--text-primary);
+}
+
+.nav .spacer {
+  flex: 1;
+}
+
+/* ==========================================
+   HERO - The Threshold
+   Invites stillness before speech
+   ========================================== */
+.hero {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: var(--space-xxl) var(--space-md) var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  min-height: 70vh;
+  justify-content: center;
+}
+
+.hero-content {
+  margin-bottom: var(--space-lg);
+}
+
+.hero h1 {
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 300;
+  margin-bottom: var(--space-sm);
+  letter-spacing: -2px;
+  color: var(--text-primary);
+  opacity: 0;
+  animation: breatheIn 1200ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.hero-subtitle {
+  font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+  font-weight: 400;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-md);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  opacity: 0;
+  animation: breatheIn 1200ms cubic-bezier(0.4, 0, 0.2, 1) 200ms forwards;
+}
+
+.hero-description {
+  font-size: clamp(1.1rem, 2vw, 1.3rem);
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.8;
+  font-weight: 300;
+  opacity: 0;
+  animation: breatheIn 1200ms cubic-bezier(0.4, 0, 0.2, 1) 400ms forwards;
+}
+
+.hero-cta {
+  opacity: 0;
+  animation: breatheIn 1200ms cubic-bezier(0.4, 0, 0.2, 1) 600ms forwards;
+}
+
+.btn {
+  display: inline-block;
+  padding: 16px 48px;
+  background: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  font-weight: 400;
+  font-size: 15px;
+  letter-spacing: 0.3px;
+  transition: all var(--transition-breath);
+  backdrop-filter: blur(10px);
+}
+
+.btn:hover {
+  background: var(--glass-white);
+  border-color: var(--accent-blue);
+  color: var(--accent-blue);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+/* ==========================================
+   SPACER SECTION - Breathing room
+   The pause between threshold and content
+   ========================================== */
+.spacer-section {
+  height: var(--space-xl);
+}
+
+/* ==========================================
+   SECTIONS - Architecture of Presence
+   Each section has its own atmosphere
+   ========================================== */
+.section {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: var(--space-lg) var(--space-md);
+}
+
+.about-section {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-lg);
+  padding-top: var(--space-md);
+  padding-bottom: var(--space-xxl);
+}
+
+.section-header {
+  margin-bottom: var(--space-md);
+}
+
+.section-header h1,
+.section-header h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 300;
+  letter-spacing: -1px;
+  color: var(--text-primary);
+  margin-bottom: var(--space-sm);
+}
+
+.section-header h2 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 400;
+  letter-spacing: -0.5px;
+  opacity: 0.9;
+}
+
+.section-header p {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  font-weight: 300;
+  max-width: 720px;
+  line-height: 1.8;
+}
+
+/* Content with rhythm of contrast */
+.section-content {
+  max-width: 720px;
+}
+
+.section-content p {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  margin-bottom: var(--space-md);
+  line-height: 1.8;
+  font-weight: 300;
+}
+
+/* Emphasis - Weight without aggression */
+.section-content p.emphasis {
+  font-size: 1.3rem;
+  color: var(--text-primary);
+  font-weight: 400;
+  line-height: 1.7;
+  margin-bottom: var(--space-lg);
+}
+
+/* ==========================================
+   GLASS CARDS - Subtle presence
+   ========================================== */
 .card {
-  border: 1px solid #e5e7eb;
-  border-radius: 12px;
-  padding: 20px;
-  margin-top: 20px;
-  transition: transform 0.1s ease, box-shadow 0.1s ease;
+  background: var(--glass-white);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-md);
+  margin-top: var(--space-md);
+  transition: all var(--transition-breath);
+  box-shadow: var(--shadow-sm);
 }
+
 .card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  box-shadow: var(--shadow-md);
 }
+
+.card h3 {
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin-bottom: var(--space-sm);
+  letter-spacing: -0.3px;
+  color: var(--text-primary);
+}
+
 .card h3 a {
   text-decoration: none;
-  color: #111827;
+  color: var(--text-primary);
+  transition: color var(--transition-exhale);
 }
+
 .card h3 a:hover {
-  color: #2563eb;
+  color: var(--accent-blue);
+}
+
+.card p {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 0;
+  font-weight: 300;
+}
+
+.card p:last-child {
+  margin-bottom: 0;
+}
+
+/* ==========================================
+   FOOTER - Quiet signature
+   ========================================== */
+.site-footer {
+  max-width: 1080px;
+  margin: var(--space-xl) auto var(--space-md);
+  padding: var(--space-md);
+  text-align: center;
+  color: var(--text-tertiary);
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.site-footer p {
+  opacity: 0.7;
+  transition: opacity var(--transition-exhale);
+}
+
+.site-footer p:hover {
+  opacity: 1;
+}
+
+/* ==========================================
+   ANIMATIONS - Motion as Breath
+   The page inhales as you arrive
+   ========================================== */
+@keyframes breatheIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes breatheOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
+/* ==========================================
+   RESPONSIVE - Maintaining rhythm
+   ========================================== */
+@media (max-width: 768px) {
+  :root {
+    --space-md: 24px;
+    --space-lg: 64px;
+    --space-xl: 96px;
+    --space-xxl: 128px;
+  }
+  
+  .nav {
+    gap: var(--space-sm);
+  }
+  
+  .nav .spacer {
+    display: none;
+  }
+  
+  .hero {
+    padding: var(--space-xl) var(--space-sm) var(--space-lg);
+    min-height: 60vh;
+  }
+  
+  .section {
+    padding: var(--space-md) var(--space-sm);
+  }
+  
+  .about-section {
+    padding-bottom: var(--space-xl);
+  }
+  
+  .spacer-section {
+    height: var(--space-md);
+  }
+}
+
+/* ==========================================
+   LINKS - Subtle invitation
+   ========================================== */
+a {
+  color: var(--accent-blue);
+  text-decoration: none;
+  transition: color var(--transition-exhale);
+}
+
+a:hover {
+  color: var(--accent-hover);
+}
+
+/* ==========================================
+   ACCESSIBILITY - Respect for experience
+   ========================================== */
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Focus states - visible but elegant */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent-blue);
+  outline-offset: 4px;
+  border-radius: 4px;
 }

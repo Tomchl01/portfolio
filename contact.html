@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact | Tom Chévez</title>
+  <meta name="description" content="Get in touch with Tom Chévez for data analysis, visualization projects, or collaborations." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- HEADER + NAV -->
+  <header class="site-header">
+    <nav class="nav">
+      <a class="brand" href="/">tomch.net</a>
+      <div class="spacer"></div>
+      <a href="/projects/">Projects</a>
+      <a href="/#about">About</a>
+      <a href="/contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main>
+    <section class="section">
+      <div class="section-header">
+        <h1>Let's Connect</h1>
+        <p>I'm always interested in discussing data analysis, visualization projects, or potential collaborations.</p>
+      </div>
+
+      <div class="spacer-section" style="height: 48px;"></div>
+
+      <div class="card">
+        <h3>📧 Email</h3>
+        <p><a href="mailto:hello@tomch.net">hello@tomch.net</a></p>
+      </div>
+
+      <div class="card">
+        <h3>💻 GitHub</h3>
+        <p><a href="https://github.com/Tomchl01" target="_blank" rel="noopener">github.com/Tomchl01</a></p>
+        <p style="color: var(--text-tertiary); font-size: 0.95rem; margin-top: 8px;">Open source contributions and repositories</p>
+      </div>
+
+      <div class="card">
+        <h3>🌍 Location</h3>
+        <p>Costa Rica</p>
+        <p style="color: var(--text-tertiary); font-size: 0.95rem; margin-top: 8px;">Available for remote work and collaborations worldwide</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <p>© <span id="year"></span> Tom Chévez — Costa Rica</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
