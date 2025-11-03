@@ -1,6 +1,17 @@
 # Dependencies
 node_modules/
 package-lock.json
+package.json
+
+# Design and internal docs
+DESIGN_PHILOSOPHY.md
+*.md
+!README.md
+
+# Personal files
+email_draft.txt
+*.draft
+*.notes
 
 # Editor directories and files
 .vscode/
