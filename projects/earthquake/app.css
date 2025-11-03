@@ -1,0 +1,827 @@
+/* ==========================================
+   EARTHQUAKE VISUALIZATION STYLES
+   Liquid glass aesthetic for data viz
+   Dark mode ready with visible glows
+   ========================================== */
+
+/* Dark mode color variables */
+:root {
+  --glow-intensity: 0.8;
+  --glow-color-boost: rgba(100, 100, 255, 0.6);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --glow-intensity: 1.2;
+    --glow-color-boost: rgba(150, 150, 255, 0.8);
+  }
+  
+  body {
+    background: linear-gradient(135deg, #0f1419 0%, #1a1f2e 100%);
+    color: #e4e4e7;
+  }
+  
+  .subtitle {
+    color: #a1a1aa;
+  }
+  
+  .controls-compact,
+  .map-style-bar {
+    background: rgba(30, 30, 40, 0.7);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  .map-style-btn {
+    background: transparent;
+    border-color: rgba(255, 255, 255, 0.15);
+  }
+  
+  .map-style-btn:hover {
+    background: rgba(50, 50, 65, 0.5);
+    border-color: var(--accent-blue);
+  }
+  
+  .map-style-btn.active {
+    background: var(--accent-blue);
+  }
+  
+  #map {
+    border-color: rgba(255, 255, 255, 0.15);
+  }
+  
+  .leaflet-container {
+    background: #1a1f2e !important;
+  }
+}
+
+/* Ensure Leaflet container renders */
+#map .leaflet-container {
+  background: #f5f7fa;
+  font-family: inherit;
+  height: 100%;
+  width: 100%;
+}
+
+/* Leaflet pane must have proper dimensions */
+#map .leaflet-pane {
+  z-index: 400;
+}
+
+#map .leaflet-tile-pane {
+  z-index: 200;
+}
+
+/* Ensure tiles are visible */
+#map .leaflet-tile {
+  opacity: 1 !important;
+}
+
+#map .leaflet-tile-container {
+  opacity: 1 !important;
+}
+
+/* Subtitle styling */
+.subtitle {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.6;
+  margin-bottom: var(--space-lg);
+  max-width: 720px;
+}
+
+/* Compact Controls Above Map */
+.controls-compact {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+  padding: var(--space-sm) var(--space-md);
+  background: var(--glass-white);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.control-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.control-item label {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-tertiary);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.slider-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.value-display {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+  min-width: 40px;
+  text-align: center;
+}
+
+/* Stats display - Compact */
+.stats-compact {
+  display: flex;
+  gap: var(--space-md);
+  align-items: center;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  text-align: center;
+}
+
+.stat-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-tertiary);
+}
+
+.stat-value {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1;
+}
+
+.stat-value.recent-count {
+  color: #ef4444;
+}
+
+/* Range input - refined */
+.control-item input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 180px;
+  height: 6px;
+  background: linear-gradient(to right, var(--accent-blue) 0%, rgba(0, 113, 227, 0.2) 0%);
+  border-radius: 3px;
+  outline: none;
+  cursor: pointer;
+  transition: all var(--transition-exhale);
+}
+
+.control-item input[type="range"]:hover {
+  height: 7px;
+}
+
+.control-item input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  background: var(--accent-blue);
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 113, 227, 0.3);
+  transition: all var(--transition-exhale);
+}
+
+.control-item input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+  box-shadow: 0 4px 12px rgba(0, 113, 227, 0.5);
+}
+
+.control-item input[type="range"]::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  background: var(--accent-blue);
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 113, 227, 0.3);
+  transition: all var(--transition-exhale);
+}
+
+.control-item input[type="range"]::-moz-range-thumb:hover {
+  transform: scale(1.15);
+  box-shadow: 0 4px 12px rgba(0, 113, 227, 0.5);
+}
+
+/* Map Style Bar - Below Map */
+.map-style-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: var(--space-sm);
+  margin-bottom: var(--space-sm);
+  padding: 8px 16px;
+  background: var(--glass-white);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.map-style-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-tertiary);
+  font-weight: 500;
+  margin-right: 4px;
+}
+
+.map-style-btn {
+  background: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  line-height: 1;
+}
+
+.map-style-btn:hover {
+  background: rgba(0, 113, 227, 0.08);
+  border-color: var(--accent-blue);
+  transform: translateY(-1px);
+}
+
+.map-style-btn.active {
+  background: var(--accent-blue);
+  border-color: var(--accent-blue);
+  box-shadow: 0 2px 8px rgba(0, 113, 227, 0.3);
+  transform: scale(1.05);
+}
+
+/* Map container */
+#map {
+  width: 100%;
+  height: 600px;
+  min-height: 500px;
+  max-height: 700px;
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-breath);
+  position: relative;
+}
+
+#map:hover {
+  box-shadow: var(--shadow-lg);
+}
+
+/* Map loading state */
+#map.loading::after {
+  content: 'Loading earthquake data...';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--glass-white);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--glass-border);
+  color: var(--text-secondary);
+  font-size: 14px;
+  z-index: 1000;
+  pointer-events: none;
+}
+
+/* Override Leaflet popup styles to match our design */
+.leaflet-popup-content-wrapper {
+  background: var(--glass-white);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-md);
+  padding: 12px;
+  font-family: inherit;
+}
+
+.leaflet-popup-content {
+  margin: 8px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-primary);
+}
+
+.leaflet-popup-content strong {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.leaflet-popup-content a {
+  color: var(--accent-blue);
+  text-decoration: none;
+  transition: color var(--transition-exhale);
+}
+
+.leaflet-popup-content a:hover {
+  color: var(--accent-hover);
+  text-decoration: underline;
+}
+
+.leaflet-popup-tip {
+  background: var(--glass-white);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Legend box - compact */
+#legend {
+  margin-top: var(--space-md);
+  padding: var(--space-sm);
+  background: var(--glass-white);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  max-width: 100%;
+  font-size: 13px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  align-items: center;
+}
+
+#legend > div:first-child {
+  font-weight: 600;
+  color: var(--text-primary);
+  font-size: 14px;
+  margin-right: auto;
+}
+
+#legend .row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.swatch {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  flex-shrink: 0;
+}
+
+/* Recent earthquake pin markers */
+.recent-pin-marker {
+  background: transparent !important;
+  border: none !important;
+  pointer-events: auto;
+  z-index: 1000 !important;
+}
+
+.pin-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 0 3px currentColor) 
+          drop-shadow(0 0 6px currentColor);
+  animation: pinPulse 2s ease-in-out infinite;
+}
+
+@keyframes pinPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.3);
+    opacity: 0.8;
+  }
+}
+
+.recent-pin-marker:hover .pin-icon {
+  filter: drop-shadow(0 0 6px currentColor) 
+          drop-shadow(0 0 12px currentColor)
+          drop-shadow(0 0 18px var(--glow-color-boost));
+  animation: pinPulse 0.8s ease-in-out infinite;
+}
+
+/* Attribution text */
+.attribution {
+  margin-top: var(--space-sm);
+  color: var(--text-tertiary);
+  font-size: 13px;
+  text-align: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .subtitle {
+    font-size: 0.9rem;
+  }
+  
+  .controls-compact {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-sm);
+    padding: var(--space-sm);
+  }
+  
+  .control-item {
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .slider-group {
+    flex: 1;
+    max-width: 200px;
+  }
+  
+  .control-item input[type="range"] {
+    flex: 1;
+    min-width: 120px;
+    width: 100%;
+  }
+  
+  .stats-compact {
+    width: 100%;
+    justify-content: space-around;
+    padding-top: var(--space-xs);
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+  }
+  
+  .map-style-bar {
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 6px 12px;
+  }
+  
+  .map-style-label {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 4px;
+  }
+  
+  #map {
+    height: 450px;
+    min-height: 350px;
+  }
+  
+  .attribution {
+    font-size: 11px;
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.75rem;
+  }
+  
+  .subtitle {
+    font-size: 0.85rem;
+  }
+  
+  .control-item label {
+    font-size: 11px;
+  }
+  
+  .value-display {
+    font-size: 16px;
+  }
+  
+  .stat-value {
+    font-size: 20px;
+  }
+  
+  .stat-label {
+    font-size: 9px;
+  }
+  
+  #map {
+    height: 400px;
+    min-height: 300px;
+  }
+  
+  .map-style-btn {
+    padding: 5px 8px;
+    font-size: 16px;
+  }
+}
+
+/* Loading states */
+.stat-value.updating {
+  opacity: 0.5;
+  transform: scale(0.95);
+}
+
+/* Smooth entrance animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.controls,
+#map,
+#legend {
+  animation: fadeInUp var(--transition-breath) cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 1; /* Make immediately visible for debugging */
+  animation-fill-mode: forwards;
+}
+
+.controls {
+  animation-delay: 0ms;
+}
+
+#map {
+  animation-delay: 100ms;
+}
+
+#legend {
+  animation-delay: 200ms;
+}
+
+/* Earthquake marker animations - dramatic ripple effect */
+.earthquake-marker {
+  cursor: pointer;
+  position: relative;
+  filter: drop-shadow(0 0 0 transparent);
+  transition: filter 0.3s ease;
+}
+
+@keyframes markerAppear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Hover effect - intense glow pulse */
+.earthquake-marker:hover {
+  opacity: 1 !important;
+  z-index: 1000;
+  filter: drop-shadow(0 0 20px currentColor) brightness(1.5);
+}
+
+/* Continuous ripple animations using filter and opacity */
+/* Small earthquakes (2.5-4.0) - gentle pulse */
+.earthquake-marker.mag-small {
+  animation: pulseSmall 3s ease-in-out infinite;
+}
+
+/* Medium earthquakes (4.0-5.5) - moderate pulse */
+.earthquake-marker.mag-medium {
+  animation: pulseMedium 2.5s ease-in-out infinite;
+}
+
+/* Large earthquakes (5.5-6.5) - strong pulse */
+.earthquake-marker.mag-large {
+  animation: pulseLarge 2s ease-in-out infinite;
+}
+
+/* Major earthquakes (6.5+) - intense pulse */
+.earthquake-marker.mag-major {
+  animation: pulseMajor 1.5s ease-in-out infinite;
+}
+
+/* Recent earthquakes get faster, more dramatic animation */
+.earthquake-marker.recent.mag-small {
+  animation: pulseSmall 2s ease-in-out infinite;
+}
+
+.earthquake-marker.recent.mag-medium {
+  animation: pulseMedium 1.8s ease-in-out infinite;
+}
+
+.earthquake-marker.recent.mag-large {
+  animation: pulseLarge 1.5s ease-in-out infinite;
+}
+
+.earthquake-marker.recent.mag-major {
+  animation: pulseMajor 1.2s ease-in-out infinite;
+}
+
+/* Hover amplified animations */
+.earthquake-marker.mag-small:hover {
+  animation: pulseSmallHover 1s ease-in-out infinite;
+}
+
+.earthquake-marker.mag-medium:hover {
+  animation: pulseMediumHover 0.9s ease-in-out infinite;
+}
+
+.earthquake-marker.mag-large:hover {
+  animation: pulseLargeHover 0.8s ease-in-out infinite;
+}
+
+.earthquake-marker.mag-major:hover {
+  animation: pulseMajorHover 0.7s ease-in-out infinite;
+}
+
+/* Pulse animations using filter drop-shadow for glow effect */
+@keyframes pulseSmall {
+  0%, 100% {
+    filter: drop-shadow(0 0 3px currentColor)
+            drop-shadow(0 0 5px currentColor)
+            drop-shadow(0 0 8px var(--glow-color-boost));
+    opacity: 0.9;
+  }
+  50% {
+    filter: drop-shadow(0 0 5px currentColor)
+            drop-shadow(0 0 8px currentColor)
+            drop-shadow(0 0 12px var(--glow-color-boost));
+    opacity: 1;
+  }
+}
+
+@keyframes pulseMedium {
+  0%, 100% {
+    filter: drop-shadow(0 0 5px currentColor) 
+            drop-shadow(0 0 10px currentColor)
+            drop-shadow(0 0 18px var(--glow-color-boost));
+    opacity: 0.9;
+  }
+  50% {
+    filter: drop-shadow(0 0 8px currentColor) 
+            drop-shadow(0 0 15px currentColor)
+            drop-shadow(0 0 25px var(--glow-color-boost));
+    opacity: 1;
+  }
+}
+
+@keyframes pulseLarge {
+  0%, 100% {
+    filter: 
+      drop-shadow(0 0 8px currentColor) 
+      drop-shadow(0 0 15px currentColor)
+      drop-shadow(0 0 25px var(--glow-color-boost))
+      drop-shadow(0 0 35px var(--glow-color-boost));
+    opacity: 0.95;
+  }
+  50% {
+    filter: 
+      drop-shadow(0 0 15px currentColor) 
+      drop-shadow(0 0 25px currentColor)
+      drop-shadow(0 0 40px var(--glow-color-boost))
+      drop-shadow(0 0 55px var(--glow-color-boost));
+    opacity: 1;
+  }
+}
+
+@keyframes pulseMajor {
+  0%, 100% {
+    filter: 
+      drop-shadow(0 0 10px currentColor) 
+      drop-shadow(0 0 20px currentColor)
+      drop-shadow(0 0 35px var(--glow-color-boost))
+      drop-shadow(0 0 50px var(--glow-color-boost))
+      drop-shadow(0 0 65px var(--glow-color-boost));
+    opacity: 0.95;
+  }
+  50% {
+    filter: 
+      drop-shadow(0 0 20px currentColor) 
+      drop-shadow(0 0 35px currentColor)
+      drop-shadow(0 0 55px var(--glow-color-boost))
+      drop-shadow(0 0 75px var(--glow-color-boost))
+      drop-shadow(0 0 95px var(--glow-color-boost));
+    opacity: 1;
+  }
+}
+
+/* HOVER AMPLIFIED - Explosive glow effects! */
+@keyframes pulseSmallHover {
+  0%, 100% {
+    filter: 
+      drop-shadow(0 0 15px currentColor)
+      drop-shadow(0 0 25px currentColor)
+      drop-shadow(0 0 40px var(--glow-color-boost));
+    opacity: 1;
+  }
+  50% {
+    filter: 
+      drop-shadow(0 0 25px currentColor)
+      drop-shadow(0 0 40px currentColor)
+      drop-shadow(0 0 60px var(--glow-color-boost));
+    opacity: 1;
+  }
+}
+
+@keyframes pulseMediumHover {
+  0%, 100% {
+    filter: 
+      drop-shadow(0 0 20px currentColor)
+      drop-shadow(0 0 35px currentColor)
+      drop-shadow(0 0 55px var(--glow-color-boost))
+      drop-shadow(0 0 75px var(--glow-color-boost));
+    opacity: 1;
+  }
+  50% {
+    filter: 
+      drop-shadow(0 0 35px currentColor)
+      drop-shadow(0 0 55px currentColor)
+      drop-shadow(0 0 85px var(--glow-color-boost))
+      drop-shadow(0 0 110px var(--glow-color-boost));
+    opacity: 1;
+  }
+}
+
+@keyframes pulseLargeHover {
+  0%, 100% {
+    filter: 
+      drop-shadow(0 0 30px currentColor)
+      drop-shadow(0 0 50px currentColor)
+      drop-shadow(0 0 80px var(--glow-color-boost))
+      drop-shadow(0 0 110px var(--glow-color-boost))
+      drop-shadow(0 0 140px var(--glow-color-boost));
+    opacity: 1;
+  }
+  50% {
+    filter: 
+      drop-shadow(0 0 50px currentColor)
+      drop-shadow(0 0 80px currentColor)
+      drop-shadow(0 0 120px var(--glow-color-boost))
+      drop-shadow(0 0 160px var(--glow-color-boost))
+      drop-shadow(0 0 200px var(--glow-color-boost));
+    opacity: 1;
+  }
+}
+
+@keyframes pulseMajorHover {
+  0%, 100% {
+    filter: 
+      drop-shadow(0 0 40px currentColor)
+      drop-shadow(0 0 70px currentColor)
+      drop-shadow(0 0 110px var(--glow-color-boost))
+      drop-shadow(0 0 150px var(--glow-color-boost))
+      drop-shadow(0 0 190px var(--glow-color-boost))
+      drop-shadow(0 0 230px var(--glow-color-boost));
+    opacity: 1;
+  }
+  50% {
+    filter: 
+      drop-shadow(0 0 60px currentColor)
+      drop-shadow(0 0 100px currentColor)
+      drop-shadow(0 0 150px var(--glow-color-boost))
+      drop-shadow(0 0 200px var(--glow-color-boost))
+      drop-shadow(0 0 250px var(--glow-color-boost))
+      drop-shadow(0 0 300px var(--glow-color-boost));
+    opacity: 1;
+  }
+}
+
+/* Prevent any position shifting */
+.leaflet-interactive {
+  transform: none !important;
+}
+
+.leaflet-interactive:hover {
+  transform: none !important;
+}
+
+/* Disable all transforms on SVG paths */
+#map svg path {
+  transform: none !important;
+}
+
+#map svg path:hover {
+  transform: none !important;
+}
+
+.earthquake-marker.recent:hover {
+  animation: none;
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

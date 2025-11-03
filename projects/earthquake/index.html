@@ -3,29 +3,22 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Live Earthquake Map | Tom Chévez</title>
+  <meta name="description" content="Real-time global earthquake visualization with live USGS data. Monitor seismic activity worldwide with magnitude-based animations and depth color coding." />
+  <title>Global Seismic Activity Monitor</title>
+  
+  <!-- Preload critical resources -->
+  <link rel="preconnect" href="https://unpkg.com" crossorigin />
+  <link rel="preconnect" href="https://earthquake.usgs.gov" crossorigin />
+  
   <link rel="stylesheet" href="../../style.css" />
-  <style>
-    .map-container {
-      background: var(--glass-white);
-      backdrop-filter: blur(20px) saturate(180%);
-      -webkit-backdrop-filter: blur(20px) saturate(180%);
-      border: 1px solid var(--glass-border);
-      border-radius: var(--radius-lg);
-      padding: var(--space-md);
-      margin-top: var(--space-md);
-      box-shadow: var(--shadow-md);
-      min-height: 400px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    
-    .loading {
-      color: var(--text-secondary);
-      font-size: 1.1rem;
-    }
-  </style>
+  <!-- Leaflet CSS (CDN) -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""
+  />
+  <link rel="stylesheet" href="./app.css" />
 </head>
 <body>
   <header class="site-header">
@@ -44,31 +37,63 @@
   </header>
 
   <main class="section">
-    <h1>Live Earthquake Map</h1>
-    <p>Real-time seismic activity visualization using data from the USGS Earthquake API. Focused on Costa Rica and Central America region.</p>
+    <h1>Global Seismic Activity</h1>
+    <p class="subtitle">
+      The Earth appears still, but beneath the surface, immense pressure builds and releases. 
+      Watch as tectonic forces reshape our world in real-time—each pulse a reminder of our planet's living energy.
+    </p>
 
-    <div class="card">
-      <h3>About This Project</h3>
-      <p>This interactive map displays recent earthquake activity, pulling live data from the United States Geological Survey (USGS). The visualization helps identify patterns in seismic activity and provides insights into earthquake magnitude, depth, and location.</p>
+    <!-- Compact Controls Above Map -->
+    <div class="controls-compact">
+      <div class="control-item">
+        <label>Min Magnitude</label>
+        <div class="slider-group">
+          <input id="magMin" type="range" min="2.5" max="7" step="0.5" value="2.5" />
+          <span id="magMinVal" class="value-display">2.5</span>
+        </div>
+      </div>
+      
+      <div class="stats-compact">
+        <div class="stat-item">
+          <span class="stat-value" id="quakeCount">—</span>
+          <span class="stat-label">Earthquakes</span>
+        </div>
+        <div class="stat-item recent-stat" id="recentStat" style="display: none;">
+          <span class="stat-value recent-count" id="recentCount">0</span>
+          <span class="stat-label">🔴 Recent</span>
+        </div>
+      </div>
     </div>
 
-    <div class="map-container">
-      <div class="loading">Map visualization coming soon...</div>
+    <!-- Map -->
+    <div id="map">
+      <div style="display: flex; align-items: center; justify-content: center; height: 100%; color: var(--text-secondary);">
+        Initializing map...
+      </div>
     </div>
 
-    <div class="card">
-      <h3>Technical Details</h3>
-      <p><strong>Data Source:</strong> USGS Earthquake API</p>
-      <p><strong>Technologies:</strong> JavaScript, Leaflet.js, Real-time API integration</p>
-      <p><strong>Focus Region:</strong> Costa Rica and Central America</p>
+    <!-- Map Style Switcher - Below Map -->
+    <div class="map-style-bar">
+      <span class="map-style-label">Map Style:</span>
+      <button class="map-style-btn" data-style="dark" title="Dark">🌙</button>
+      <button class="map-style-btn" data-style="light" title="Light">☀️</button>
+      <button class="map-style-btn" data-style="voyager" title="Voyager">🗺️</button>
+      <button class="map-style-btn" data-style="standard" title="Standard">🌍</button>
+      <button class="map-style-btn" data-style="watercolor" title="Watercolor">🎨</button>
+      <button class="map-style-btn" data-style="terrain" title="Terrain">⛰️</button>
     </div>
+
+    <p class="attribution">
+      Color = Depth (Shallow 🟢 → Deep 🔴) · Size = Magnitude · Data © USGS
+    </p>
   </main>
 
-  <footer class="site-footer">
-    <p>© <span id="year"></span> Tom Chévez, Costa Rica</p>
-  </footer>
-
-  <script src="../../script.js"></script>
-  <script>document.getElementById("year").textContent=new Date().getFullYear();</script>
+  <!-- Leaflet JS (CDN) -->
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""
+  ></script>
+  <script src="./app.js"></script>
 </body>
 </html>
