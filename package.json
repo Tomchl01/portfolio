@@ -1,0 +1,12 @@
+{
+  "name": "tomchnet-serverless",
+  "version": "1.0.0",
+  "description": "Serverless functions for TomchNET portfolio",
+  "dependencies": {
+    "node-fetch": "^2.7.0",
+    "jsdom": "^24.0.0"
+  },
+  "scripts": {
+    "test": "node netlify/functions/ovsicori-scraper.js"
+  }
+}

@@ -129,9 +129,10 @@ function initMap() {
       attribution: style.attribution,
     }).addTo(map);
     
-    // Move quakes layer to top to ensure it stays visible
-    if (quakesLayer) {
-      quakesLayer.bringToFront();
+    // LayerGroup doesn't have bringToFront, but we can remove and re-add
+    if (quakesLayer && map.hasLayer(quakesLayer)) {
+      quakesLayer.remove();
+      quakesLayer.addTo(map);
     }
     
     // Update active button state
@@ -151,7 +152,7 @@ function initMap() {
       attributionControl: true,
       minZoom: 2,
       maxZoom: 12,
-      preferCanvas: true // Performance optimization for many markers
+      preferCanvas: false // Use SVG for CSS animations to work
     });
 
     map.setView(REGION.center, REGION.zoom);
@@ -280,13 +281,19 @@ function initMap() {
         magClass = 'mag-medium';
       }
       
-      // Build class list
-      const classList = ['earthquake-marker', magClass];
-      if (recent) classList.push('recent');
+      // Calculate animation speed based on magnitude
+      let animSpeed = '4s'; // Small
+      if (mag >= 6.5) animSpeed = '1.5s';      // Major
+      else if (mag >= 5.5) animSpeed = '2s';   // Large  
+      else if (mag >= 4.0) animSpeed = '3s';   // Medium
       
-      // Calculate time strings for popup
-      const localTime = fmtLocal(time);
-      const relativeTime = timeAgo(time);
+      // Recent earthquakes breathe faster
+      if (recent) {
+        if (mag >= 6.5) animSpeed = '1.2s';
+        else if (mag >= 5.5) animSpeed = '1.8s';
+        else if (mag >= 4.0) animSpeed = '2.5s';
+        else animSpeed = '3s';
+      }
       
       // Create open circle marker with magnitude-based ripple effect
       const circle = L.circleMarker([lat, lon], {
@@ -296,8 +303,28 @@ function initMap() {
         fillColor: depthColor(depth),
         fillOpacity: 0.15,                  // Very transparent fill (almost hollow)
         opacity: recent ? 0.95 : 0.7,       // Border opacity
-        className: classList.join(' ')
+        // Use data attributes instead of classes
+        'data-mag': mag,
+        'data-recent': recent ? 'true' : 'false'
       });
+      
+      // Apply animation speed via inline style after adding to map
+      circle.on('add', function() {
+        const el = circle.getElement();
+        console.log('Circle element:', el, 'Tag:', el?.tagName);
+        if (el) {
+          el.style.animation = `breathe ${animSpeed} ease-in-out infinite`;
+          el.style.transformOrigin = 'center';
+          el.style.transform = 'none';
+          console.log('Applied animation:', el.style.animation);
+        } else {
+          console.log('❌ No element found!');
+        }
+      });
+      
+      // Calculate time strings for popup
+      const localTime = fmtLocal(time);
+      const relativeTime = timeAgo(time);
       
       // Add a minimalist pin icon for recent earthquakes
       if (recent) {
