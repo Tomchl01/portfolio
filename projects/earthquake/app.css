@@ -4,10 +4,37 @@
    Dark mode ready with visible glows
    ========================================== */
 
-/* Dark mode color variables */
+/* CSS Variables with fallbacks for standalone use */
 :root {
+  /* Glow variables */
   --glow-intensity: 0.8;
   --glow-color-boost: rgba(100, 100, 255, 0.6);
+  
+  /* Fallback variables if main style.css doesn't load */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  
+  --text-primary: #1a1a1a;
+  --text-secondary: #4a5568;
+  --text-tertiary: #718096;
+  
+  --accent-blue: #0071e3;
+  
+  --glass-white: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(0, 0, 0, 0.08);
+  
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
+  
+  --transition-breath: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-exhale: 0.2s ease-out;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -570,6 +597,13 @@
   transition: filter 0.3s ease;
 }
 
+/* Ensure animations apply to Leaflet SVG paths */
+path.earthquake-marker {
+  cursor: pointer;
+  filter: drop-shadow(0 0 0 transparent);
+  transition: filter 0.3s ease;
+}
+
 @keyframes markerAppear {
   from {
     opacity: 0;
@@ -580,7 +614,8 @@
 }
 
 /* Hover effect - intense glow pulse */
-.earthquake-marker:hover {
+.earthquake-marker:hover,
+path.earthquake-marker:hover {
   opacity: 1 !important;
   z-index: 1000;
   filter: drop-shadow(0 0 20px currentColor) brightness(1.5);
@@ -588,56 +623,68 @@
 
 /* Continuous ripple animations using filter and opacity */
 /* Small earthquakes (2.5-4.0) - gentle pulse */
-.earthquake-marker.mag-small {
+.earthquake-marker.mag-small,
+path.earthquake-marker.mag-small {
   animation: pulseSmall 3s ease-in-out infinite;
 }
 
 /* Medium earthquakes (4.0-5.5) - moderate pulse */
-.earthquake-marker.mag-medium {
+.earthquake-marker.mag-medium,
+path.earthquake-marker.mag-medium {
   animation: pulseMedium 2.5s ease-in-out infinite;
 }
 
 /* Large earthquakes (5.5-6.5) - strong pulse */
-.earthquake-marker.mag-large {
+.earthquake-marker.mag-large,
+path.earthquake-marker.mag-large {
   animation: pulseLarge 2s ease-in-out infinite;
 }
 
 /* Major earthquakes (6.5+) - intense pulse */
-.earthquake-marker.mag-major {
+.earthquake-marker.mag-major,
+path.earthquake-marker.mag-major {
   animation: pulseMajor 1.5s ease-in-out infinite;
 }
 
 /* Recent earthquakes get faster, more dramatic animation */
-.earthquake-marker.recent.mag-small {
+.earthquake-marker.recent.mag-small,
+path.earthquake-marker.recent.mag-small {
   animation: pulseSmall 2s ease-in-out infinite;
 }
 
-.earthquake-marker.recent.mag-medium {
+.earthquake-marker.recent.mag-medium,
+path.earthquake-marker.recent.mag-medium {
   animation: pulseMedium 1.8s ease-in-out infinite;
 }
 
-.earthquake-marker.recent.mag-large {
+.earthquake-marker.recent.mag-large,
+path.earthquake-marker.recent.mag-large {
   animation: pulseLarge 1.5s ease-in-out infinite;
 }
 
-.earthquake-marker.recent.mag-major {
+.earthquake-marker.recent.mag-major,
+path.earthquake-marker.recent.mag-major {
   animation: pulseMajor 1.2s ease-in-out infinite;
 }
 
 /* Hover amplified animations */
-.earthquake-marker.mag-small:hover {
+.earthquake-marker.mag-small:hover,
+path.earthquake-marker.mag-small:hover {
   animation: pulseSmallHover 1s ease-in-out infinite;
 }
 
-.earthquake-marker.mag-medium:hover {
+.earthquake-marker.mag-medium:hover,
+path.earthquake-marker.mag-medium:hover {
   animation: pulseMediumHover 0.9s ease-in-out infinite;
 }
 
-.earthquake-marker.mag-large:hover {
+.earthquake-marker.mag-large:hover,
+path.earthquake-marker.mag-large:hover {
   animation: pulseLargeHover 0.8s ease-in-out infinite;
 }
 
-.earthquake-marker.mag-major:hover {
+.earthquake-marker.mag-major:hover,
+path.earthquake-marker.mag-major:hover {
   animation: pulseMajorHover 0.7s ease-in-out infinite;
 }
 
