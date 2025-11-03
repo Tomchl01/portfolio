@@ -40,7 +40,7 @@
     <h1>Global Seismic Activity</h1>
     <p class="subtitle">
       The Earth appears still, but beneath the surface, immense pressure builds and releases. 
-      Watch as tectonic forces reshape our world in real-time—each pulse a reminder of our planet's living energy.
+      Watch as tectonic forces reshape our world in real time, each pulse a reminder of our planet's living energy.
     </p>
 
     <!-- Compact Controls Above Map -->
@@ -48,14 +48,14 @@
       <div class="control-item">
         <label>Min Magnitude</label>
         <div class="slider-group">
-          <input id="magMin" type="range" min="2.5" max="7" step="0.5" value="2.5" />
-          <span id="magMinVal" class="value-display">2.5</span>
+          <input id="magMin" type="range" min="2.5" max="7" step="0.5" value="4.5" />
+          <span id="magMinVal" class="value-display">4.5</span>
         </div>
       </div>
       
       <div class="stats-compact">
         <div class="stat-item">
-          <span class="stat-value" id="quakeCount">—</span>
+          <span class="stat-value" id="quakeCount"> </span>
           <span class="stat-label">Earthquakes</span>
         </div>
         <div class="stat-item recent-stat" id="recentStat" style="display: none;">
@@ -86,6 +86,17 @@
     <p class="attribution">
       Color = Depth (Shallow 🟢 → Deep 🔴) · Size = Magnitude · Data © USGS
     </p>
+
+    <!-- Technical Details Card -->
+    <div class="tech-card">
+      <div class="tech-card-trigger">Tech Stack</div>
+      <div class="tech-card-content">
+        <p><strong>Data:</strong> USGS GeoJSON API</p>
+        <p><strong>Map:</strong> Leaflet.js + CartoDB tiles</p>
+        <p><strong>Animation:</strong> CSS keyframes (SVG)</p>
+        <p><strong>Update:</strong> Real-time, 7-day window</p>
+      </div>
+    </div>
   </main>
 
   <!-- Leaflet JS (CDN) -->

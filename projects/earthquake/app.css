@@ -625,6 +625,67 @@ path.earthquake-marker {
   }
 }
 
+/* Technical Details Card */
+.tech-card {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.tech-card-trigger {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-subtle);
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.tech-card-trigger:hover {
+  color: var(--text-primary);
+  border-color: var(--text-secondary);
+}
+
+.tech-card-content {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  right: 0;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 16px;
+  min-width: 250px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.tech-card:hover .tech-card-content {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.tech-card-content p {
+  margin: 0 0 8px 0;
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.tech-card-content p:last-child {
+  margin-bottom: 0;
+}
+
+.tech-card-content strong {
+  color: var(--text-primary);
+}
+
 /* Accessibility */
 @media (prefers-reduced-motion: reduce) {
   *,
