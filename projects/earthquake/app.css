@@ -181,6 +181,10 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: var(--text-tertiary);
+  white-space: normal;
+  text-align: center;
+  line-height: 1.3;
+  max-width: 100%;
 }
 
 .stat-value {
@@ -192,6 +196,43 @@
 
 .stat-value.recent-count {
   color: #ef4444;
+}
+
+/* Live Indicator - Subtle green dot next to label */
+.live-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: 6px;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.live-indicator.active {
+  opacity: 1;
+}
+
+.status-dot {
+  color: #10b981;
+  font-size: 8px;
+  text-shadow: 0 0 4px rgba(16, 185, 129, 0.5);
+  animation: gentlePulse 3s ease-in-out infinite;
+}
+
+.update-time {
+  font-size: 9px;
+  color: var(--text-tertiary);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+@keyframes gentlePulse {
+  0%, 100% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 1;
+  }
 }
 
 /* Range input - refined */
@@ -625,6 +666,411 @@ path.earthquake-marker {
   }
 }
 
+/* ==========================================
+   EVENT TYPE ANIMATIONS
+   Each seismic event type has distinct motion
+   ========================================== */
+
+/* EXPLOSION - Sharp, aggressive burst */
+/* EXPLOSION - Sharp violent pulse with intense glow */
+@keyframes explosion {
+  0% {
+    opacity: 0.1;
+    transform: scale(0.5);
+    box-shadow: 0 0 2px currentColor;
+  }
+  10% {
+    opacity: 1;
+    transform: scale(1.1);
+    box-shadow: 0 0 12px currentColor, 0 0 24px rgba(255, 51, 0, 0.8);
+  }
+  25% {
+    opacity: 0.8;
+    transform: scale(1.3);
+    box-shadow: 0 0 20px currentColor, 0 0 40px rgba(255, 51, 0, 0.6);
+  }
+  40% {
+    opacity: 0.6;
+    transform: scale(1.15);
+    box-shadow: 0 0 16px currentColor, 0 0 32px rgba(255, 51, 0, 0.4);
+  }
+  60% {
+    opacity: 0.4;
+    transform: scale(0.95);
+    box-shadow: 0 0 10px currentColor, 0 0 20px rgba(255, 51, 0, 0.3);
+  }
+  85% {
+    opacity: 0.2;
+    transform: scale(0.8);
+    box-shadow: 0 0 6px currentColor, 0 0 12px rgba(255, 51, 0, 0.2);
+  }
+  100% {
+    opacity: 0.05;
+    transform: scale(0.6);
+    box-shadow: 0 0 2px currentColor;
+  }
+}
+
+/* MINING EXPLOSION - Rapid cascading pulses */
+@keyframes miningExplosion {
+  0% {
+    opacity: 0.15;
+    transform: scale(0.7);
+  }
+  12% {
+    opacity: 0.95;
+    transform: scale(1.2);
+  }
+  24% {
+    opacity: 0.7;
+    transform: scale(0.9);
+  }
+  36% {
+    opacity: 0.85;
+    transform: scale(1.15);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.0);
+  }
+  70% {
+    opacity: 0.3;
+    transform: scale(0.85);
+  }
+  100% {
+    opacity: 0.1;
+    transform: scale(0.7);
+  }
+}
+
+/* QUARRY BLAST - Heavy percussive pulse */
+@keyframes quarryBlast {
+  0% {
+    opacity: 0.2;
+    transform: scale(0.6);
+  }
+  8% {
+    opacity: 1;
+    transform: scale(1.25);
+  }
+  20% {
+    opacity: 0.75;
+    transform: scale(1.05);
+  }
+  35% {
+    opacity: 0.5;
+    transform: scale(0.95);
+  }
+  55% {
+    opacity: 0.35;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 0.1;
+    transform: scale(0.6);
+  }
+}
+
+/* SONIC BOOM - Fast radiating pulse with sharp edges */
+@keyframes sonicBoom {
+  0% {
+    opacity: 0.3;
+    transform: scale(0.5);
+  }
+  5% {
+    opacity: 1;
+    transform: scale(1.0);
+  }
+  15% {
+    opacity: 0.8;
+    transform: scale(1.15);
+  }
+  30% {
+    opacity: 0.5;
+    transform: scale(1.3);
+  }
+  50% {
+    opacity: 0.2;
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 0.05;
+    transform: scale(0.8);
+  }
+}
+
+/* ICE QUAKE - Crystalline slow pulse with rhythmic tremor */
+@keyframes iceQuake {
+  0% {
+    opacity: 0.2;
+    transform: scale(0.8);
+  }
+  10% {
+    opacity: 0.6;
+    transform: scale(0.95);
+  }
+  25% {
+    opacity: 0.9;
+    transform: scale(1.05);
+  }
+  40% {
+    opacity: 0.7;
+    transform: scale(0.98);
+  }
+  60% {
+    opacity: 0.4;
+    transform: scale(1.02);
+  }
+  80% {
+    opacity: 0.2;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 0.1;
+    transform: scale(0.85);
+  }
+}
+
+/* ROCK BURST - Underground thump with multiple pulses */
+@keyframes rockBurst {
+  0% {
+    opacity: 0.15;
+    transform: scale(0.65);
+  }
+  10% {
+    opacity: 0.9;
+    transform: scale(1.1);
+  }
+  22% {
+    opacity: 0.6;
+    transform: scale(0.95);
+  }
+  35% {
+    opacity: 0.8;
+    transform: scale(1.08);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(1.0);
+  }
+  70% {
+    opacity: 0.2;
+    transform: scale(0.88);
+  }
+  100% {
+    opacity: 0.05;
+    transform: scale(0.75);
+  }
+}
+
+/* CHEMICAL EXPLOSION - Organic gas cloud expansion and dissipation */
+@keyframes chemicalSpill {
+  0% {
+    opacity: 0.2;
+    transform: scale(0.3);
+    filter: blur(0px) drop-shadow(0 0 3px #00ff00);
+  }
+  10% {
+    opacity: 0.9;
+    transform: scale(0.8) translate(-12px, 15px);
+    filter: blur(1px) drop-shadow(0 0 8px #00ff00) drop-shadow(0 0 12px #00dd00);
+  }
+  25% {
+    opacity: 0.8;
+    transform: scale(1.2) translate(18px, -10px);
+    filter: blur(1.5px) drop-shadow(0 0 10px #00dd00) drop-shadow(0 0 16px #00aa00);
+  }
+  40% {
+    opacity: 0.65;
+    transform: scale(1.6) translate(-20px, -18px);
+    filter: blur(2px) drop-shadow(0 0 12px #00aa00) drop-shadow(0 0 18px #009900);
+  }
+  55% {
+    opacity: 0.5;
+    transform: scale(2.0) translate(22px, 12px);
+    filter: blur(2.5px) drop-shadow(0 0 10px #00aa00) drop-shadow(0 0 16px #007700);
+  }
+  70% {
+    opacity: 0.35;
+    transform: scale(2.4) translate(-18px, 20px);
+    filter: blur(3px) drop-shadow(0 0 8px #009900) drop-shadow(0 0 12px #006600);
+  }
+  85% {
+    opacity: 0.2;
+    transform: scale(2.8) translate(15px, -15px);
+    filter: blur(3.5px) drop-shadow(0 0 6px #007700);
+  }
+  100% {
+    opacity: 0.05;
+    transform: scale(3.2);
+    filter: blur(4px) drop-shadow(0 0 2px #005500);
+  }
+}
+
+/* ORGANIC GAS SPILL - Flowing wisps with irregular movement */
+@keyframes gasSpillAura {
+  0% {
+    opacity: 0.25;
+    transform: scale(0.4) translate(0, 0);
+    filter: blur(0.3px);
+  }
+  6% {
+    opacity: 0.8;
+    transform: scale(0.6) translate(5px, -7px);
+    filter: blur(0.6px);
+  }
+  12% {
+    opacity: 0.7;
+    transform: scale(0.8) translate(-9px, 4px);
+    filter: blur(0.8px);
+  }
+  18% {
+    opacity: 0.65;
+    transform: scale(0.95) translate(11px, 6px);
+    filter: blur(1px);
+  }
+  24% {
+    opacity: 0.6;
+    transform: scale(1.08) translate(-6px, -8px);
+    filter: blur(1.1px);
+  }
+  31% {
+    opacity: 0.55;
+    transform: scale(1.18) translate(8px, 9px);
+    filter: blur(1.3px);
+  }
+  38% {
+    opacity: 0.5;
+    transform: scale(1.28) translate(-11px, 3px);
+    filter: blur(1.4px);
+  }
+  46% {
+    opacity: 0.45;
+    transform: scale(1.36) translate(9px, -7px);
+    filter: blur(1.6px);
+  }
+  54% {
+    opacity: 0.4;
+    transform: scale(1.44) translate(-7px, -10px);
+    filter: blur(1.7px);
+  }
+  62% {
+    opacity: 0.3;
+    transform: scale(1.51) translate(10px, 8px);
+    filter: blur(1.8px);
+  }
+  70% {
+    opacity: 0.2;
+    transform: scale(1.58) translate(-8px, 6px);
+    filter: blur(1.9px);
+  }
+  80% {
+    opacity: 0.12;
+    transform: scale(1.64) translate(6px, -5px);
+    filter: blur(2.1px);
+  }
+  90% {
+    opacity: 0.08;
+    transform: scale(1.7) translate(-4px, 4px);
+    filter: blur(2.2px);
+  }
+  100% {
+    opacity: 0.02;
+    transform: scale(1.75) translate(0, 0);
+    filter: blur(2.3px);
+  }
+}
+
+/* Secondary flowing wisp animation (offset) */
+@keyframes gasSpillWisp {
+  0% {
+    opacity: 0.1;
+    transform: scale(0.2) translate(0, 0) rotate(0deg);
+    filter: blur(0.5px);
+  }
+  20% {
+    opacity: 0.6;
+    transform: scale(0.8) translate(20px, -20px) rotate(45deg);
+    filter: blur(1.5px);
+  }
+  40% {
+    opacity: 0.5;
+    transform: scale(1.1) translate(-25px, 25px) rotate(90deg);
+    filter: blur(2.5px);
+  }
+  60% {
+    opacity: 0.4;
+    transform: scale(1.4) translate(30px, 15px) rotate(180deg);
+    filter: blur(3px);
+  }
+  80% {
+    opacity: 0.2;
+    transform: scale(1.9) translate(-20px, -30px) rotate(270deg);
+    filter: blur(3.5px);
+  }
+  100% {
+    opacity: 0.05;
+    transform: scale(2.4) translate(0, 0) rotate(360deg);
+    filter: blur(4px);
+  }
+}
+
+/* Bright green glow center for chemical spill */
+@keyframes gasGlowCenter {
+  0% {
+    opacity: 0.3;
+    box-shadow: 0 0 4px #00ff00, 0 0 8px #00dd00;
+  }
+  50% {
+    opacity: 0.8;
+    box-shadow: 0 0 12px #00ff00, 0 0 24px #00dd00, 0 0 36px #00aa00;
+  }
+  100% {
+    opacity: 0.3;
+    box-shadow: 0 0 4px #00ff00, 0 0 8px #00dd00;
+  }
+}
+
+/* Explosion marker styling - divIcon with inline SVG */
+.explosion-marker-icon {
+  background: transparent;
+  border: none;
+  margin: 0;
+  /* Explicitly disable Leaflet's default divIcon margin offsets */
+}
+
+.explosion-marker-icon svg.star-burst,
+.explosion-marker-icon svg.gas-cloud {
+  display: block;
+  position: relative;
+  transform-origin: center;
+}
+
+.explosion-marker-icon svg.star-burst {
+  filter: drop-shadow(0 0 4px rgba(255, 51, 0, 0.6)) 
+          drop-shadow(0 0 8px rgba(255, 68, 0, 0.4));
+}
+
+.explosion-marker-icon svg.gas-cloud {
+  filter: drop-shadow(0 0 6px rgba(255, 204, 0, 0.5));
+}
+
+/* CHEMICAL SPILL OVERLAY - Animated element on custom pane */
+.chemical-gas-overlay {
+  pointer-events: none;
+  z-index: 450;
+}
+
+.chemical-gas-overlay svg.chemical-gas-svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.chemical-gas-overlay .gas-wisps {
+  transform-origin: 50px 50px;
+}
+
 /* Technical Details Card */
 .tech-card {
   position: fixed;
@@ -681,6 +1127,32 @@ path.earthquake-marker {
 .tech-card-content p:last-child {
   margin-bottom: 0;
 }
+
+/* Concentric ripple animations for chemical spill markers */
+@keyframes ripple1 {
+  0% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes ripple2 {
+  0% {
+    opacity: 0.4;
+  }
+  40% {
+    opacity: 0.15;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
 
 .tech-card-content strong {
   color: var(--text-primary);

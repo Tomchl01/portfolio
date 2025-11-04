@@ -56,7 +56,13 @@
       <div class="stats-compact">
         <div class="stat-item">
           <span class="stat-value" id="quakeCount"> </span>
-          <span class="stat-label">Earthquakes</span>
+          <span class="stat-label">
+            Earthquakes
+            <span class="live-indicator" id="liveIndicator">
+              <span class="status-dot">●</span>
+              <span class="update-time" id="updateTime"></span>
+            </span>
+          </span>
         </div>
         <div class="stat-item recent-stat" id="recentStat" style="display: none;">
           <span class="stat-value recent-count" id="recentCount">0</span>
