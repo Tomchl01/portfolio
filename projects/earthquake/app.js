@@ -514,7 +514,7 @@ function initMap() {
       ? labelEl.querySelector('.live-indicator').outerHTML 
       : '';
     
-    labelEl.innerHTML = `Events (${totalCount})${indicatorHTML}`;
+    labelEl.innerHTML = `${totalCount}${indicatorHTML}`;
   }
 
   // Animation Orchestrator - DEPRECATED: animations now attach per-marker via marker.on('add')
