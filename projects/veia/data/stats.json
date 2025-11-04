@@ -1,0 +1,134 @@
+{
+  "overview": {
+    "total_transactions": 10000,
+    "total_anomalies": 1350,
+    "detection_rate": 0.135,
+    "total_volume": 254290.93,
+    "timeframe": {
+      "start": "2025-04-01 00:04:15",
+      "end": "2025-05-01 00:23:34"
+    }
+  },
+  "anomaly_breakdown": [
+    {
+      "type": "shill_bidding",
+      "count": 120,
+      "avg_price": 408.73633333333333,
+      "avg_z_score": 6.3334
+    },
+    {
+      "type": "arbitrage_loop",
+      "count": 120,
+      "avg_price": 104.0605,
+      "avg_z_score": 1.1545666666666667
+    },
+    {
+      "type": "duplicate_payment",
+      "count": 120,
+      "avg_price": 58.44916666666666,
+      "avg_z_score": 0.5024333333333334
+    },
+    {
+      "type": "price_spike_manipulation",
+      "count": 120,
+      "avg_price": 150.62183333333334,
+      "avg_z_score": 2.63585
+    },
+    {
+      "type": "layering_burst",
+      "count": 150,
+      "avg_price": 282.76159999999993,
+      "avg_z_score": 3.77544
+    },
+    {
+      "type": "rmt_selling",
+      "count": 120,
+      "avg_price": 33.391083333333334,
+      "avg_z_score": 0.24334999999999998
+    },
+    {
+      "type": "mule_account",
+      "count": 200,
+      "avg_price": 42.740249999999996,
+      "avg_z_score": 0.2637
+    },
+    {
+      "type": "wash_trade_ring",
+      "count": 400,
+      "avg_price": 51.469375,
+      "avg_z_score": 0.3734875
+    }
+  ],
+  "marketplaces": [
+    {
+      "name": "Prime",
+      "transactions": 5681,
+      "anomaly_rate": 0.08713254708678049,
+      "total_value": 114858.07999999999
+    },
+    {
+      "name": "Arcade",
+      "transactions": 1532,
+      "anomaly_rate": 0.15274151436031333,
+      "total_value": 44340.950000000004
+    },
+    {
+      "name": "Shadow",
+      "transactions": 2787,
+      "anomaly_rate": 0.22282023681377824,
+      "total_value": 95091.9
+    }
+  ],
+  "categories": {
+    "blueprint": {
+      "total": 1119,
+      "anomalies": 228,
+      "anomaly_rate": 0.2037533512064343
+    },
+    "title": {
+      "total": 967,
+      "anomalies": 129,
+      "anomaly_rate": 0.13340227507755947
+    },
+    "skin_legendary": {
+      "total": 849,
+      "anomalies": 73,
+      "anomaly_rate": 0.08598351001177856
+    },
+    "artifact": {
+      "total": 941,
+      "anomalies": 172,
+      "anomaly_rate": 0.18278427205100956
+    },
+    "consumable": {
+      "total": 1174,
+      "anomalies": 149,
+      "anomaly_rate": 0.12691652470187392
+    },
+    "card_epic": {
+      "total": 974,
+      "anomalies": 80,
+      "anomaly_rate": 0.08213552361396304
+    },
+    "card_common": {
+      "total": 997,
+      "anomalies": 145,
+      "anomaly_rate": 0.14543630892678033
+    },
+    "skin_rare": {
+      "total": 1099,
+      "anomalies": 113,
+      "anomaly_rate": 0.10282074613284804
+    },
+    "mount": {
+      "total": 697,
+      "anomalies": 72,
+      "anomaly_rate": 0.10329985652797705
+    },
+    "skin_common": {
+      "total": 1183,
+      "anomalies": 189,
+      "anomaly_rate": 0.15976331360946747
+    }
+  }
+}

@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VEIA — Immersive Experience</title>
+  <link rel="stylesheet" href="../../style.css">
+  <link rel="stylesheet" href="./style.css">
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background: #0a0a0a;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    /* Canvas container */
+    #canvas-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+
+    /* UI Overlay */
+    .ui-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    /* Top HUD */
+    .hud-top {
+      position: absolute;
+      top: 24px;
+      left: 24px;
+      right: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      pointer-events: auto;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: 700;
+      color: #00d4ff;
+      text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+      letter-spacing: 2px;
+    }
+
+    .stats-panel {
+      background: rgba(26, 26, 26, 0.9);
+      border: 1px solid rgba(0, 212, 255, 0.3);
+      border-radius: 12px;
+      padding: 16px 24px;
+      backdrop-filter: blur(10px);
+    }
+
+    .stat-row {
+      display: flex;
+      gap: 32px;
+      font-size: 13px;
+      color: #999;
+    }
+
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .stat-value {
+      font-size: 20px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .stat-value.danger {
+      color: #ff3366;
+    }
+
+    /* Scene Title */
+    .scene-title {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      opacity: 0;
+      transition: opacity 0.5s;
+      pointer-events: none;
+    }
+
+    .scene-title.active {
+      opacity: 1;
+    }
+
+    .scene-title h1 {
+      font-size: 48px;
+      font-weight: 700;
+      color: #fff;
+      margin: 0 0 16px 0;
+      text-shadow: 0 0 40px rgba(0, 212, 255, 0.8);
+    }
+
+    .scene-title p {
+      font-size: 18px;
+      color: #999;
+      max-width: 600px;
+      line-height: 1.6;
+    }
+
+    /* Scene Controls */
+    .scene-controls {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      pointer-events: auto;
+    }
+
+    .scene-btn {
+      background: rgba(26, 26, 26, 0.9);
+      border: 1px solid rgba(0, 212, 255, 0.3);
+      color: #00d4ff;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      backdrop-filter: blur(10px);
+    }
+
+    .scene-btn:hover {
+      background: rgba(0, 212, 255, 0.1);
+      border-color: #00d4ff;
+      box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+    }
+
+    .scene-btn.active {
+      background: #00d4ff;
+      color: #0a0a0a;
+    }
+
+    .play-btn {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+    }
+
+    /* Scene Indicator */
+    .scene-indicator {
+      position: absolute;
+      top: 50%;
+      right: 40px;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      pointer-events: auto;
+    }
+
+    .scene-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+      cursor: pointer;
+      transition: all 0.3s;
+      position: relative;
+    }
+
+    .scene-dot.active {
+      background: #00d4ff;
+      box-shadow: 0 0 20px rgba(0, 212, 255, 0.8);
+    }
+
+    .scene-dot:hover::after {
+      content: attr(data-label);
+      position: absolute;
+      right: 24px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(26, 26, 26, 0.95);
+      color: #fff;
+      padding: 8px 12px;
+      border-radius: 6px;
+      white-space: nowrap;
+      font-size: 12px;
+      border: 1px solid rgba(0, 212, 255, 0.3);
+    }
+
+    /* Loading */
+    .loading {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: #00d4ff;
+      font-size: 18px;
+    }
+
+    .loading-spinner {
+      width: 50px;
+      height: 50px;
+      border: 3px solid rgba(0, 212, 255, 0.2);
+      border-top-color: #00d4ff;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 16px;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Info Panel */
+    .info-panel {
+      position: absolute;
+      bottom: 120px;
+      left: 40px;
+      max-width: 400px;
+      background: rgba(26, 26, 26, 0.95);
+      border: 1px solid rgba(255, 51, 102, 0.4);
+      border-left: 3px solid #ff3366;
+      border-radius: 8px;
+      padding: 20px;
+      backdrop-filter: blur(10px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.5s;
+    }
+
+    .info-panel.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .info-panel h3 {
+      margin: 0 0 12px 0;
+      color: #ff3366;
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .info-panel p {
+      margin: 0;
+      color: #ccc;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    /* Back Link */
+    .back-link {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      background: rgba(26, 26, 26, 0.9);
+      border: 1px solid rgba(0, 212, 255, 0.3);
+      color: #00d4ff;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s;
+      pointer-events: auto;
+    }
+
+    .back-link:hover {
+      background: rgba(0, 212, 255, 0.1);
+      border-color: #00d4ff;
+    }
+  </style>
+</head>
+<body>
+  <!-- Canvas Container -->
+  <div id="canvas-container"></div>
+
+  <!-- UI Overlay -->
+  <div class="ui-overlay">
+    <!-- Loading -->
+    <div class="loading" id="loading">
+      <div class="loading-spinner"></div>
+      <div>Loading Experience...</div>
+    </div>
+
+    <!-- HUD Top -->
+    <div class="hud-top" style="display: none;" id="hud">
+      <div class="logo">VEIA</div>
+      <a href="index.html" class="back-link">← Dashboard</a>
+    </div>
+
+    <!-- Scene Title -->
+    <div class="scene-title" id="sceneTitle">
+      <h1>Dynamic Transaction Network</h1>
+      <p>Watch as buyers and sellers orbit in 3D space, connected by glowing transaction edges</p>
+    </div>
+
+    <!-- Scene Controls -->
+    <div class="scene-controls" style="display: none;" id="controls">
+      <button class="scene-btn" onclick="prevScene()">← Prev</button>
+      <button class="scene-btn play-btn" onclick="toggleAutoPlay()" id="playBtn">▶</button>
+      <button class="scene-btn" onclick="nextScene()">Next →</button>
+    </div>
+
+    <!-- Scene Indicator -->
+    <div class="scene-indicator" style="display: none;" id="indicator">
+      <div class="scene-dot active" data-label="Network" onclick="goToScene(0)"></div>
+      <div class="scene-dot" data-label="Energy Field" onclick="goToScene(1)"></div>
+      <div class="scene-dot" data-label="Global Flows" onclick="goToScene(2)"></div>
+      <div class="scene-dot" data-label="Wash Ring" onclick="goToScene(3)"></div>
+      <div class="scene-dot" data-label="Marketplaces" onclick="goToScene(4)"></div>
+    </div>
+
+    <!-- Info Panel -->
+    <div class="info-panel" id="infoPanel">
+      <h3>Anomaly Detected</h3>
+      <p>Click on highlighted nodes or edges to see anomaly details</p>
+    </div>
+  </div>
+
+  <!-- Three.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+  
+  <!-- Immersive Experience Script -->
+  <script src="immersive.js"></script>
+</body>
+</html>

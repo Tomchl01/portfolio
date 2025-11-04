@@ -1,0 +1,1184 @@
+{
+  "anomaly_types": [
+    {
+      "type": "shill_bidding",
+      "total_count": 120,
+      "avg_price": 408.73633333333333,
+      "avg_z_score": 6.3334,
+      "daily_counts": [
+        {
+          "day": 1,
+          "count": 6,
+          "value": 2363.22,
+          "intensity": 6.185333333333333
+        },
+        {
+          "day": 2,
+          "count": 1,
+          "value": 253.42,
+          "intensity": 5.623
+        },
+        {
+          "day": 3,
+          "count": 3,
+          "value": 2089.73,
+          "intensity": 6.264
+        },
+        {
+          "day": 4,
+          "count": 1,
+          "value": 17.48,
+          "intensity": 8.038
+        },
+        {
+          "day": 5,
+          "count": 3,
+          "value": 425.64,
+          "intensity": 6.8260000000000005
+        },
+        {
+          "day": 6,
+          "count": 6,
+          "value": 1210.4199999999998,
+          "intensity": 5.7235000000000005
+        },
+        {
+          "day": 7,
+          "count": 1,
+          "value": 1111.5,
+          "intensity": 3.764
+        },
+        {
+          "day": 8,
+          "count": 6,
+          "value": 385.38,
+          "intensity": 6.2055
+        },
+        {
+          "day": 9,
+          "count": 4,
+          "value": 2167.0699999999997,
+          "intensity": 5.619
+        },
+        {
+          "day": 10,
+          "count": 5,
+          "value": 976.2299999999999,
+          "intensity": 6.5531999999999995
+        },
+        {
+          "day": 11,
+          "count": 1,
+          "value": 38.33,
+          "intensity": 5.3
+        },
+        {
+          "day": 12,
+          "count": 6,
+          "value": 2167.05,
+          "intensity": 7.335333333333334
+        },
+        {
+          "day": 13,
+          "count": 1,
+          "value": 181.23,
+          "intensity": 3.913
+        },
+        {
+          "day": 14,
+          "count": 6,
+          "value": 4000.9800000000005,
+          "intensity": 7.429833333333334
+        },
+        {
+          "day": 15,
+          "count": 5,
+          "value": 3161.79,
+          "intensity": 6.6952
+        },
+        {
+          "day": 16,
+          "count": 3,
+          "value": 4674.79,
+          "intensity": 6.9799999999999995
+        },
+        {
+          "day": 17,
+          "count": 8,
+          "value": 1909.44,
+          "intensity": 6.555125
+        },
+        {
+          "day": 18,
+          "count": 7,
+          "value": 3584.4100000000003,
+          "intensity": 5.401571428571429
+        },
+        {
+          "day": 19,
+          "count": 3,
+          "value": 1510.55,
+          "intensity": 6.5183333333333335
+        },
+        {
+          "day": 20,
+          "count": 5,
+          "value": 1294.62,
+          "intensity": 6.7378
+        },
+        {
+          "day": 21,
+          "count": 1,
+          "value": 229.77,
+          "intensity": 5.063
+        },
+        {
+          "day": 22,
+          "count": 4,
+          "value": 1759.71,
+          "intensity": 8.011000000000001
+        },
+        {
+          "day": 23,
+          "count": 4,
+          "value": 195.46,
+          "intensity": 5.4285
+        },
+        {
+          "day": 24,
+          "count": 3,
+          "value": 1330.54,
+          "intensity": 5.56
+        },
+        {
+          "day": 25,
+          "count": 10,
+          "value": 2083.0,
+          "intensity": 5.9728
+        },
+        {
+          "day": 27,
+          "count": 1,
+          "value": 104.91,
+          "intensity": 4.531
+        },
+        {
+          "day": 28,
+          "count": 8,
+          "value": 5415.49,
+          "intensity": 6.65475
+        },
+        {
+          "day": 29,
+          "count": 4,
+          "value": 3398.48,
+          "intensity": 5.5657499999999995
+        },
+        {
+          "day": 30,
+          "count": 4,
+          "value": 1007.72,
+          "intensity": 7.102
+        }
+      ]
+    },
+    {
+      "type": "arbitrage_loop",
+      "total_count": 120,
+      "avg_price": 104.0605,
+      "avg_z_score": 1.1545666666666667,
+      "daily_counts": [
+        {
+          "day": 1,
+          "count": 3,
+          "value": 402.53,
+          "intensity": 1.4833333333333334
+        },
+        {
+          "day": 3,
+          "count": 3,
+          "value": 8.43,
+          "intensity": 0.9706666666666667
+        },
+        {
+          "day": 4,
+          "count": 3,
+          "value": 1111.02,
+          "intensity": 1.0123333333333333
+        },
+        {
+          "day": 5,
+          "count": 6,
+          "value": 2046.67,
+          "intensity": 1.4103333333333332
+        },
+        {
+          "day": 6,
+          "count": 3,
+          "value": 12.01,
+          "intensity": 1.028
+        },
+        {
+          "day": 8,
+          "count": 6,
+          "value": 703.43,
+          "intensity": 1.4431666666666667
+        },
+        {
+          "day": 9,
+          "count": 3,
+          "value": 28.96,
+          "intensity": 1.0203333333333333
+        },
+        {
+          "day": 11,
+          "count": 9,
+          "value": 925.87,
+          "intensity": 1.3553333333333333
+        },
+        {
+          "day": 12,
+          "count": 3,
+          "value": 15.239999999999998,
+          "intensity": 1.415
+        },
+        {
+          "day": 14,
+          "count": 3,
+          "value": 33.15,
+          "intensity": 1.2286666666666666
+        },
+        {
+          "day": 15,
+          "count": 3,
+          "value": 282.54,
+          "intensity": 0.899
+        },
+        {
+          "day": 17,
+          "count": 3,
+          "value": 50.99,
+          "intensity": 0.40199999999999997
+        },
+        {
+          "day": 18,
+          "count": 6,
+          "value": 673.0,
+          "intensity": 1.4401666666666666
+        },
+        {
+          "day": 19,
+          "count": 6,
+          "value": 108.74,
+          "intensity": 1.208
+        },
+        {
+          "day": 20,
+          "count": 6,
+          "value": 95.26,
+          "intensity": 1.1155000000000002
+        },
+        {
+          "day": 21,
+          "count": 9,
+          "value": 499.15999999999997,
+          "intensity": 1.016
+        },
+        {
+          "day": 22,
+          "count": 6,
+          "value": 228.66000000000003,
+          "intensity": 1.2131666666666667
+        },
+        {
+          "day": 23,
+          "count": 9,
+          "value": 2063.3500000000004,
+          "intensity": 0.8598888888888889
+        },
+        {
+          "day": 25,
+          "count": 9,
+          "value": 1929.21,
+          "intensity": 1.1623333333333334
+        },
+        {
+          "day": 26,
+          "count": 6,
+          "value": 956.54,
+          "intensity": 1.3086666666666666
+        },
+        {
+          "day": 27,
+          "count": 6,
+          "value": 42.2,
+          "intensity": 0.9698333333333333
+        },
+        {
+          "day": 28,
+          "count": 3,
+          "value": 13.84,
+          "intensity": 1.2473333333333334
+        },
+        {
+          "day": 30,
+          "count": 6,
+          "value": 256.46,
+          "intensity": 1.038833333333333
+        }
+      ]
+    },
+    {
+      "type": "duplicate_payment",
+      "total_count": 120,
+      "avg_price": 58.44916666666666,
+      "avg_z_score": 0.5024333333333334,
+      "daily_counts": [
+        {
+          "day": 1,
+          "count": 3,
+          "value": 173.69,
+          "intensity": 0.5566666666666666
+        },
+        {
+          "day": 2,
+          "count": 2,
+          "value": 3.16,
+          "intensity": 0.378
+        },
+        {
+          "day": 3,
+          "count": 2,
+          "value": 37.58,
+          "intensity": 0.278
+        },
+        {
+          "day": 4,
+          "count": 2,
+          "value": 5.48,
+          "intensity": 0.574
+        },
+        {
+          "day": 5,
+          "count": 4,
+          "value": 8.06,
+          "intensity": 0.40299999999999997
+        },
+        {
+          "day": 6,
+          "count": 4,
+          "value": 550.1,
+          "intensity": 0.555
+        },
+        {
+          "day": 7,
+          "count": 2,
+          "value": 5.2,
+          "intensity": 0.523
+        },
+        {
+          "day": 8,
+          "count": 2,
+          "value": 54.8,
+          "intensity": 0.27
+        },
+        {
+          "day": 10,
+          "count": 4,
+          "value": 185.78,
+          "intensity": 0.639
+        },
+        {
+          "day": 11,
+          "count": 10,
+          "value": 1016.12,
+          "intensity": 0.5
+        },
+        {
+          "day": 13,
+          "count": 2,
+          "value": 306.6,
+          "intensity": 0.539
+        },
+        {
+          "day": 14,
+          "count": 6,
+          "value": 203.9,
+          "intensity": 0.6779999999999999
+        },
+        {
+          "day": 15,
+          "count": 6,
+          "value": 506.81999999999994,
+          "intensity": 0.44766666666666666
+        },
+        {
+          "day": 16,
+          "count": 4,
+          "value": 266.53999999999996,
+          "intensity": 0.357
+        },
+        {
+          "day": 17,
+          "count": 4,
+          "value": 77.67999999999999,
+          "intensity": 0.582
+        },
+        {
+          "day": 18,
+          "count": 8,
+          "value": 753.8000000000001,
+          "intensity": 0.42025
+        },
+        {
+          "day": 19,
+          "count": 2,
+          "value": 14.92,
+          "intensity": 0.693
+        },
+        {
+          "day": 20,
+          "count": 4,
+          "value": 24.7,
+          "intensity": 0.281
+        },
+        {
+          "day": 21,
+          "count": 6,
+          "value": 164.24,
+          "intensity": 0.6150000000000001
+        },
+        {
+          "day": 22,
+          "count": 10,
+          "value": 883.76,
+          "intensity": 0.4838
+        },
+        {
+          "day": 24,
+          "count": 2,
+          "value": 90.04,
+          "intensity": 1.201
+        },
+        {
+          "day": 25,
+          "count": 6,
+          "value": 338.58000000000004,
+          "intensity": 0.507
+        },
+        {
+          "day": 26,
+          "count": 2,
+          "value": 75.7,
+          "intensity": 0.517
+        },
+        {
+          "day": 27,
+          "count": 6,
+          "value": 81.56,
+          "intensity": 0.264
+        },
+        {
+          "day": 28,
+          "count": 8,
+          "value": 377.82,
+          "intensity": 0.42700000000000005
+        },
+        {
+          "day": 29,
+          "count": 4,
+          "value": 721.6,
+          "intensity": 0.8685
+        },
+        {
+          "day": 30,
+          "count": 5,
+          "value": 85.67,
+          "intensity": 0.44960000000000006
+        }
+      ]
+    },
+    {
+      "type": "price_spike_manipulation",
+      "total_count": 120,
+      "avg_price": 150.62183333333334,
+      "avg_z_score": 2.63585,
+      "daily_counts": [
+        {
+          "day": 1,
+          "count": 8,
+          "value": 503.64,
+          "intensity": 2.037
+        },
+        {
+          "day": 2,
+          "count": 3,
+          "value": 1772.8799999999999,
+          "intensity": 3.8883333333333336
+        },
+        {
+          "day": 3,
+          "count": 3,
+          "value": 1826.4300000000003,
+          "intensity": 3.112
+        },
+        {
+          "day": 4,
+          "count": 4,
+          "value": 16.470000000000002,
+          "intensity": 0.2705
+        },
+        {
+          "day": 5,
+          "count": 2,
+          "value": 18.35,
+          "intensity": 0.3415
+        },
+        {
+          "day": 6,
+          "count": 4,
+          "value": 713.47,
+          "intensity": 3.14225
+        },
+        {
+          "day": 7,
+          "count": 2,
+          "value": 102.47,
+          "intensity": 1.682
+        },
+        {
+          "day": 8,
+          "count": 3,
+          "value": 61.019999999999996,
+          "intensity": 3.548333333333334
+        },
+        {
+          "day": 9,
+          "count": 3,
+          "value": 78.28,
+          "intensity": 2.3016666666666667
+        },
+        {
+          "day": 10,
+          "count": 5,
+          "value": 398.03,
+          "intensity": 2.7474
+        },
+        {
+          "day": 11,
+          "count": 5,
+          "value": 654.9900000000001,
+          "intensity": 1.9322
+        },
+        {
+          "day": 12,
+          "count": 6,
+          "value": 414.77,
+          "intensity": 3.2059999999999995
+        },
+        {
+          "day": 13,
+          "count": 2,
+          "value": 10.680000000000001,
+          "intensity": 0.27649999999999997
+        },
+        {
+          "day": 14,
+          "count": 1,
+          "value": 82.32,
+          "intensity": 3.47
+        },
+        {
+          "day": 15,
+          "count": 7,
+          "value": 866.12,
+          "intensity": 3.6911428571428573
+        },
+        {
+          "day": 16,
+          "count": 2,
+          "value": 228.06,
+          "intensity": 3.6315
+        },
+        {
+          "day": 17,
+          "count": 3,
+          "value": 400.01,
+          "intensity": 3.512333333333333
+        },
+        {
+          "day": 18,
+          "count": 6,
+          "value": 3388.6800000000003,
+          "intensity": 3.698833333333333
+        },
+        {
+          "day": 19,
+          "count": 6,
+          "value": 1633.6,
+          "intensity": 2.4956666666666663
+        },
+        {
+          "day": 20,
+          "count": 3,
+          "value": 1339.58,
+          "intensity": 3.8493333333333335
+        },
+        {
+          "day": 21,
+          "count": 3,
+          "value": 183.54,
+          "intensity": 3.799666666666667
+        },
+        {
+          "day": 22,
+          "count": 3,
+          "value": 216.1,
+          "intensity": 1.5570000000000002
+        },
+        {
+          "day": 23,
+          "count": 6,
+          "value": 672.48,
+          "intensity": 3.013333333333333
+        },
+        {
+          "day": 24,
+          "count": 4,
+          "value": 56.7,
+          "intensity": 0.9504999999999999
+        },
+        {
+          "day": 25,
+          "count": 7,
+          "value": 128.7,
+          "intensity": 0.6154285714285714
+        },
+        {
+          "day": 26,
+          "count": 6,
+          "value": 1152.3,
+          "intensity": 5.188833333333334
+        },
+        {
+          "day": 27,
+          "count": 4,
+          "value": 48.72,
+          "intensity": 0.2635
+        },
+        {
+          "day": 28,
+          "count": 1,
+          "value": 18.64,
+          "intensity": 6.29
+        },
+        {
+          "day": 29,
+          "count": 6,
+          "value": 1062.29,
+          "intensity": 3.920833333333333
+        },
+        {
+          "day": 30,
+          "count": 2,
+          "value": 25.3,
+          "intensity": 0.2425
+        }
+      ]
+    },
+    {
+      "type": "layering_burst",
+      "total_count": 150,
+      "avg_price": 282.76159999999993,
+      "avg_z_score": 3.77544,
+      "daily_counts": [
+        {
+          "day": 1,
+          "count": 10,
+          "value": 4122.37,
+          "intensity": 3.4177999999999997
+        },
+        {
+          "day": 3,
+          "count": 10,
+          "value": 2651.01,
+          "intensity": 3.9397999999999995
+        },
+        {
+          "day": 5,
+          "count": 10,
+          "value": 4599.21,
+          "intensity": 3.6424999999999996
+        },
+        {
+          "day": 9,
+          "count": 10,
+          "value": 2814.19,
+          "intensity": 3.4549999999999996
+        },
+        {
+          "day": 10,
+          "count": 20,
+          "value": 4816.32,
+          "intensity": 4.050750000000001
+        },
+        {
+          "day": 11,
+          "count": 10,
+          "value": 3575.2,
+          "intensity": 4.3367
+        },
+        {
+          "day": 12,
+          "count": 20,
+          "value": 5450.57,
+          "intensity": 4.0435
+        },
+        {
+          "day": 16,
+          "count": 10,
+          "value": 3755.25,
+          "intensity": 2.9742000000000006
+        },
+        {
+          "day": 17,
+          "count": 10,
+          "value": 3166.71,
+          "intensity": 3.6703999999999994
+        },
+        {
+          "day": 18,
+          "count": 10,
+          "value": 1556.87,
+          "intensity": 4.0725
+        },
+        {
+          "day": 22,
+          "count": 10,
+          "value": 1578.38,
+          "intensity": 3.4452999999999996
+        },
+        {
+          "day": 29,
+          "count": 10,
+          "value": 2400.21,
+          "intensity": 4.3195
+        },
+        {
+          "day": 30,
+          "count": 10,
+          "value": 1927.9499999999998,
+          "intensity": 3.1693999999999996
+        }
+      ]
+    },
+    {
+      "type": "rmt_selling",
+      "total_count": 120,
+      "avg_price": 33.391083333333334,
+      "avg_z_score": 0.24334999999999998,
+      "daily_counts": [
+        {
+          "day": 2,
+          "count": 2,
+          "value": 199.45999999999998,
+          "intensity": 0.1955
+        },
+        {
+          "day": 3,
+          "count": 4,
+          "value": 124.03,
+          "intensity": 0.23099999999999998
+        },
+        {
+          "day": 4,
+          "count": 3,
+          "value": 64.21000000000001,
+          "intensity": 0.5126666666666667
+        },
+        {
+          "day": 5,
+          "count": 3,
+          "value": 286.43,
+          "intensity": 0.3466666666666667
+        },
+        {
+          "day": 6,
+          "count": 2,
+          "value": 85.79,
+          "intensity": 0.311
+        },
+        {
+          "day": 7,
+          "count": 7,
+          "value": 414.38,
+          "intensity": 0.3274285714285714
+        },
+        {
+          "day": 8,
+          "count": 1,
+          "value": 1.96,
+          "intensity": 0.561
+        },
+        {
+          "day": 9,
+          "count": 2,
+          "value": 18.42,
+          "intensity": 0.034499999999999996
+        },
+        {
+          "day": 10,
+          "count": 6,
+          "value": 14.01,
+          "intensity": 0.19066666666666668
+        },
+        {
+          "day": 11,
+          "count": 4,
+          "value": 47.43,
+          "intensity": 0.309
+        },
+        {
+          "day": 12,
+          "count": 2,
+          "value": 186.64,
+          "intensity": 0.1375
+        },
+        {
+          "day": 13,
+          "count": 4,
+          "value": 86.50000000000001,
+          "intensity": 0.19925
+        },
+        {
+          "day": 14,
+          "count": 7,
+          "value": 184.51,
+          "intensity": 0.22585714285714284
+        },
+        {
+          "day": 15,
+          "count": 4,
+          "value": 128.89,
+          "intensity": 0.188
+        },
+        {
+          "day": 16,
+          "count": 5,
+          "value": 62.559999999999995,
+          "intensity": 0.1472
+        },
+        {
+          "day": 17,
+          "count": 4,
+          "value": 94.16,
+          "intensity": 0.18325000000000002
+        },
+        {
+          "day": 18,
+          "count": 4,
+          "value": 409.0,
+          "intensity": 0.28775
+        },
+        {
+          "day": 19,
+          "count": 7,
+          "value": 207.07,
+          "intensity": 0.171
+        },
+        {
+          "day": 20,
+          "count": 3,
+          "value": 53.28,
+          "intensity": 0.18100000000000002
+        },
+        {
+          "day": 21,
+          "count": 3,
+          "value": 33.910000000000004,
+          "intensity": 0.22
+        },
+        {
+          "day": 22,
+          "count": 6,
+          "value": 82.7,
+          "intensity": 0.2985
+        },
+        {
+          "day": 23,
+          "count": 9,
+          "value": 488.27,
+          "intensity": 0.28188888888888886
+        },
+        {
+          "day": 24,
+          "count": 9,
+          "value": 115.86,
+          "intensity": 0.1436666666666667
+        },
+        {
+          "day": 25,
+          "count": 6,
+          "value": 249.94,
+          "intensity": 0.3591666666666667
+        },
+        {
+          "day": 26,
+          "count": 1,
+          "value": 25.79,
+          "intensity": 0.099
+        },
+        {
+          "day": 28,
+          "count": 6,
+          "value": 270.42,
+          "intensity": 0.2051666666666667
+        },
+        {
+          "day": 29,
+          "count": 2,
+          "value": 5.4,
+          "intensity": 0.235
+        },
+        {
+          "day": 30,
+          "count": 4,
+          "value": 65.91,
+          "intensity": 0.34600000000000003
+        }
+      ]
+    },
+    {
+      "type": "mule_account",
+      "total_count": 200,
+      "avg_price": 42.740249999999996,
+      "avg_z_score": 0.2637,
+      "daily_counts": [
+        {
+          "day": 2,
+          "count": 8,
+          "value": 555.18,
+          "intensity": 0.32887500000000003
+        },
+        {
+          "day": 3,
+          "count": 11,
+          "value": 516.11,
+          "intensity": 0.33245454545454545
+        },
+        {
+          "day": 4,
+          "count": 5,
+          "value": 392.99,
+          "intensity": 0.2062
+        },
+        {
+          "day": 5,
+          "count": 4,
+          "value": 197.13,
+          "intensity": 0.17025
+        },
+        {
+          "day": 6,
+          "count": 12,
+          "value": 307.86,
+          "intensity": 0.2001666666666667
+        },
+        {
+          "day": 7,
+          "count": 8,
+          "value": 320.25,
+          "intensity": 0.375
+        },
+        {
+          "day": 8,
+          "count": 8,
+          "value": 249.53,
+          "intensity": 0.23925000000000002
+        },
+        {
+          "day": 9,
+          "count": 24,
+          "value": 1135.67,
+          "intensity": 0.260375
+        },
+        {
+          "day": 10,
+          "count": 4,
+          "value": 233.76,
+          "intensity": 0.1505
+        },
+        {
+          "day": 11,
+          "count": 8,
+          "value": 619.45,
+          "intensity": 0.312875
+        },
+        {
+          "day": 12,
+          "count": 8,
+          "value": 259.96000000000004,
+          "intensity": 0.32925
+        },
+        {
+          "day": 13,
+          "count": 4,
+          "value": 339.66,
+          "intensity": 0.36300000000000004
+        },
+        {
+          "day": 14,
+          "count": 8,
+          "value": 190.37,
+          "intensity": 0.313125
+        },
+        {
+          "day": 15,
+          "count": 8,
+          "value": 552.01,
+          "intensity": 0.264125
+        },
+        {
+          "day": 17,
+          "count": 8,
+          "value": 497.19000000000005,
+          "intensity": 0.326125
+        },
+        {
+          "day": 18,
+          "count": 8,
+          "value": 381.11,
+          "intensity": 0.29600000000000004
+        },
+        {
+          "day": 21,
+          "count": 4,
+          "value": 184.41,
+          "intensity": 0.30974999999999997
+        },
+        {
+          "day": 22,
+          "count": 4,
+          "value": 152.24,
+          "intensity": 0.1025
+        },
+        {
+          "day": 23,
+          "count": 7,
+          "value": 274.22,
+          "intensity": 0.273
+        },
+        {
+          "day": 24,
+          "count": 5,
+          "value": 121.17,
+          "intensity": 0.31320000000000003
+        },
+        {
+          "day": 26,
+          "count": 4,
+          "value": 80.57,
+          "intensity": 0.37075
+        },
+        {
+          "day": 27,
+          "count": 8,
+          "value": 111.7,
+          "intensity": 0.18962500000000002
+        },
+        {
+          "day": 28,
+          "count": 8,
+          "value": 108.35,
+          "intensity": 0.193125
+        },
+        {
+          "day": 29,
+          "count": 8,
+          "value": 475.85,
+          "intensity": 0.194
+        },
+        {
+          "day": 30,
+          "count": 16,
+          "value": 291.31,
+          "intensity": 0.19787499999999997
+        }
+      ]
+    },
+    {
+      "type": "wash_trade_ring",
+      "total_count": 400,
+      "avg_price": 51.469375,
+      "avg_z_score": 0.3734875,
+      "daily_counts": [
+        {
+          "day": 6,
+          "count": 40,
+          "value": 178.05,
+          "intensity": 0.244125
+        },
+        {
+          "day": 7,
+          "count": 40,
+          "value": 68.9,
+          "intensity": 0.20787499999999995
+        },
+        {
+          "day": 8,
+          "count": 40,
+          "value": 2054.0,
+          "intensity": 0.27399999999999997
+        },
+        {
+          "day": 14,
+          "count": 40,
+          "value": 57.8,
+          "intensity": 0.31325
+        },
+        {
+          "day": 15,
+          "count": 40,
+          "value": 728.0,
+          "intensity": 0.45862499999999995
+        },
+        {
+          "day": 17,
+          "count": 40,
+          "value": 7034.15,
+          "intensity": 0.6833750000000001
+        },
+        {
+          "day": 19,
+          "count": 40,
+          "value": 184.9,
+          "intensity": 0.269625
+        },
+        {
+          "day": 24,
+          "count": 40,
+          "value": 2881.75,
+          "intensity": 0.5758749999999999
+        },
+        {
+          "day": 26,
+          "count": 40,
+          "value": 5241.8,
+          "intensity": 0.39612499999999995
+        },
+        {
+          "day": 27,
+          "count": 40,
+          "value": 2158.4,
+          "intensity": 0.312
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "timeframe": {
+      "start": "2025-04-01 00:04:15",
+      "end": "2025-05-01 00:23:34"
+    }
+  }
+}

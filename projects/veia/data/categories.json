@@ -1,0 +1,52 @@
+{
+  "blueprint": {
+    "total": 1119,
+    "anomalies": 228,
+    "anomaly_rate": 0.2037533512064343
+  },
+  "title": {
+    "total": 967,
+    "anomalies": 129,
+    "anomaly_rate": 0.13340227507755947
+  },
+  "skin_legendary": {
+    "total": 849,
+    "anomalies": 73,
+    "anomaly_rate": 0.08598351001177856
+  },
+  "artifact": {
+    "total": 941,
+    "anomalies": 172,
+    "anomaly_rate": 0.18278427205100956
+  },
+  "consumable": {
+    "total": 1174,
+    "anomalies": 149,
+    "anomaly_rate": 0.12691652470187392
+  },
+  "card_epic": {
+    "total": 974,
+    "anomalies": 80,
+    "anomaly_rate": 0.08213552361396304
+  },
+  "card_common": {
+    "total": 997,
+    "anomalies": 145,
+    "anomaly_rate": 0.14543630892678033
+  },
+  "skin_rare": {
+    "total": 1099,
+    "anomalies": 113,
+    "anomaly_rate": 0.10282074613284804
+  },
+  "mount": {
+    "total": 697,
+    "anomalies": 72,
+    "anomaly_rate": 0.10329985652797705
+  },
+  "skin_common": {
+    "total": 1183,
+    "anomalies": 189,
+    "anomaly_rate": 0.15976331360946747
+  }
+}

@@ -1,0 +1,902 @@
+[
+  {
+    "transaction_id": "T480fcdf9d2",
+    "timestamp": "2025-04-16 07:26:13",
+    "category": "skin_legendary",
+    "price": 2923.95,
+    "price_z": 10.495,
+    "anomaly_label": "shill_bidding",
+    "anomaly_notes": "Inflated final sale for staged auction"
+  },
+  {
+    "transaction_id": "T117760045a",
+    "timestamp": "2025-04-12 12:02:19",
+    "category": "mount",
+    "price": 1135.46,
+    "price_z": 10.418,
+    "anomaly_label": "shill_bidding",
+    "anomaly_notes": "Inflated final sale for staged auction"
+  },
+  {
+    "transaction_id": "T9e9e72dd8d",
+    "timestamp": "2025-04-05 05:21:26",
+    "category": "consumable",
+    "price": 22.3,
+    "price_z": 10.36,
+    "anomaly_label": "shill_bidding",
+    "anomaly_notes": "Inflated final sale for staged auction"
+  },
+  {
+    "transaction_id": "Tfe647724e4",
+    "timestamp": "2025-04-10 19:00:46",
+    "category": "card_epic",
+    "price": 291.4,
+    "price_z": 9.878,
+    "anomaly_label": "shill_bidding",
+    "anomaly_notes": "Inflated final sale for staged auction"
+  },
+  {
+    "transaction_id": "Ta0911526cd",
+    "timestamp": "2025-04-30 09:23:43",
+    "category": "card_epic",
+    "price": 282.1,
+    "price_z": 9.55,
+    "anomaly_label": "shill_bidding",
+    "anomaly_notes": "Inflated final sale for staged auction"
+  },
+  {
+    "transaction_id": "T6426b2d911",
+    "timestamp": "2025-04-20 16:20:59",
+    "category": "card_epic",
+    "price": 276.43,
+    "price_z": 9.351,
+    "anomaly_label": "shill_bidding",
+    "anomaly_notes": "Inflated final sale for staged auction"
+  },
+  {
+    "transaction_id": "T484b424f05",
+    "timestamp": "2025-04-22 01:12:07",
+    "category": "consumable",
+    "price": 20.13,
+    "price_z": 9.315,
+    "anomaly_label": "shill_bidding",
+    "anomaly_notes": "Inflated final sale for staged auction"
+  },
+  {
+    "transaction_id": "T21c608eb20",
+    "timestamp": "2025-04-14 15:17:16",
+    "category": "skin_legendary",
+    "price": 2605.8,
+    "price_z": 9.313,
+    "anomaly_label": "shill_bidding",
+    "anomaly_notes": "Inflated final sale for staged auction"
+  },
+  {
+    "transaction_id": "Tdc36236d76",
+    "timestamp": "2025-04-17 17:23:42",
+    "category": "blueprint",
+    "price": 656.57,
+    "price_z": 9.11,
+    "anomaly_label": "shill_bidding",
+    "anomaly_notes": "Inflated final sale for staged auction"
+  },
+  {
+    "transaction_id": "Td7717ce2aa",
+    "timestamp": "2025-04-26 10:20:09",
+    "category": "blueprint",
+    "price": 646.88,
+    "price_z": 8.969,
+    "anomaly_label": "price_spike_manipulation",
+    "anomaly_notes": "Extreme price multiple x8.00 vs base"
+  },
+  {
+    "transaction_id": "T35c64aa4ff",
+    "timestamp": "2025-04-14 04:43:55",
+    "category": "title",
+    "price": 196.77,
+    "price_z": 8.846,
+    "anomaly_label": "shill_bidding",
+    "anomaly_notes": "Inflated final sale for staged auction"
+  },
+  {
+    "transaction_id": "T3580d84704",
+    "timestamp": "2025-04-28 03:53:10",
+    "category": "skin_legendary",
+    "price": 2477.7,
+    "price_z": 8.838,
+    "anomaly_label": "shill_bidding",
+    "anomaly_notes": "Inflated final sale for staged auction"
+  },
+  {
+    "transaction_id": "T56c2faae61",
+    "timestamp": "2025-04-28 04:48:49",
+    "category": "skin_rare",
+    "price": 387.85,
+    "price_z": 8.808,
+    "anomaly_label": "shill_bidding",
+    "anomaly_notes": "Inflated final sale for staged auction"
+  },
+  {
+    "transaction_id": "Te289b7bf1c",
+    "timestamp": "2025-04-14 05:53:45",
+    "category": "skin_common",
+    "price": 61.77,
+    "price_z": 8.797,
+    "anomaly_label": "shill_bidding",
+    "anomaly_notes": "Inflated final sale for staged auction"
+  },
+  {
+    "transaction_id": "T0e0aad5df8",
+    "timestamp": "2025-04-06 18:16:20",
+    "category": "consumable",
+    "price": 19.03,
+    "price_z": 8.785,
+    "anomaly_label": "shill_bidding",
+    "anomaly_notes": "Inflated final sale for staged auction"
+  },
+  {
+    "transaction_id": "T9cd4ca7646",
+    "timestamp": "2025-04-25 22:35:33",
+    "category": "skin_rare",
+    "price": 384.49,
+    "price_z": 8.728,
+    "anomaly_label": "shill_bidding",
+    "anomaly_notes": "Inflated final sale for staged auction"
+  },
+  {
+    "transaction_id": "Tdf51eecadc",
+    "timestamp": "2025-04-01 04:26:57",
+    "category": "artifact",
+    "price": 1431.41,
+    "price_z": 8.727,
+    "anomaly_label": "shill_bidding",
+    "anomaly_notes": "Inflated final sale for staged auction"
+  },
+  {
+    "transaction_id": "Tac3581e55f",
+    "timestamp": "2025-04-28 19:28:52",
+    "category": "card_common",
+    "price": 25.25,
+    "price_z": 8.667,
+    "anomaly_label": "shill_bidding",
+    "anomaly_notes": "Inflated final sale for staged auction"
+  },
+  {
+    "transaction_id": "Td088d93803",
+    "timestamp": "2025-04-11 16:38:34",
+    "category": "blueprint",
+    "price": 623.2,
+    "price_z": 8.623,
+    "anomaly_label": "price_spike_manipulation",
+    "anomaly_notes": "Extreme price multiple x8.00 vs base"
+  },
+  {
+    "transaction_id": "T2b5d12538d",
+    "timestamp": "2025-04-22 11:55:18",
+    "category": "artifact",
+    "price": 1407.46,
+    "price_z": 8.574,
+    "anomaly_label": "shill_bidding",
+    "anomaly_notes": "Inflated final sale for staged auction"
+  },
+  {
+    "transaction_id": "T9e505da653",
+    "timestamp": "2025-04-15 12:41:28",
+    "category": "skin_common",
+    "price": 60.24,
+    "price_z": 8.569,
+    "anomaly_label": "price_spike_manipulation",
+    "anomaly_notes": "Extreme price multiple x8.00 vs base"
+  },
+  {
+    "transaction_id": "T3f5eb90810",
+    "timestamp": "2025-04-15 16:00:32",
+    "category": "skin_legendary",
+    "price": 2388.94,
+    "price_z": 8.508,
+    "anomaly_label": "shill_bidding",
+    "anomaly_notes": "Inflated final sale for staged auction"
+  },
+  {
+    "transaction_id": "T99f17b63ad",
+    "timestamp": "2025-04-01 11:11:44",
+    "category": "skin_common",
+    "price": 58.61,
+    "price_z": 8.326,
+    "anomaly_label": "shill_bidding",
+    "anomaly_notes": "Inflated final sale for staged auction"
+  },
+  {
+    "transaction_id": "T3baa3b524e",
+    "timestamp": "2025-04-17 18:45:46",
+    "category": "skin_rare",
+    "price": 360.26,
+    "price_z": 8.154,
+    "anomaly_label": "shill_bidding",
+    "anomaly_notes": "Inflated final sale for staged auction"
+  },
+  {
+    "transaction_id": "T145c329281",
+    "timestamp": "2025-04-12 23:14:55",
+    "category": "card_epic",
+    "price": 241.76,
+    "price_z": 8.13,
+    "anomaly_label": "shill_bidding",
+    "anomaly_notes": "Inflated final sale for staged auction"
+  },
+  {
+    "transaction_id": "T0263f41368",
+    "timestamp": "2025-04-10 00:35:43",
+    "category": "card_epic",
+    "price": 240.89,
+    "price_z": 8.099,
+    "anomaly_label": "shill_bidding",
+    "anomaly_notes": "Inflated final sale for staged auction"
+  },
+  {
+    "transaction_id": "T696db05357",
+    "timestamp": "2025-04-18 13:10:05",
+    "category": "title",
+    "price": 179.76,
+    "price_z": 8.047,
+    "anomaly_label": "shill_bidding",
+    "anomaly_notes": "Inflated final sale for staged auction"
+  },
+  {
+    "transaction_id": "T2afa8f89f0",
+    "timestamp": "2025-04-04 15:38:48",
+    "category": "consumable",
+    "price": 17.48,
+    "price_z": 8.038,
+    "anomaly_label": "shill_bidding",
+    "anomaly_notes": "Inflated final sale for staged auction"
+  },
+  {
+    "transaction_id": "T06caa93ba1",
+    "timestamp": "2025-04-14 07:30:04",
+    "category": "card_common",
+    "price": 23.21,
+    "price_z": 7.933,
+    "anomaly_label": "shill_bidding",
+    "anomaly_notes": "Inflated final sale for staged auction"
+  },
+  {
+    "transaction_id": "T6fc6c9dc21",
+    "timestamp": "2025-04-20 22:36:17",
+    "category": "mount",
+    "price": 873.62,
+    "price_z": 7.928,
+    "anomaly_label": "shill_bidding",
+    "anomaly_notes": "Inflated final sale for staged auction"
+  },
+  {
+    "transaction_id": "T95ae0ab58e",
+    "timestamp": "2025-04-17 20:49:13",
+    "category": "consumable",
+    "price": 17.0,
+    "price_z": 7.807,
+    "anomaly_label": "shill_bidding",
+    "anomaly_notes": "Inflated final sale for staged auction"
+  },
+  {
+    "transaction_id": "Te5548d4bdb",
+    "timestamp": "2025-04-08 12:40:44",
+    "category": "title",
+    "price": 173.86,
+    "price_z": 7.77,
+    "anomaly_label": "shill_bidding",
+    "anomaly_notes": "Inflated final sale for staged auction"
+  },
+  {
+    "transaction_id": "T653f3ee9dd",
+    "timestamp": "2025-04-09 04:10:23",
+    "category": "blueprint",
+    "price": 555.81,
+    "price_z": 7.639,
+    "anomaly_label": "shill_bidding",
+    "anomaly_notes": "Inflated final sale for staged auction"
+  },
+  {
+    "transaction_id": "T3c83f275d1",
+    "timestamp": "2025-04-19 04:45:17",
+    "category": "mount",
+    "price": 833.48,
+    "price_z": 7.546,
+    "anomaly_label": "shill_bidding",
+    "anomaly_notes": "Inflated final sale for staged auction"
+  },
+  {
+    "transaction_id": "Tf7b4e93d26",
+    "timestamp": "2025-04-28 04:00:41",
+    "category": "artifact",
+    "price": 1235.83,
+    "price_z": 7.474,
+    "anomaly_label": "shill_bidding",
+    "anomaly_notes": "Inflated final sale for staged auction"
+  },
+  {
+    "transaction_id": "T7afff0ff28",
+    "timestamp": "2025-04-12 09:58:10",
+    "category": "blueprint",
+    "price": 543.95,
+    "price_z": 7.466,
+    "anomaly_label": "shill_bidding",
+    "anomaly_notes": "Inflated final sale for staged auction"
+  },
+  {
+    "transaction_id": "T80ef446c2a",
+    "timestamp": "2025-04-25 20:33:55",
+    "category": "skin_rare",
+    "price": 326.17,
+    "price_z": 7.347,
+    "anomaly_label": "shill_bidding",
+    "anomaly_notes": "Inflated final sale for staged auction"
+  },
+  {
+    "transaction_id": "Td62e6932de",
+    "timestamp": "2025-04-03 03:50:41",
+    "category": "skin_legendary",
+    "price": 2064.29,
+    "price_z": 7.302,
+    "anomaly_label": "shill_bidding",
+    "anomaly_notes": "Inflated final sale for staged auction"
+  },
+  {
+    "transaction_id": "Taf51759c27",
+    "timestamp": "2025-04-18 16:08:15",
+    "category": "title",
+    "price": 163.27,
+    "price_z": 7.272,
+    "anomaly_label": "shill_bidding",
+    "anomaly_notes": "Inflated final sale for staged auction"
+  },
+  {
+    "transaction_id": "T4d20330f8e",
+    "timestamp": "2025-04-15 07:25:00",
+    "category": "consumable",
+    "price": 15.84,
+    "price_z": 7.248,
+    "anomaly_label": "shill_bidding",
+    "anomaly_notes": "Inflated final sale for staged auction"
+  },
+  {
+    "transaction_id": "Tf9ad71df7a",
+    "timestamp": "2025-04-22 13:03:09",
+    "category": "card_common",
+    "price": 21.08,
+    "price_z": 7.167,
+    "anomaly_label": "shill_bidding",
+    "anomaly_notes": "Inflated final sale for staged auction"
+  },
+  {
+    "transaction_id": "T08897380bb",
+    "timestamp": "2025-04-17 19:47:06",
+    "category": "title",
+    "price": 160.41,
+    "price_z": 7.138,
+    "anomaly_label": "shill_bidding",
+    "anomaly_notes": "Inflated final sale for staged auction"
+  },
+  {
+    "transaction_id": "Te1338fefe2",
+    "timestamp": "2025-04-02 08:34:21",
+    "category": "blueprint",
+    "price": 516.8,
+    "price_z": 7.07,
+    "anomaly_label": "price_spike_manipulation",
+    "anomaly_notes": "Extreme price multiple x8.00 vs base"
+  },
+  {
+    "transaction_id": "Tdb8583e604",
+    "timestamp": "2025-04-03 09:37:36",
+    "category": "consumable",
+    "price": 15.47,
+    "price_z": 7.07,
+    "anomaly_label": "shill_bidding",
+    "anomaly_notes": "Inflated final sale for staged auction"
+  },
+  {
+    "transaction_id": "Tb53fc8461b",
+    "timestamp": "2025-04-22 02:10:42",
+    "category": "skin_rare",
+    "price": 311.04,
+    "price_z": 6.988,
+    "anomaly_label": "shill_bidding",
+    "anomaly_notes": "Inflated final sale for staged auction"
+  },
+  {
+    "transaction_id": "T80ed10ad43",
+    "timestamp": "2025-04-08 14:31:14",
+    "category": "skin_common",
+    "price": 49.44,
+    "price_z": 6.957,
+    "anomaly_label": "price_spike_manipulation",
+    "anomaly_notes": "Extreme price multiple x8.00 vs base"
+  },
+  {
+    "transaction_id": "T673e2aeed9",
+    "timestamp": "2025-04-15 09:03:59",
+    "category": "skin_common",
+    "price": 49.06,
+    "price_z": 6.901,
+    "anomaly_label": "shill_bidding",
+    "anomaly_notes": "Inflated final sale for staged auction"
+  },
+  {
+    "transaction_id": "Tee77a121a0",
+    "timestamp": "2025-04-12 08:46:23",
+    "category": "card_epic",
+    "price": 205.08,
+    "price_z": 6.838,
+    "anomaly_label": "layering_burst",
+    "anomaly_notes": "Rapid sequence of expensive buys in <1h"
+  },
+  {
+    "transaction_id": "Td75814a740",
+    "timestamp": "2025-04-20 00:01:22",
+    "category": "card_common",
+    "price": 20.0,
+    "price_z": 6.779,
+    "anomaly_label": "price_spike_manipulation",
+    "anomaly_notes": "Extreme price multiple x8.00 vs base"
+  },
+  {
+    "transaction_id": "T46675a355e",
+    "timestamp": "2025-04-29 14:35:00",
+    "category": "card_common",
+    "price": 19.71,
+    "price_z": 6.675,
+    "anomaly_label": "layering_burst",
+    "anomaly_notes": "Rapid sequence of expensive buys in <1h"
+  },
+  {
+    "transaction_id": "Tc0ec03b524",
+    "timestamp": "2025-04-26 03:42:08",
+    "category": "card_epic",
+    "price": 199.92,
+    "price_z": 6.656,
+    "anomaly_label": "price_spike_manipulation",
+    "anomaly_notes": "Extreme price multiple x8.00 vs base"
+  },
+  {
+    "transaction_id": "Tad752eef54",
+    "timestamp": "2025-04-11 15:36:54",
+    "category": "artifact",
+    "price": 1106.85,
+    "price_z": 6.648,
+    "anomaly_label": "layering_burst",
+    "anomaly_notes": "Rapid sequence of expensive buys in <1h"
+  },
+  {
+    "transaction_id": "T0e7e74ca53",
+    "timestamp": "2025-04-12 06:57:46",
+    "category": "card_common",
+    "price": 19.61,
+    "price_z": 6.639,
+    "anomaly_label": "shill_bidding",
+    "anomaly_notes": "Inflated final sale for staged auction"
+  },
+  {
+    "transaction_id": "Te6047baa32",
+    "timestamp": "2025-04-08 12:58:31",
+    "category": "skin_common",
+    "price": 47.12,
+    "price_z": 6.611,
+    "anomaly_label": "shill_bidding",
+    "anomaly_notes": "Inflated final sale for staged auction"
+  },
+  {
+    "transaction_id": "T258e0a210b",
+    "timestamp": "2025-04-29 17:34:32",
+    "category": "mount",
+    "price": 734.45,
+    "price_z": 6.604,
+    "anomaly_label": "shill_bidding",
+    "anomaly_notes": "Inflated final sale for staged auction"
+  },
+  {
+    "transaction_id": "T0db2534347",
+    "timestamp": "2025-04-24 05:23:03",
+    "category": "artifact",
+    "price": 1099.03,
+    "price_z": 6.598,
+    "anomaly_label": "shill_bidding",
+    "anomaly_notes": "Inflated final sale for staged auction"
+  },
+  {
+    "transaction_id": "T2bbd27a430",
+    "timestamp": "2025-04-30 02:48:58",
+    "category": "card_common",
+    "price": 19.36,
+    "price_z": 6.549,
+    "anomaly_label": "shill_bidding",
+    "anomaly_notes": "Inflated final sale for staged auction"
+  },
+  {
+    "transaction_id": "T621e8550a4",
+    "timestamp": "2025-04-25 19:04:42",
+    "category": "consumable",
+    "price": 14.27,
+    "price_z": 6.492,
+    "anomaly_label": "shill_bidding",
+    "anomaly_notes": "Inflated final sale for staged auction"
+  },
+  {
+    "transaction_id": "Tf5a1ea7501",
+    "timestamp": "2025-04-06 06:14:12",
+    "category": "consumable",
+    "price": 14.24,
+    "price_z": 6.477,
+    "anomaly_label": "price_spike_manipulation",
+    "anomaly_notes": "Extreme price multiple x8.00 vs base"
+  },
+  {
+    "transaction_id": "T9c74310f8a",
+    "timestamp": "2025-04-18 22:11:13",
+    "category": "artifact",
+    "price": 1079.68,
+    "price_z": 6.474,
+    "anomaly_label": "price_spike_manipulation",
+    "anomaly_notes": "Extreme price multiple x8.00 vs base"
+  },
+  {
+    "transaction_id": "Tdb0ab3a2a5",
+    "timestamp": "2025-04-10 11:34:30",
+    "category": "skin_rare",
+    "price": 287.97,
+    "price_z": 6.442,
+    "anomaly_label": "layering_burst",
+    "anomaly_notes": "Rapid sequence of expensive buys in <1h"
+  },
+  {
+    "transaction_id": "T6a05767e14",
+    "timestamp": "2025-04-09 11:19:21",
+    "category": "skin_common",
+    "price": 45.76,
+    "price_z": 6.408,
+    "anomaly_label": "price_spike_manipulation",
+    "anomaly_notes": "Extreme price multiple x8.00 vs base"
+  },
+  {
+    "transaction_id": "Td99e3d0efe",
+    "timestamp": "2025-04-08 01:05:01",
+    "category": "skin_common",
+    "price": 45.67,
+    "price_z": 6.395,
+    "anomaly_label": "shill_bidding",
+    "anomaly_notes": "Inflated final sale for staged auction"
+  },
+  {
+    "transaction_id": "T29025286c0",
+    "timestamp": "2025-04-06 16:20:21",
+    "category": "artifact",
+    "price": 1067.02,
+    "price_z": 6.393,
+    "anomaly_label": "shill_bidding",
+    "anomaly_notes": "Inflated final sale for staged auction"
+  },
+  {
+    "transaction_id": "Tacd656ab1e",
+    "timestamp": "2025-04-03 01:15:01",
+    "category": "blueprint",
+    "price": 469.21,
+    "price_z": 6.375,
+    "anomaly_label": "layering_burst",
+    "anomaly_notes": "Rapid sequence of expensive buys in <1h"
+  },
+  {
+    "transaction_id": "Tcb91d1b2f1",
+    "timestamp": "2025-04-25 05:04:52",
+    "category": "consumable",
+    "price": 14.0,
+    "price_z": 6.362,
+    "anomaly_label": "shill_bidding",
+    "anomaly_notes": "Inflated final sale for staged auction"
+  },
+  {
+    "transaction_id": "T229edc0e8b",
+    "timestamp": "2025-04-25 16:32:46",
+    "category": "skin_common",
+    "price": 44.99,
+    "price_z": 6.293,
+    "anomaly_label": "shill_bidding",
+    "anomaly_notes": "Inflated final sale for staged auction"
+  },
+  {
+    "transaction_id": "Td071e282e5",
+    "timestamp": "2025-04-28 03:51:21",
+    "category": "card_common",
+    "price": 18.64,
+    "price_z": 6.29,
+    "anomaly_label": "price_spike_manipulation",
+    "anomaly_notes": "Extreme price multiple x8.00 vs base"
+  },
+  {
+    "transaction_id": "T5dc5653b97",
+    "timestamp": "2025-04-12 10:26:20",
+    "category": "card_epic",
+    "price": 189.47,
+    "price_z": 6.288,
+    "anomaly_label": "shill_bidding",
+    "anomaly_notes": "Inflated final sale for staged auction"
+  },
+  {
+    "transaction_id": "T081602be6f",
+    "timestamp": "2025-04-09 17:04:24",
+    "category": "artifact",
+    "price": 1047.81,
+    "price_z": 6.27,
+    "anomaly_label": "shill_bidding",
+    "anomaly_notes": "Inflated final sale for staged auction"
+  },
+  {
+    "transaction_id": "Tccd697a1c9",
+    "timestamp": "2025-04-15 00:20:28",
+    "category": "mount",
+    "price": 697.68,
+    "price_z": 6.254,
+    "anomaly_label": "shill_bidding",
+    "anomaly_notes": "Inflated final sale for staged auction"
+  },
+  {
+    "transaction_id": "T05a2767a38",
+    "timestamp": "2025-04-25 16:39:19",
+    "category": "skin_rare",
+    "price": 279.84,
+    "price_z": 6.249,
+    "anomaly_label": "shill_bidding",
+    "anomaly_notes": "Inflated final sale for staged auction"
+  },
+  {
+    "transaction_id": "T28d39eaf13",
+    "timestamp": "2025-04-17 06:09:25",
+    "category": "title",
+    "price": 141.47,
+    "price_z": 6.248,
+    "anomaly_label": "shill_bidding",
+    "anomaly_notes": "Inflated final sale for staged auction"
+  },
+  {
+    "transaction_id": "Td9e2a8a124",
+    "timestamp": "2025-04-12 02:46:50",
+    "category": "title",
+    "price": 140.74,
+    "price_z": 6.214,
+    "anomaly_label": "layering_burst",
+    "anomaly_notes": "Rapid sequence of expensive buys in <1h"
+  },
+  {
+    "transaction_id": "T83c5f85d9a",
+    "timestamp": "2025-04-29 14:44:35",
+    "category": "card_epic",
+    "price": 187.04,
+    "price_z": 6.203,
+    "anomaly_label": "price_spike_manipulation",
+    "anomaly_notes": "Extreme price multiple x8.00 vs base"
+  },
+  {
+    "transaction_id": "Td7d1c85393",
+    "timestamp": "2025-04-29 14:11:00",
+    "category": "blueprint",
+    "price": 455.62,
+    "price_z": 6.176,
+    "anomaly_label": "layering_burst",
+    "anomaly_notes": "Rapid sequence of expensive buys in <1h"
+  },
+  {
+    "transaction_id": "T56886de6e8",
+    "timestamp": "2025-04-30 21:31:47",
+    "category": "mount",
+    "price": 688.02,
+    "price_z": 6.163,
+    "anomaly_label": "shill_bidding",
+    "anomaly_notes": "Inflated final sale for staged auction"
+  },
+  {
+    "transaction_id": "T34baa378b5",
+    "timestamp": "2025-04-30 22:55:37",
+    "category": "card_common",
+    "price": 18.24,
+    "price_z": 6.146,
+    "anomaly_label": "shill_bidding",
+    "anomaly_notes": "Inflated final sale for staged auction"
+  },
+  {
+    "transaction_id": "T7bce8eba3e",
+    "timestamp": "2025-04-28 23:26:30",
+    "category": "artifact",
+    "price": 1022.5,
+    "price_z": 6.108,
+    "anomaly_label": "shill_bidding",
+    "anomaly_notes": "Inflated final sale for staged auction"
+  },
+  {
+    "transaction_id": "T7a016b8b81",
+    "timestamp": "2025-04-16 10:17:43",
+    "category": "skin_legendary",
+    "price": 1737.58,
+    "price_z": 6.089,
+    "anomaly_label": "shill_bidding",
+    "anomaly_notes": "Inflated final sale for staged auction"
+  },
+  {
+    "transaction_id": "Tfe645a7e8c",
+    "timestamp": "2025-04-19 17:45:26",
+    "category": "consumable",
+    "price": 13.41,
+    "price_z": 6.078,
+    "anomaly_label": "shill_bidding",
+    "anomaly_notes": "Inflated final sale for staged auction"
+  },
+  {
+    "transaction_id": "Tc293c3007a",
+    "timestamp": "2025-04-24 13:19:13",
+    "category": "title",
+    "price": 137.62,
+    "price_z": 6.068,
+    "anomaly_label": "shill_bidding",
+    "anomaly_notes": "Inflated final sale for staged auction"
+  },
+  {
+    "transaction_id": "Te0d3e0b1b6",
+    "timestamp": "2025-04-14 05:43:26",
+    "category": "consumable",
+    "price": 13.18,
+    "price_z": 5.967,
+    "anomaly_label": "shill_bidding",
+    "anomaly_notes": "Inflated final sale for staged auction"
+  },
+  {
+    "transaction_id": "T571d75481b",
+    "timestamp": "2025-04-01 19:22:41",
+    "category": "skin_rare",
+    "price": 267.12,
+    "price_z": 5.948,
+    "anomaly_label": "price_spike_manipulation",
+    "anomaly_notes": "Extreme price multiple x8.00 vs base"
+  },
+  {
+    "transaction_id": "T871e440925",
+    "timestamp": "2025-04-19 11:34:03",
+    "category": "mount",
+    "price": 663.66,
+    "price_z": 5.931,
+    "anomaly_label": "shill_bidding",
+    "anomaly_notes": "Inflated final sale for staged auction"
+  },
+  {
+    "transaction_id": "Tfe035306f4",
+    "timestamp": "2025-04-23 21:48:30",
+    "category": "skin_common",
+    "price": 42.32,
+    "price_z": 5.895,
+    "anomaly_label": "shill_bidding",
+    "anomaly_notes": "Inflated final sale for staged auction"
+  },
+  {
+    "transaction_id": "Tf9bbe67d52",
+    "timestamp": "2025-04-20 01:47:00",
+    "category": "consumable",
+    "price": 12.98,
+    "price_z": 5.87,
+    "anomaly_label": "shill_bidding",
+    "anomaly_notes": "Inflated final sale for staged auction"
+  },
+  {
+    "transaction_id": "Tdf6c8ac462",
+    "timestamp": "2025-04-18 16:58:52",
+    "category": "card_common",
+    "price": 17.31,
+    "price_z": 5.812,
+    "anomaly_label": "layering_burst",
+    "anomaly_notes": "Rapid sequence of expensive buys in <1h"
+  },
+  {
+    "transaction_id": "Tcad5967d05",
+    "timestamp": "2025-04-18 17:45:05",
+    "category": "skin_common",
+    "price": 41.52,
+    "price_z": 5.776,
+    "anomaly_label": "price_spike_manipulation",
+    "anomaly_notes": "Extreme price multiple x8.00 vs base"
+  },
+  {
+    "transaction_id": "Td54d2099b5",
+    "timestamp": "2025-04-17 04:49:24",
+    "category": "skin_rare",
+    "price": 259.2,
+    "price_z": 5.76,
+    "anomaly_label": "price_spike_manipulation",
+    "anomaly_notes": "Extreme price multiple x8.00 vs base"
+  },
+  {
+    "transaction_id": "T1b4539b132",
+    "timestamp": "2025-04-21 01:12:52",
+    "category": "consumable",
+    "price": 12.72,
+    "price_z": 5.745,
+    "anomaly_label": "price_spike_manipulation",
+    "anomaly_notes": "Extreme price multiple x8.00 vs base"
+  },
+  {
+    "transaction_id": "Tca043c585a",
+    "timestamp": "2025-04-17 00:01:50",
+    "category": "skin_rare",
+    "price": 257.84,
+    "price_z": 5.728,
+    "anomaly_label": "shill_bidding",
+    "anomaly_notes": "Inflated final sale for staged auction"
+  },
+  {
+    "transaction_id": "T9d53f66a76",
+    "timestamp": "2025-04-06 05:50:57",
+    "category": "skin_common",
+    "price": 41.19,
+    "price_z": 5.726,
+    "anomaly_label": "shill_bidding",
+    "anomaly_notes": "Inflated final sale for staged auction"
+  },
+  {
+    "transaction_id": "T6f7299b1ab",
+    "timestamp": "2025-04-25 21:56:15",
+    "category": "skin_rare",
+    "price": 255.71,
+    "price_z": 5.678,
+    "anomaly_label": "shill_bidding",
+    "anomaly_notes": "Inflated final sale for staged auction"
+  },
+  {
+    "transaction_id": "Td49a0af85a",
+    "timestamp": "2025-04-19 02:38:34",
+    "category": "card_common",
+    "price": 16.8,
+    "price_z": 5.629,
+    "anomaly_label": "price_spike_manipulation",
+    "anomaly_notes": "Extreme price multiple x8.00 vs base"
+  },
+  {
+    "transaction_id": "T35fafb809f",
+    "timestamp": "2025-04-02 14:18:38",
+    "category": "skin_rare",
+    "price": 253.42,
+    "price_z": 5.623,
+    "anomaly_label": "shill_bidding",
+    "anomaly_notes": "Inflated final sale for staged auction"
+  },
+  {
+    "transaction_id": "T0233991aa6",
+    "timestamp": "2025-04-08 05:22:59",
+    "category": "skin_common",
+    "price": 40.44,
+    "price_z": 5.614,
+    "anomaly_label": "shill_bidding",
+    "anomaly_notes": "Inflated final sale for staged auction"
+  },
+  {
+    "transaction_id": "T1c48c57dfe",
+    "timestamp": "2025-04-06 14:24:50",
+    "category": "mount",
+    "price": 627.36,
+    "price_z": 5.586,
+    "anomaly_label": "price_spike_manipulation",
+    "anomaly_notes": "Extreme price multiple x8.00 vs base"
+  },
+  {
+    "transaction_id": "T9def54a659",
+    "timestamp": "2025-04-06 05:29:48",
+    "category": "skin_common",
+    "price": 40.21,
+    "price_z": 5.58,
+    "anomaly_label": "shill_bidding",
+    "anomaly_notes": "Inflated final sale for staged auction"
+  },
+  {
+    "transaction_id": "Tff7cca5abe",
+    "timestamp": "2025-04-09 20:36:00",
+    "category": "artifact",
+    "price": 935.24,
+    "price_z": 5.548,
+    "anomaly_label": "layering_burst",
+    "anomaly_notes": "Rapid sequence of expensive buys in <1h"
+  }
+]

@@ -1,0 +1,1241 @@
+{
+  "flows": [
+    {
+      "source": "EAST_ASIA",
+      "target": "EU",
+      "source_coords": {
+        "lat": 35,
+        "lon": 120,
+        "name": "East Asia"
+      },
+      "target_coords": {
+        "lat": 50,
+        "lon": 10,
+        "name": "Europe"
+      },
+      "marketplace": "Arcade",
+      "tx_count": 43,
+      "total_value": 499.85,
+      "anomaly_count": 3,
+      "anomaly_rate": 0.06976744186046512,
+      "intensity": 0.06976744186046512
+    },
+    {
+      "source": "EAST_ASIA",
+      "target": "EU",
+      "source_coords": {
+        "lat": 35,
+        "lon": 120,
+        "name": "East Asia"
+      },
+      "target_coords": {
+        "lat": 50,
+        "lon": 10,
+        "name": "Europe"
+      },
+      "marketplace": "Prime",
+      "tx_count": 144,
+      "total_value": 3326.99,
+      "anomaly_count": 9,
+      "anomaly_rate": 0.0625,
+      "intensity": 0.0625
+    },
+    {
+      "source": "EAST_ASIA",
+      "target": "EU",
+      "source_coords": {
+        "lat": 35,
+        "lon": 120,
+        "name": "East Asia"
+      },
+      "target_coords": {
+        "lat": 50,
+        "lon": 10,
+        "name": "Europe"
+      },
+      "marketplace": "Shadow",
+      "tx_count": 75,
+      "total_value": 1639.55,
+      "anomaly_count": 11,
+      "anomaly_rate": 0.14666666666666667,
+      "intensity": 0.14666666666666667
+    },
+    {
+      "source": "EAST_ASIA",
+      "target": "LATAM",
+      "source_coords": {
+        "lat": 35,
+        "lon": 120,
+        "name": "East Asia"
+      },
+      "target_coords": {
+        "lat": -10,
+        "lon": -60,
+        "name": "Latin America"
+      },
+      "marketplace": "Arcade",
+      "tx_count": 29,
+      "total_value": 744.97,
+      "anomaly_count": 3,
+      "anomaly_rate": 0.10344827586206896,
+      "intensity": 0.10344827586206896
+    },
+    {
+      "source": "EAST_ASIA",
+      "target": "LATAM",
+      "source_coords": {
+        "lat": 35,
+        "lon": 120,
+        "name": "East Asia"
+      },
+      "target_coords": {
+        "lat": -10,
+        "lon": -60,
+        "name": "Latin America"
+      },
+      "marketplace": "Prime",
+      "tx_count": 145,
+      "total_value": 2040.17,
+      "anomaly_count": 7,
+      "anomaly_rate": 0.04827586206896552,
+      "intensity": 0.04827586206896552
+    },
+    {
+      "source": "EAST_ASIA",
+      "target": "LATAM",
+      "source_coords": {
+        "lat": 35,
+        "lon": 120,
+        "name": "East Asia"
+      },
+      "target_coords": {
+        "lat": -10,
+        "lon": -60,
+        "name": "Latin America"
+      },
+      "marketplace": "Shadow",
+      "tx_count": 64,
+      "total_value": 848.38,
+      "anomaly_count": 12,
+      "anomaly_rate": 0.1875,
+      "intensity": 0.1875
+    },
+    {
+      "source": "EAST_ASIA",
+      "target": "OCE",
+      "source_coords": {
+        "lat": 35,
+        "lon": 120,
+        "name": "East Asia"
+      },
+      "target_coords": {
+        "lat": -25,
+        "lon": 135,
+        "name": "Oceania"
+      },
+      "marketplace": "Arcade",
+      "tx_count": 54,
+      "total_value": 948.0600000000001,
+      "anomaly_count": 9,
+      "anomaly_rate": 0.16666666666666666,
+      "intensity": 0.16666666666666666
+    },
+    {
+      "source": "EAST_ASIA",
+      "target": "OCE",
+      "source_coords": {
+        "lat": 35,
+        "lon": 120,
+        "name": "East Asia"
+      },
+      "target_coords": {
+        "lat": -25,
+        "lon": 135,
+        "name": "Oceania"
+      },
+      "marketplace": "Prime",
+      "tx_count": 158,
+      "total_value": 1960.6,
+      "anomaly_count": 7,
+      "anomaly_rate": 0.04430379746835443,
+      "intensity": 0.04430379746835443
+    },
+    {
+      "source": "EAST_ASIA",
+      "target": "OCE",
+      "source_coords": {
+        "lat": 35,
+        "lon": 120,
+        "name": "East Asia"
+      },
+      "target_coords": {
+        "lat": -25,
+        "lon": 135,
+        "name": "Oceania"
+      },
+      "marketplace": "Shadow",
+      "tx_count": 67,
+      "total_value": 2372.9700000000003,
+      "anomaly_count": 11,
+      "anomaly_rate": 0.16417910447761194,
+      "intensity": 0.16417910447761194
+    },
+    {
+      "source": "EAST_ASIA",
+      "target": "SEA",
+      "source_coords": {
+        "lat": 35,
+        "lon": 120,
+        "name": "East Asia"
+      },
+      "target_coords": {
+        "lat": 10,
+        "lon": 105,
+        "name": "Southeast Asia"
+      },
+      "marketplace": "Arcade",
+      "tx_count": 51,
+      "total_value": 746.69,
+      "anomaly_count": 3,
+      "anomaly_rate": 0.058823529411764705,
+      "intensity": 0.058823529411764705
+    },
+    {
+      "source": "EAST_ASIA",
+      "target": "SEA",
+      "source_coords": {
+        "lat": 35,
+        "lon": 120,
+        "name": "East Asia"
+      },
+      "target_coords": {
+        "lat": 10,
+        "lon": 105,
+        "name": "Southeast Asia"
+      },
+      "marketplace": "Prime",
+      "tx_count": 162,
+      "total_value": 2761.06,
+      "anomaly_count": 7,
+      "anomaly_rate": 0.043209876543209874,
+      "intensity": 0.043209876543209874
+    },
+    {
+      "source": "EAST_ASIA",
+      "target": "SEA",
+      "source_coords": {
+        "lat": 35,
+        "lon": 120,
+        "name": "East Asia"
+      },
+      "target_coords": {
+        "lat": 10,
+        "lon": 105,
+        "name": "Southeast Asia"
+      },
+      "marketplace": "Shadow",
+      "tx_count": 75,
+      "total_value": 2026.1200000000001,
+      "anomaly_count": 10,
+      "anomaly_rate": 0.13333333333333333,
+      "intensity": 0.13333333333333333
+    },
+    {
+      "source": "EU",
+      "target": "EAST_ASIA",
+      "source_coords": {
+        "lat": 50,
+        "lon": 10,
+        "name": "Europe"
+      },
+      "target_coords": {
+        "lat": 35,
+        "lon": 120,
+        "name": "East Asia"
+      },
+      "marketplace": "Arcade",
+      "tx_count": 47,
+      "total_value": 818.51,
+      "anomaly_count": 2,
+      "anomaly_rate": 0.0425531914893617,
+      "intensity": 0.0425531914893617
+    },
+    {
+      "source": "EU",
+      "target": "EAST_ASIA",
+      "source_coords": {
+        "lat": 50,
+        "lon": 10,
+        "name": "Europe"
+      },
+      "target_coords": {
+        "lat": 35,
+        "lon": 120,
+        "name": "East Asia"
+      },
+      "marketplace": "Prime",
+      "tx_count": 157,
+      "total_value": 4371.73,
+      "anomaly_count": 13,
+      "anomaly_rate": 0.08280254777070063,
+      "intensity": 0.08280254777070063
+    },
+    {
+      "source": "EU",
+      "target": "EAST_ASIA",
+      "source_coords": {
+        "lat": 50,
+        "lon": 10,
+        "name": "Europe"
+      },
+      "target_coords": {
+        "lat": 35,
+        "lon": 120,
+        "name": "East Asia"
+      },
+      "marketplace": "Shadow",
+      "tx_count": 79,
+      "total_value": 5523.6900000000005,
+      "anomaly_count": 13,
+      "anomaly_rate": 0.16455696202531644,
+      "intensity": 0.16455696202531644
+    },
+    {
+      "source": "EU",
+      "target": "LATAM",
+      "source_coords": {
+        "lat": 50,
+        "lon": 10,
+        "name": "Europe"
+      },
+      "target_coords": {
+        "lat": -10,
+        "lon": -60,
+        "name": "Latin America"
+      },
+      "marketplace": "Arcade",
+      "tx_count": 54,
+      "total_value": 1963.32,
+      "anomaly_count": 9,
+      "anomaly_rate": 0.16666666666666666,
+      "intensity": 0.16666666666666666
+    },
+    {
+      "source": "EU",
+      "target": "LATAM",
+      "source_coords": {
+        "lat": 50,
+        "lon": 10,
+        "name": "Europe"
+      },
+      "target_coords": {
+        "lat": -10,
+        "lon": -60,
+        "name": "Latin America"
+      },
+      "marketplace": "Prime",
+      "tx_count": 168,
+      "total_value": 4633.05,
+      "anomaly_count": 20,
+      "anomaly_rate": 0.11904761904761904,
+      "intensity": 0.11904761904761904
+    },
+    {
+      "source": "EU",
+      "target": "LATAM",
+      "source_coords": {
+        "lat": 50,
+        "lon": 10,
+        "name": "Europe"
+      },
+      "target_coords": {
+        "lat": -10,
+        "lon": -60,
+        "name": "Latin America"
+      },
+      "marketplace": "Shadow",
+      "tx_count": 77,
+      "total_value": 2310.79,
+      "anomaly_count": 21,
+      "anomaly_rate": 0.2727272727272727,
+      "intensity": 0.2727272727272727
+    },
+    {
+      "source": "EU",
+      "target": "OCE",
+      "source_coords": {
+        "lat": 50,
+        "lon": 10,
+        "name": "Europe"
+      },
+      "target_coords": {
+        "lat": -25,
+        "lon": 135,
+        "name": "Oceania"
+      },
+      "marketplace": "Arcade",
+      "tx_count": 48,
+      "total_value": 1611.09,
+      "anomaly_count": 7,
+      "anomaly_rate": 0.14583333333333334,
+      "intensity": 0.14583333333333334
+    },
+    {
+      "source": "EU",
+      "target": "OCE",
+      "source_coords": {
+        "lat": 50,
+        "lon": 10,
+        "name": "Europe"
+      },
+      "target_coords": {
+        "lat": -25,
+        "lon": 135,
+        "name": "Oceania"
+      },
+      "marketplace": "Prime",
+      "tx_count": 183,
+      "total_value": 3130.01,
+      "anomaly_count": 31,
+      "anomaly_rate": 0.16939890710382513,
+      "intensity": 0.16939890710382513
+    },
+    {
+      "source": "EU",
+      "target": "OCE",
+      "source_coords": {
+        "lat": 50,
+        "lon": 10,
+        "name": "Europe"
+      },
+      "target_coords": {
+        "lat": -25,
+        "lon": 135,
+        "name": "Oceania"
+      },
+      "marketplace": "Shadow",
+      "tx_count": 94,
+      "total_value": 2685.61,
+      "anomaly_count": 34,
+      "anomaly_rate": 0.3617021276595745,
+      "intensity": 0.3617021276595745
+    },
+    {
+      "source": "EU",
+      "target": "SEA",
+      "source_coords": {
+        "lat": 50,
+        "lon": 10,
+        "name": "Europe"
+      },
+      "target_coords": {
+        "lat": 10,
+        "lon": 105,
+        "name": "Southeast Asia"
+      },
+      "marketplace": "Arcade",
+      "tx_count": 47,
+      "total_value": 830.1899999999999,
+      "anomaly_count": 8,
+      "anomaly_rate": 0.1702127659574468,
+      "intensity": 0.1702127659574468
+    },
+    {
+      "source": "EU",
+      "target": "SEA",
+      "source_coords": {
+        "lat": 50,
+        "lon": 10,
+        "name": "Europe"
+      },
+      "target_coords": {
+        "lat": 10,
+        "lon": 105,
+        "name": "Southeast Asia"
+      },
+      "marketplace": "Prime",
+      "tx_count": 181,
+      "total_value": 5952.28,
+      "anomaly_count": 22,
+      "anomaly_rate": 0.12154696132596685,
+      "intensity": 0.12154696132596685
+    },
+    {
+      "source": "EU",
+      "target": "SEA",
+      "source_coords": {
+        "lat": 50,
+        "lon": 10,
+        "name": "Europe"
+      },
+      "target_coords": {
+        "lat": 10,
+        "lon": 105,
+        "name": "Southeast Asia"
+      },
+      "marketplace": "Shadow",
+      "tx_count": 100,
+      "total_value": 1624.53,
+      "anomaly_count": 29,
+      "anomaly_rate": 0.29,
+      "intensity": 0.29
+    },
+    {
+      "source": "LATAM",
+      "target": "EAST_ASIA",
+      "source_coords": {
+        "lat": -10,
+        "lon": -60,
+        "name": "Latin America"
+      },
+      "target_coords": {
+        "lat": 35,
+        "lon": 120,
+        "name": "East Asia"
+      },
+      "marketplace": "Arcade",
+      "tx_count": 37,
+      "total_value": 709.03,
+      "anomaly_count": 1,
+      "anomaly_rate": 0.02702702702702703,
+      "intensity": 0.02702702702702703
+    },
+    {
+      "source": "LATAM",
+      "target": "EAST_ASIA",
+      "source_coords": {
+        "lat": -10,
+        "lon": -60,
+        "name": "Latin America"
+      },
+      "target_coords": {
+        "lat": 35,
+        "lon": 120,
+        "name": "East Asia"
+      },
+      "marketplace": "Prime",
+      "tx_count": 132,
+      "total_value": 1646.69,
+      "anomaly_count": 9,
+      "anomaly_rate": 0.06818181818181818,
+      "intensity": 0.06818181818181818
+    },
+    {
+      "source": "LATAM",
+      "target": "EAST_ASIA",
+      "source_coords": {
+        "lat": -10,
+        "lon": -60,
+        "name": "Latin America"
+      },
+      "target_coords": {
+        "lat": 35,
+        "lon": 120,
+        "name": "East Asia"
+      },
+      "marketplace": "Shadow",
+      "tx_count": 63,
+      "total_value": 2051.18,
+      "anomaly_count": 10,
+      "anomaly_rate": 0.15873015873015872,
+      "intensity": 0.15873015873015872
+    },
+    {
+      "source": "LATAM",
+      "target": "EU",
+      "source_coords": {
+        "lat": -10,
+        "lon": -60,
+        "name": "Latin America"
+      },
+      "target_coords": {
+        "lat": 50,
+        "lon": 10,
+        "name": "Europe"
+      },
+      "marketplace": "Arcade",
+      "tx_count": 48,
+      "total_value": 1023.11,
+      "anomaly_count": 8,
+      "anomaly_rate": 0.16666666666666666,
+      "intensity": 0.16666666666666666
+    },
+    {
+      "source": "LATAM",
+      "target": "EU",
+      "source_coords": {
+        "lat": -10,
+        "lon": -60,
+        "name": "Latin America"
+      },
+      "target_coords": {
+        "lat": 50,
+        "lon": 10,
+        "name": "Europe"
+      },
+      "marketplace": "Prime",
+      "tx_count": 149,
+      "total_value": 2503.86,
+      "anomaly_count": 11,
+      "anomaly_rate": 0.0738255033557047,
+      "intensity": 0.0738255033557047
+    },
+    {
+      "source": "LATAM",
+      "target": "EU",
+      "source_coords": {
+        "lat": -10,
+        "lon": -60,
+        "name": "Latin America"
+      },
+      "target_coords": {
+        "lat": 50,
+        "lon": 10,
+        "name": "Europe"
+      },
+      "marketplace": "Shadow",
+      "tx_count": 71,
+      "total_value": 6055.6900000000005,
+      "anomaly_count": 26,
+      "anomaly_rate": 0.36619718309859156,
+      "intensity": 0.36619718309859156
+    },
+    {
+      "source": "LATAM",
+      "target": "OCE",
+      "source_coords": {
+        "lat": -10,
+        "lon": -60,
+        "name": "Latin America"
+      },
+      "target_coords": {
+        "lat": -25,
+        "lon": 135,
+        "name": "Oceania"
+      },
+      "marketplace": "Arcade",
+      "tx_count": 33,
+      "total_value": 947.76,
+      "anomaly_count": 6,
+      "anomaly_rate": 0.18181818181818182,
+      "intensity": 0.18181818181818182
+    },
+    {
+      "source": "LATAM",
+      "target": "OCE",
+      "source_coords": {
+        "lat": -10,
+        "lon": -60,
+        "name": "Latin America"
+      },
+      "target_coords": {
+        "lat": -25,
+        "lon": 135,
+        "name": "Oceania"
+      },
+      "marketplace": "Prime",
+      "tx_count": 151,
+      "total_value": 1791.39,
+      "anomaly_count": 10,
+      "anomaly_rate": 0.06622516556291391,
+      "intensity": 0.06622516556291391
+    },
+    {
+      "source": "LATAM",
+      "target": "OCE",
+      "source_coords": {
+        "lat": -10,
+        "lon": -60,
+        "name": "Latin America"
+      },
+      "target_coords": {
+        "lat": -25,
+        "lon": 135,
+        "name": "Oceania"
+      },
+      "marketplace": "Shadow",
+      "tx_count": 68,
+      "total_value": 2437.0,
+      "anomaly_count": 10,
+      "anomaly_rate": 0.14705882352941177,
+      "intensity": 0.14705882352941177
+    },
+    {
+      "source": "LATAM",
+      "target": "SEA",
+      "source_coords": {
+        "lat": -10,
+        "lon": -60,
+        "name": "Latin America"
+      },
+      "target_coords": {
+        "lat": 10,
+        "lon": 105,
+        "name": "Southeast Asia"
+      },
+      "marketplace": "Arcade",
+      "tx_count": 40,
+      "total_value": 3520.23,
+      "anomaly_count": 6,
+      "anomaly_rate": 0.15,
+      "intensity": 0.15
+    },
+    {
+      "source": "LATAM",
+      "target": "SEA",
+      "source_coords": {
+        "lat": -10,
+        "lon": -60,
+        "name": "Latin America"
+      },
+      "target_coords": {
+        "lat": 10,
+        "lon": 105,
+        "name": "Southeast Asia"
+      },
+      "marketplace": "Prime",
+      "tx_count": 149,
+      "total_value": 2642.47,
+      "anomaly_count": 17,
+      "anomaly_rate": 0.11409395973154363,
+      "intensity": 0.11409395973154363
+    },
+    {
+      "source": "LATAM",
+      "target": "SEA",
+      "source_coords": {
+        "lat": -10,
+        "lon": -60,
+        "name": "Latin America"
+      },
+      "target_coords": {
+        "lat": 10,
+        "lon": 105,
+        "name": "Southeast Asia"
+      },
+      "marketplace": "Shadow",
+      "tx_count": 82,
+      "total_value": 1573.09,
+      "anomaly_count": 28,
+      "anomaly_rate": 0.34146341463414637,
+      "intensity": 0.34146341463414637
+    },
+    {
+      "source": "OCE",
+      "target": "EAST_ASIA",
+      "source_coords": {
+        "lat": -25,
+        "lon": 135,
+        "name": "Oceania"
+      },
+      "target_coords": {
+        "lat": 35,
+        "lon": 120,
+        "name": "East Asia"
+      },
+      "marketplace": "Arcade",
+      "tx_count": 32,
+      "total_value": 929.29,
+      "anomaly_count": 8,
+      "anomaly_rate": 0.25,
+      "intensity": 0.25
+    },
+    {
+      "source": "OCE",
+      "target": "EAST_ASIA",
+      "source_coords": {
+        "lat": -25,
+        "lon": 135,
+        "name": "Oceania"
+      },
+      "target_coords": {
+        "lat": 35,
+        "lon": 120,
+        "name": "East Asia"
+      },
+      "marketplace": "Prime",
+      "tx_count": 172,
+      "total_value": 2679.79,
+      "anomaly_count": 16,
+      "anomaly_rate": 0.09302325581395349,
+      "intensity": 0.09302325581395349
+    },
+    {
+      "source": "OCE",
+      "target": "EAST_ASIA",
+      "source_coords": {
+        "lat": -25,
+        "lon": 135,
+        "name": "Oceania"
+      },
+      "target_coords": {
+        "lat": 35,
+        "lon": 120,
+        "name": "East Asia"
+      },
+      "marketplace": "Shadow",
+      "tx_count": 78,
+      "total_value": 3734.0099999999998,
+      "anomaly_count": 16,
+      "anomaly_rate": 0.20512820512820512,
+      "intensity": 0.20512820512820512
+    },
+    {
+      "source": "OCE",
+      "target": "EU",
+      "source_coords": {
+        "lat": -25,
+        "lon": 135,
+        "name": "Oceania"
+      },
+      "target_coords": {
+        "lat": 50,
+        "lon": 10,
+        "name": "Europe"
+      },
+      "marketplace": "Arcade",
+      "tx_count": 50,
+      "total_value": 780.18,
+      "anomaly_count": 5,
+      "anomaly_rate": 0.1,
+      "intensity": 0.1
+    },
+    {
+      "source": "OCE",
+      "target": "EU",
+      "source_coords": {
+        "lat": -25,
+        "lon": 135,
+        "name": "Oceania"
+      },
+      "target_coords": {
+        "lat": 50,
+        "lon": 10,
+        "name": "Europe"
+      },
+      "marketplace": "Prime",
+      "tx_count": 169,
+      "total_value": 4065.2799999999997,
+      "anomaly_count": 19,
+      "anomaly_rate": 0.11242603550295859,
+      "intensity": 0.11242603550295859
+    },
+    {
+      "source": "OCE",
+      "target": "EU",
+      "source_coords": {
+        "lat": -25,
+        "lon": 135,
+        "name": "Oceania"
+      },
+      "target_coords": {
+        "lat": 50,
+        "lon": 10,
+        "name": "Europe"
+      },
+      "marketplace": "Shadow",
+      "tx_count": 78,
+      "total_value": 1283.98,
+      "anomaly_count": 17,
+      "anomaly_rate": 0.21794871794871795,
+      "intensity": 0.21794871794871795
+    },
+    {
+      "source": "OCE",
+      "target": "LATAM",
+      "source_coords": {
+        "lat": -25,
+        "lon": 135,
+        "name": "Oceania"
+      },
+      "target_coords": {
+        "lat": -10,
+        "lon": -60,
+        "name": "Latin America"
+      },
+      "marketplace": "Arcade",
+      "tx_count": 42,
+      "total_value": 1891.41,
+      "anomaly_count": 8,
+      "anomaly_rate": 0.19047619047619047,
+      "intensity": 0.19047619047619047
+    },
+    {
+      "source": "OCE",
+      "target": "LATAM",
+      "source_coords": {
+        "lat": -25,
+        "lon": 135,
+        "name": "Oceania"
+      },
+      "target_coords": {
+        "lat": -10,
+        "lon": -60,
+        "name": "Latin America"
+      },
+      "marketplace": "Prime",
+      "tx_count": 160,
+      "total_value": 3780.73,
+      "anomaly_count": 18,
+      "anomaly_rate": 0.1125,
+      "intensity": 0.1125
+    },
+    {
+      "source": "OCE",
+      "target": "LATAM",
+      "source_coords": {
+        "lat": -25,
+        "lon": 135,
+        "name": "Oceania"
+      },
+      "target_coords": {
+        "lat": -10,
+        "lon": -60,
+        "name": "Latin America"
+      },
+      "marketplace": "Shadow",
+      "tx_count": 70,
+      "total_value": 5205.83,
+      "anomaly_count": 16,
+      "anomaly_rate": 0.22857142857142856,
+      "intensity": 0.22857142857142856
+    },
+    {
+      "source": "OCE",
+      "target": "SEA",
+      "source_coords": {
+        "lat": -25,
+        "lon": 135,
+        "name": "Oceania"
+      },
+      "target_coords": {
+        "lat": 10,
+        "lon": 105,
+        "name": "Southeast Asia"
+      },
+      "marketplace": "Arcade",
+      "tx_count": 45,
+      "total_value": 2100.2,
+      "anomaly_count": 11,
+      "anomaly_rate": 0.24444444444444444,
+      "intensity": 0.24444444444444444
+    },
+    {
+      "source": "OCE",
+      "target": "SEA",
+      "source_coords": {
+        "lat": -25,
+        "lon": 135,
+        "name": "Oceania"
+      },
+      "target_coords": {
+        "lat": 10,
+        "lon": 105,
+        "name": "Southeast Asia"
+      },
+      "marketplace": "Prime",
+      "tx_count": 176,
+      "total_value": 5625.349999999999,
+      "anomaly_count": 19,
+      "anomaly_rate": 0.10795454545454546,
+      "intensity": 0.10795454545454546
+    },
+    {
+      "source": "OCE",
+      "target": "SEA",
+      "source_coords": {
+        "lat": -25,
+        "lon": 135,
+        "name": "Oceania"
+      },
+      "target_coords": {
+        "lat": 10,
+        "lon": 105,
+        "name": "Southeast Asia"
+      },
+      "marketplace": "Shadow",
+      "tx_count": 99,
+      "total_value": 3343.46,
+      "anomaly_count": 34,
+      "anomaly_rate": 0.3434343434343434,
+      "intensity": 0.3434343434343434
+    },
+    {
+      "source": "SEA",
+      "target": "EAST_ASIA",
+      "source_coords": {
+        "lat": 10,
+        "lon": 105,
+        "name": "Southeast Asia"
+      },
+      "target_coords": {
+        "lat": 35,
+        "lon": 120,
+        "name": "East Asia"
+      },
+      "marketplace": "Arcade",
+      "tx_count": 48,
+      "total_value": 706.8,
+      "anomaly_count": 6,
+      "anomaly_rate": 0.125,
+      "intensity": 0.125
+    },
+    {
+      "source": "SEA",
+      "target": "EAST_ASIA",
+      "source_coords": {
+        "lat": 10,
+        "lon": 105,
+        "name": "Southeast Asia"
+      },
+      "target_coords": {
+        "lat": 35,
+        "lon": 120,
+        "name": "East Asia"
+      },
+      "marketplace": "Prime",
+      "tx_count": 167,
+      "total_value": 2579.45,
+      "anomaly_count": 18,
+      "anomaly_rate": 0.10778443113772455,
+      "intensity": 0.10778443113772455
+    },
+    {
+      "source": "SEA",
+      "target": "EAST_ASIA",
+      "source_coords": {
+        "lat": 10,
+        "lon": 105,
+        "name": "Southeast Asia"
+      },
+      "target_coords": {
+        "lat": 35,
+        "lon": 120,
+        "name": "East Asia"
+      },
+      "marketplace": "Shadow",
+      "tx_count": 89,
+      "total_value": 2917.0,
+      "anomaly_count": 20,
+      "anomaly_rate": 0.2247191011235955,
+      "intensity": 0.2247191011235955
+    },
+    {
+      "source": "SEA",
+      "target": "EU",
+      "source_coords": {
+        "lat": 10,
+        "lon": 105,
+        "name": "Southeast Asia"
+      },
+      "target_coords": {
+        "lat": 50,
+        "lon": 10,
+        "name": "Europe"
+      },
+      "marketplace": "Arcade",
+      "tx_count": 60,
+      "total_value": 1186.81,
+      "anomaly_count": 14,
+      "anomaly_rate": 0.23333333333333334,
+      "intensity": 0.23333333333333334
+    },
+    {
+      "source": "SEA",
+      "target": "EU",
+      "source_coords": {
+        "lat": 10,
+        "lon": 105,
+        "name": "Southeast Asia"
+      },
+      "target_coords": {
+        "lat": 50,
+        "lon": 10,
+        "name": "Europe"
+      },
+      "marketplace": "Prime",
+      "tx_count": 190,
+      "total_value": 4736.46,
+      "anomaly_count": 30,
+      "anomaly_rate": 0.15789473684210525,
+      "intensity": 0.15789473684210525
+    },
+    {
+      "source": "SEA",
+      "target": "EU",
+      "source_coords": {
+        "lat": 10,
+        "lon": 105,
+        "name": "Southeast Asia"
+      },
+      "target_coords": {
+        "lat": 50,
+        "lon": 10,
+        "name": "Europe"
+      },
+      "marketplace": "Shadow",
+      "tx_count": 93,
+      "total_value": 3069.47,
+      "anomaly_count": 29,
+      "anomaly_rate": 0.3118279569892473,
+      "intensity": 0.3118279569892473
+    },
+    {
+      "source": "SEA",
+      "target": "LATAM",
+      "source_coords": {
+        "lat": 10,
+        "lon": 105,
+        "name": "Southeast Asia"
+      },
+      "target_coords": {
+        "lat": -10,
+        "lon": -60,
+        "name": "Latin America"
+      },
+      "marketplace": "Arcade",
+      "tx_count": 51,
+      "total_value": 2165.93,
+      "anomaly_count": 10,
+      "anomaly_rate": 0.19607843137254902,
+      "intensity": 0.19607843137254902
+    },
+    {
+      "source": "SEA",
+      "target": "LATAM",
+      "source_coords": {
+        "lat": 10,
+        "lon": 105,
+        "name": "Southeast Asia"
+      },
+      "target_coords": {
+        "lat": -10,
+        "lon": -60,
+        "name": "Latin America"
+      },
+      "marketplace": "Prime",
+      "tx_count": 164,
+      "total_value": 3956.34,
+      "anomaly_count": 15,
+      "anomaly_rate": 0.09146341463414634,
+      "intensity": 0.09146341463414634
+    },
+    {
+      "source": "SEA",
+      "target": "LATAM",
+      "source_coords": {
+        "lat": 10,
+        "lon": 105,
+        "name": "Southeast Asia"
+      },
+      "target_coords": {
+        "lat": -10,
+        "lon": -60,
+        "name": "Latin America"
+      },
+      "marketplace": "Shadow",
+      "tx_count": 63,
+      "total_value": 2439.5699999999997,
+      "anomaly_count": 20,
+      "anomaly_rate": 0.31746031746031744,
+      "intensity": 0.31746031746031744
+    },
+    {
+      "source": "SEA",
+      "target": "OCE",
+      "source_coords": {
+        "lat": 10,
+        "lon": 105,
+        "name": "Southeast Asia"
+      },
+      "target_coords": {
+        "lat": -25,
+        "lon": 135,
+        "name": "Oceania"
+      },
+      "marketplace": "Arcade",
+      "tx_count": 39,
+      "total_value": 550.49,
+      "anomaly_count": 9,
+      "anomaly_rate": 0.23076923076923078,
+      "intensity": 0.23076923076923078
+    },
+    {
+      "source": "SEA",
+      "target": "OCE",
+      "source_coords": {
+        "lat": 10,
+        "lon": 105,
+        "name": "Southeast Asia"
+      },
+      "target_coords": {
+        "lat": -25,
+        "lon": 135,
+        "name": "Oceania"
+      },
+      "marketplace": "Prime",
+      "tx_count": 185,
+      "total_value": 3562.78,
+      "anomaly_count": 15,
+      "anomaly_rate": 0.08108108108108109,
+      "intensity": 0.08108108108108109
+    },
+    {
+      "source": "SEA",
+      "target": "OCE",
+      "source_coords": {
+        "lat": 10,
+        "lon": 105,
+        "name": "Southeast Asia"
+      },
+      "target_coords": {
+        "lat": -25,
+        "lon": 135,
+        "name": "Oceania"
+      },
+      "marketplace": "Shadow",
+      "tx_count": 92,
+      "total_value": 1679.09,
+      "anomaly_count": 20,
+      "anomaly_rate": 0.21739130434782608,
+      "intensity": 0.21739130434782608
+    }
+  ],
+  "regions": [
+    {
+      "code": "EU",
+      "lat": 50,
+      "lon": 10,
+      "name": "Europe",
+      "total_transactions": 3172
+    },
+    {
+      "code": "SEA",
+      "lat": 10,
+      "lon": 105,
+      "name": "Southeast Asia",
+      "total_transactions": 3441
+    },
+    {
+      "code": "EAST_ASIA",
+      "lat": 35,
+      "lon": 120,
+      "name": "East Asia",
+      "total_transactions": 2917
+    },
+    {
+      "code": "OCE",
+      "lat": -25,
+      "lon": 135,
+      "name": "Oceania",
+      "total_transactions": 3181
+    },
+    {
+      "code": "LATAM",
+      "lat": -10,
+      "lon": -60,
+      "name": "Latin America",
+      "total_transactions": 2770
+    }
+  ]
+}
