@@ -6,30 +6,62 @@
 const DEBUG = false;
 const debugLog = (msg) => DEBUG && console.log(`[3D Timeline] ${msg}`);
 
-// Wait for Three.js to load
-function waitForThreeJS() {
-  return new Promise((resolve) => {
-    if (typeof THREE !== 'undefined') {
-      resolve();
-    } else {
-      const checkThree = setInterval(() => {
-        if (typeof THREE !== 'undefined') {
-          clearInterval(checkThree);
-          resolve();
-        }
-      }, 100);
-      // Timeout after 5 seconds
-      setTimeout(() => {
-        clearInterval(checkThree);
-        resolve();
-      }, 5000);
-    }
-  });
+// ================================================
+// Initialization Wrapper
+// ================================================
+
+function initializeApp() {
+  if (typeof THREE === 'undefined') {
+    console.error('THREE.js is not available');
+    document.getElementById('loading-overlay').innerHTML = `
+      <div class="loading-spinner">
+        <p style="color: #ff3333;">Failed to load THREE.js</p>
+        <p style="font-size: 11px; margin-top: 8px;">Please refresh and try again</p>
+      </div>
+    `;
+    return;
+  }
+
+  startApplication();
 }
 
-// ================================================
-// Configuration
-// ================================================
+function startApplication() {
+  try {
+    debugLog('Starting immersive timeline application...');
+    
+    // Fetch seismic data
+    fetchSeismicData().then(() => {
+      // Initialize Three.js
+      initThreeJS();
+      
+      // Setup events and listeners
+      setupEventListeners();
+      
+      // Hide loading overlay
+      const overlay = document.getElementById('loading-overlay');
+      overlay.classList.add('hidden');
+      
+      // Start animation loop
+      animate();
+      
+      debugLog('✅ Immersive timeline ready');
+    }).catch(err => {
+      throw err;
+    });
+    
+  } catch (err) {
+    console.error('❌ Failed to initialize:', err);
+    document.getElementById('loading-overlay').innerHTML = `
+      <div class="loading-spinner">
+        <p style="color: #ff3333;">Error loading timeline</p>
+        <p style="font-size: 11px; margin-top: 8px;">${err.message}</p>
+      </div>
+    `;
+  }
+}
+
+// Make available globally
+window.initializeApp = initializeApp;
 
 const CONFIG = {
   MAX_EVENTS: 5,

@@ -118,15 +118,22 @@
   <a href="./" class="back-button" title="Return to live map">← Back to Map</a>
 
   <!-- Scripts -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <!-- Three.js - Using jsDelivr (most reliable CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/three@r128/build/three.min.js"></script>
+  
+  <!-- Application Script -->
+  <script src="immersive.js"></script>
+  
+  <!-- Initialize when Three.js is loaded -->
   <script>
-    if (typeof THREE === 'undefined') {
-      console.warn('Fallback: trying unpkg...');
-      const script = document.createElement('script');
-      script.src = 'https://unpkg.com/three@r128/build/three.min.js';
-      document.head.appendChild(script);
+    // Wait for both scripts to load
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () => {
+        setTimeout(() => window.initializeApp?.(), 100);
+      });
+    } else {
+      setTimeout(() => window.initializeApp?.(), 100);
     }
   </script>
-  <script src="immersive.js"></script>
 </body>
 </html>
