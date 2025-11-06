@@ -6,6 +6,27 @@
 const DEBUG = false;
 const debugLog = (msg) => DEBUG && console.log(`[3D Timeline] ${msg}`);
 
+// Wait for Three.js to load
+function waitForThreeJS() {
+  return new Promise((resolve) => {
+    if (typeof THREE !== 'undefined') {
+      resolve();
+    } else {
+      const checkThree = setInterval(() => {
+        if (typeof THREE !== 'undefined') {
+          clearInterval(checkThree);
+          resolve();
+        }
+      }, 100);
+      // Timeout after 5 seconds
+      setTimeout(() => {
+        clearInterval(checkThree);
+        resolve();
+      }, 5000);
+    }
+  });
+}
+
 // ================================================
 // Configuration
 // ================================================
@@ -71,6 +92,15 @@ let eventMeshes = [];
 window.addEventListener('DOMContentLoaded', async () => {
   try {
     debugLog('Initializing immersive timeline...');
+    
+    // Wait for Three.js to load
+    await waitForThreeJS();
+    
+    if (typeof THREE === 'undefined') {
+      throw new Error('Three.js failed to load from CDN');
+    }
+    
+    debugLog('✅ Three.js loaded');
     
     // Fetch seismic data
     await fetchSeismicData();
