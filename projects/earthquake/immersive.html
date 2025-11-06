@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Immersive 3D seismic timeline visualization. Explore the most recent earthquakes and seismic events through hyperspace." />
+  <title>Seismic Timeline - Immersive 3D</title>
+  <link rel="stylesheet" href="immersive.css" />
+</head>
+
+<body>
+  <!-- 3D Canvas Container -->
+  <div id="canvas-container"></div>
+
+  <!-- HUD: Heads-Up Display -->
+  <div class="hud">
+    <!-- Top Left: Title & Info -->
+    <div class="hud-corner top-left">
+      <div class="hud-title">Seismic Timeline</div>
+      <div class="hud-subtitle">Immersive 3D Event Explorer</div>
+    </div>
+
+    <!-- Top Right: Status -->
+    <div class="hud-corner top-right">
+      <div class="hud-status">
+        <span id="event-count">Loading...</span>
+        <span id="time-range" style="display: block; font-size: 0.85rem; margin-top: 4px;">Last 7 days</span>
+      </div>
+    </div>
+
+    <!-- Bottom Left: Controls -->
+    <div class="hud-corner bottom-left">
+      <div class="controls">
+        <button id="play-btn" class="control-btn" title="Play timeline">
+          <span>▶ Play</span>
+        </button>
+        <button id="pause-btn" class="control-btn" title="Pause timeline" style="display: none;">
+          <span>⏸ Pause</span>
+        </button>
+        <button id="reset-btn" class="control-btn" title="Reset view">
+          <span>↺ Reset</span>
+        </button>
+        
+        <div class="control-group" style="margin-top: 12px;">
+          <label for="speed-select">Speed:</label>
+          <select id="speed-select" class="control-select">
+            <option value="1">1x</option>
+            <option value="2">2x</option>
+            <option value="4">4x</option>
+            <option value="8">8x</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Right: Event Details Panel -->
+    <div class="hud-corner bottom-right">
+      <div id="event-panel" class="event-panel" style="display: none;">
+        <div class="panel-header">
+          <div id="panel-title" class="panel-title">Event Details</div>
+          <button id="close-panel" class="close-btn">×</button>
+        </div>
+        <div class="panel-content">
+          <div class="detail-row">
+            <span class="detail-label">Magnitude:</span>
+            <span id="detail-mag" class="detail-value">—</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Type:</span>
+            <span id="detail-type" class="detail-value">—</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Location:</span>
+            <span id="detail-loc" class="detail-value">—</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Depth:</span>
+            <span id="detail-depth" class="detail-value">—</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Time:</span>
+            <span id="detail-time" class="detail-value">—</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Place:</span>
+            <span id="detail-place" class="detail-value">—</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Center: Timeline Scrubber (during playback) -->
+    <div id="timeline-scrubber" class="timeline-scrubber" style="display: none;">
+      <div class="scrubber-bar">
+        <div id="scrubber-progress" class="scrubber-progress"></div>
+        <input id="scrubber-input" type="range" min="0" max="100" value="0" class="scrubber-input" />
+      </div>
+      <div class="scrubber-time">
+        <span id="current-time">00:00</span> / <span id="total-time">00:00</span>
+      </div>
+    </div>
+
+    <!-- Help Text (Mobile) -->
+    <div class="hud-help">
+      <span>Click events to explore • Use controls to navigate timeline</span>
+    </div>
+  </div>
+
+  <!-- Loading Indicator -->
+  <div id="loading-overlay" class="loading-overlay">
+    <div class="loading-spinner">
+      <div class="spinner"></div>
+      <p>Initializing seismic timeline...</p>
+    </div>
+  </div>
+
+  <!-- Back Button -->
+  <a href="./" class="back-button" title="Return to live map">← Back to Map</a>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/three@r128/build/three.min.js"></script>
+  <script src="immersive.js"></script>
+</body>
+</html>
