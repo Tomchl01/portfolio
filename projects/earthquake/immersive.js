@@ -337,6 +337,10 @@ function createEventMeshes() {
   if (!timelineData || !timelineData.events) return;
 
   timelineData.events.forEach((eventData, index) => {
+    // Create group for event (sphere + rings)
+    const eventGroup = new THREE.Group();
+    eventGroup.position.copy(eventData.position);
+
     // Main sphere
     const geometry = new THREE.SphereGeometry(eventData.size, 32, 32);
     const material = new THREE.MeshPhongMaterial({
@@ -348,7 +352,6 @@ function createEventMeshes() {
     });
 
     const mesh = new THREE.Mesh(geometry, material);
-    mesh.position.copy(eventData.position);
     mesh.castShadow = true;
     mesh.receiveShadow = true;
 
@@ -358,21 +361,43 @@ function createEventMeshes() {
       eventData: eventData
     };
 
-    scene.add(mesh);
+    eventGroup.add(mesh);
+
+    // Add concentric rings for visual effect
+    const ringCount = 2;
+    for (let r = 1; r <= ringCount; r++) {
+      const ringRadius = eventData.size * (1 + r * 0.5);
+      const ringGeometry = new THREE.TorusGeometry(ringRadius, eventData.size * 0.15, 32, 100);
+      const ringMaterial = new THREE.MeshPhongMaterial({
+        color: eventData.color,
+        emissive: eventData.color,
+        emissiveIntensity: 0.3,
+        transparent: true,
+        opacity: 0.6 - (r * 0.1),
+        wireframe: false
+      });
+
+      const ring = new THREE.Mesh(ringGeometry, ringMaterial);
+      ring.rotation.x = Math.random() * Math.PI * 0.2;
+      ring.rotation.y = Math.random() * Math.PI * 0.2;
+      ring.userData.isRing = true;
+
+      eventGroup.add(ring);
+    }
+
+    scene.add(eventGroup);
     eventData.mesh = mesh;
+    eventData.meshGroup = eventGroup;
     eventMeshes.push(mesh);
 
-    // Add hover effect
-    mesh.userData.originalEmissiveIntensity = 0.5;
-
     // Animate spawn
-    animateEventSpawn(mesh, index);
+    animateEventSpawn(eventGroup, index);
 
-    debugLog(`Created event mesh ${index + 1}/${timelineData.events.length}`);
+    debugLog(`Created event mesh ${index + 1}/${timelineData.events.length} with rings`);
   });
 }
 
-function animateEventSpawn(mesh, index) {
+function animateEventSpawn(meshOrGroup, index) {
   const delay = index * 200;
   const duration = CONFIG.ANIMATION.spawnDuration;
 
@@ -384,7 +409,7 @@ function animateEventSpawn(mesh, index) {
       const elapsed = Date.now() - startTime;
       const progress = Math.min(elapsed / duration, 1);
 
-      mesh.scale.setScalar(progress);
+      meshOrGroup.scale.setScalar(progress);
 
       if (progress < 1) {
         requestAnimationFrame(spawn);
@@ -470,6 +495,7 @@ function onCanvasClick(event) {
 function focusEvent(eventIndex) {
   const eventData = timelineData.events[eventIndex];
   const mesh = eventData.mesh;
+  const group = eventData.meshGroup;
 
   currentEventFocus = eventIndex;
 
@@ -484,7 +510,12 @@ function focusEvent(eventIndex) {
 
   // Highlight mesh
   mesh.material.emissiveIntensity = 1.0;
-  mesh.scale.setScalar(1.2);
+  
+  if (group) {
+    group.scale.setScalar(1.2);
+  } else {
+    mesh.scale.setScalar(1.2);
+  }
 
   // Show details panel
   showEventPanel(eventData);
@@ -562,6 +593,11 @@ function resetView() {
   timelineData.events.forEach(eventData => {
     if (eventData.mesh) {
       eventData.mesh.material.emissiveIntensity = 0.5;
+    }
+    
+    if (eventData.meshGroup) {
+      eventData.meshGroup.scale.setScalar(1.0);
+    } else if (eventData.mesh) {
       eventData.mesh.scale.setScalar(1.0);
     }
   });
@@ -654,11 +690,21 @@ function animate() {
     updateScrubberDisplay();
   }
 
-  // Rotate meshes slightly for visual interest
+  // Rotate meshes and rings for visual interest
   timelineData.events.forEach((eventData, i) => {
     if (eventData.mesh) {
       eventData.mesh.rotation.x += 0.002;
       eventData.mesh.rotation.y += 0.003;
+    }
+    
+    if (eventData.meshGroup) {
+      // Rotate rings in different directions for depth
+      eventData.meshGroup.children.forEach((child, j) => {
+        if (child.userData.isRing) {
+          child.rotation.x += (0.002 * (j + 1));
+          child.rotation.y += (0.003 * (j + 1) * -1);
+        }
+      });
     }
   });
 
