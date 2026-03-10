@@ -220,6 +220,99 @@
 
     <div class="divider"></div>
 
+    <!-- ── PIECE 3: THE FRAMEWORK ── -->
+    <article class="prose">
+
+      <h2 class="prose-heading">You need more than one signal</h2>
+
+      <p>
+        The starting point for any investigation is a pair of players. Not a single player acting suspiciously,
+        but two players whose relationship looks wrong when you put their history side by side. Getting to that
+        pair means filtering an enormous amount of noise, and the only reliable way to do that is to run
+        several independent tests and only escalate when more than one of them raises its hand.
+      </p>
+
+      <p>
+        The framework I built works in three layers. Each layer asks a different question about the same pair.
+        The first layer asks: where is the money going? The second asks: does this player behave differently
+        when the other one is at the table? The third asks: are the decisions themselves suspicious, not
+        just the outcomes?
+      </p>
+
+      <p>
+        None of those questions is enough on its own. Combined, they are quite hard to fake your way past.
+      </p>
+
+      <h2 class="prose-heading">Layer one: follow the chips</h2>
+
+      <p>
+        The most concrete thing you can measure in poker is chip flow. At the end of every hand, money
+        moves from some players to others. Over thousands of hands, you can map exactly how much each
+        player won or lost against every specific opponent they faced.
+      </p>
+
+      <p>
+        Healthy players have chip flow that is spread around. They win some hands against this person,
+        lose some against that one, and over time the picture looks roughly diffuse. What you are looking
+        for is concentration: a pair where one player is sending a disproportionate amount of their losses
+        consistently to the same destination. That is the first gate. It does not prove anything.
+        But it narrows the field significantly, which is exactly what you need at this stage.
+      </p>
+
+      <p>
+        The important word is concentration. It is not just about total volume of chips moving between two players.
+        A player who loses a lot to one opponent might just be running bad or playing weaker opponents.
+        What matters is whether that concentration is statistically unusual given how many opponents they
+        faced and how many hands they shared. You have to normalize for opportunity, otherwise you are just
+        flagging players who sat at the same table a lot.
+      </p>
+
+      <h2 class="prose-heading">Layer two: behavior changes at the table</h2>
+
+      <p>
+        If the chip-flow gate fires, the next question is whether the player's behavior actually shifts
+        when the suspect partner is involved. This is the behavioral fingerprinting layer, and it is
+        where the analysis gets more interesting.
+      </p>
+
+      <p>
+        The idea is to take a specific type of situation, a particular position at the table, a particular
+        stack depth, a particular betting pattern facing them, and compare how one player acts in that
+        situation against all their opponents versus how they act in the same situation against one
+        specific opponent. If the numbers are meaningfully different, that is a sign worth paying attention to.
+      </p>
+
+      <p>
+        For example: a player might call bets aggressively across the board, but suddenly become passive
+        and fold far more often in identical spots when one particular player is betting into them.
+        Or they might stop raising their strong hands when that player is in the pot. Neither of those
+        things is impossible by coincidence. But when the gap is large and consistent across hundreds
+        of hands, coincidence starts to look like a poor explanation.
+      </p>
+
+      <h2 class="prose-heading">Layer three: are the decisions defensible?</h2>
+
+      <p>
+        The third and most technically demanding layer asks whether the decisions themselves make sense
+        from a game theory perspective. Modern poker has a well-developed body of research around optimal
+        play. Solver software can calculate, for a given situation, what a rational and unexploitable
+        player should do. Not everyone plays perfectly, but professionals and serious players tend to
+        cluster around those benchmarks in aggregate.
+      </p>
+
+      <p>
+        When a player's decisions in contested spots against one specific opponent consistently deviate
+        from what optimal play would suggest, and that deviation consistently costs themselves chips
+        while benefiting that opponent, you have the third signal. Not a proof. But at this point you
+        have a pair who triggered chip-flow concentration, show behavioral differences against each other,
+        and whose decisions go against their own interests in ways that pattern toward one person.
+        That combination is worth putting in front of a human investigator.
+      </p>
+
+    </article>
+
+    <div class="divider"></div>
+
   </main>
 
   <footer class="site-footer">
