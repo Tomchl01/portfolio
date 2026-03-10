@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Detecting Poker Collusion | Tom Chévez</title>
-  <meta name="description" content="A case study on building a layered detection framework for coordinated collusion in No-Limit Hold'em: chip-flow analysis, behavioral fingerprinting, and GTO deviation scoring." />
+  <title>The Problem Around Collusion in Poker | Tom Chévez</title>
+  <meta name="description" content="A case study on building a layered detection framework for coordinated collusion in online poker. Chip-flow analysis, behavioral fingerprinting, and GTO deviation scoring explained for any audience." />
   <link rel="stylesheet" href="../../style.css" />
   <style>
     /* ── Article shell styles ── */
@@ -134,13 +134,21 @@
       <span class="meta-tag">2026</span>
     </div>
 
-    <h1 class="article-title">Detecting Collusion in No-Limit Hold'em</h1>
+    <h1 class="article-title">The problem around collusion in poker</h1>
 
     <p class="article-lede">
-      Hand histories are noisy. Hundreds of thousands of decisions flow through an online poker room every day,
-      and most of them are entirely ordinary. The challenge of detecting collusion is not finding suspicious hands —
-      it is <strong>finding the ones that matter</strong>, building a case that holds up to scrutiny, and doing it
-      at scale without burying investigators in false positives. This is a behind-the-scenes account of how I approached that problem.
+      Poker is built on incomplete information. You can see your own cards and the shared cards on the table, 
+      but not what your opponents are holding. That hidden information is the entire game. 
+      Collusion happens when two or more players at the same table secretly share that information with each other, 
+      or coordinate their decisions to move money in a direction that benefits their group. 
+      It is cheating, and it is surprisingly hard to prove.
+    </p>
+
+    <p class="article-lede">
+      This is a behind-the-scenes account of how I built a system to find it. 
+      You do not need to know poker to follow along. 
+      The interesting parts are not really about cards at all. 
+      They are about <strong>how you find coordinated dishonesty inside a river of normal-looking data.</strong>
     </p>
 
     <div class="divider"></div>
