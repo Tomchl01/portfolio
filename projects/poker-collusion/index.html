@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Detecting Poker Collusion | Tom Chévez</title>
+  <meta name="description" content="A case study on building a layered detection framework for coordinated collusion in No-Limit Hold'em: chip-flow analysis, behavioral fingerprinting, and GTO deviation scoring." />
+  <link rel="stylesheet" href="../../style.css" />
+  <style>
+    /* ── Article shell styles ── */
+    .article-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: var(--space-md);
+    }
+
+    .meta-tag {
+      font-size: 0.78rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: var(--text-tertiary);
+      border: 1px solid var(--glass-border);
+      border-radius: 999px;
+      padding: 5px 14px;
+      background: var(--glass-white);
+      backdrop-filter: blur(10px);
+    }
+
+    .article-lede {
+      font-size: clamp(1.15rem, 2vw, 1.35rem);
+      font-weight: 300;
+      color: var(--text-secondary);
+      max-width: 740px;
+      line-height: 1.85;
+      margin-bottom: var(--space-lg);
+    }
+
+    .article-lede strong {
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.9rem;
+      color: var(--text-tertiary);
+      text-decoration: none;
+      margin-bottom: var(--space-md);
+      transition: color var(--transition-exhale);
+    }
+
+    .back-link:hover {
+      color: var(--text-primary);
+    }
+
+    .article-title {
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 300;
+      letter-spacing: -2px;
+      line-height: 1.1;
+      color: var(--text-primary);
+      margin-bottom: var(--space-md);
+      max-width: 840px;
+    }
+
+    .divider {
+      width: 48px;
+      height: 1px;
+      background: var(--glass-border);
+      margin: var(--space-lg) 0;
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav">
+      <a class="brand" href="/" aria-label="Home">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+          <polyline points="9 22 9 12 15 12 15 22"></polyline>
+        </svg>
+      </a>
+      <div class="spacer"></div>
+      <a href="/projects/">Projects</a>
+      <a href="/#about">About</a>
+      <a href="/contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main class="section">
+
+    <a href="/projects/" class="back-link">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="15 18 9 12 15 6"></polyline>
+      </svg>
+      All Projects
+    </a>
+
+    <div class="article-meta">
+      <span class="meta-tag">Case Study</span>
+      <span class="meta-tag">Game Integrity</span>
+      <span class="meta-tag">Behavioral Analytics</span>
+      <span class="meta-tag">2026</span>
+    </div>
+
+    <h1 class="article-title">Detecting Collusion in No-Limit Hold'em</h1>
+
+    <p class="article-lede">
+      Hand histories are noisy. Hundreds of thousands of decisions flow through an online poker room every day,
+      and most of them are entirely ordinary. The challenge of detecting collusion is not finding suspicious hands —
+      it is <strong>finding the ones that matter</strong>, building a case that holds up to scrutiny, and doing it
+      at scale without burying investigators in false positives. This is a behind-the-scenes account of how I approached that problem.
+    </p>
+
+    <div class="divider"></div>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>© <span id="year"></span> Tom Chévez, Costa Rica</p>
+  </footer>
+
+  <script src="../../script.js"></script>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>
