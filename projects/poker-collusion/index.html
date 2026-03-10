@@ -7,7 +7,9 @@
   <meta name="description" content="A case study on building a layered detection framework for coordinated collusion in online poker. Chip-flow analysis, behavioral fingerprinting, and GTO deviation scoring explained for any audience." />
   <link rel="stylesheet" href="../../style.css" />
   <style>
-    /* ── Article shell styles ── */
+    html { scroll-behavior: smooth; }
+
+    /* ── Article shell ── */
     .article-meta {
       display: flex;
       flex-wrap: wrap;
@@ -34,7 +36,7 @@
       color: var(--text-secondary);
       max-width: 740px;
       line-height: 1.85;
-      margin-bottom: var(--space-lg);
+      margin-bottom: var(--space-sm);
     }
 
     .article-lede strong {
@@ -71,7 +73,66 @@
       width: 48px;
       height: 1px;
       background: var(--glass-border);
-      margin: var(--space-lg) 0;
+      margin: var(--space-lg) 0 var(--space-md);
+    }
+
+    /* ── Sticky chapter nav ── */
+    .chapter-nav {
+      position: sticky;
+      top: 72px;
+      z-index: 90;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: var(--space-lg);
+      padding: 10px 0 18px;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.97) 68%, rgba(255,255,255,0));
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .chapter-pill {
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: var(--text-tertiary);
+      background: var(--glass-white);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--glass-border);
+      border-radius: 999px;
+      padding: 6px 16px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: color 300ms ease, background 300ms ease, border-color 300ms ease, transform 300ms ease, box-shadow 300ms ease;
+      white-space: nowrap;
+    }
+
+    .chapter-pill:hover {
+      color: var(--text-primary);
+      transform: translateY(-1px);
+      box-shadow: 0 3px 10px rgba(0,0,0,0.07);
+    }
+
+    .chapter-pill.active {
+      color: #f59e0b;
+      border-color: rgba(245, 158, 11, 0.4);
+      background: rgba(245, 158, 11, 0.07);
+      box-shadow: 0 2px 12px rgba(245,158,11,0.12);
+    }
+
+    /* ── Chapter sections ── */
+    .chapter {
+      scroll-margin-top: 130px;
+    }
+
+    .chapter-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: #f59e0b;
+      margin-bottom: 14px;
     }
 
     /* ── Prose body ── */
@@ -88,6 +149,15 @@
       margin-bottom: var(--space-sm);
     }
 
+    .prose-subheading {
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.1px;
+      color: var(--text-primary);
+      margin-top: var(--space-md);
+      margin-bottom: 10px;
+    }
+
     .prose p {
       font-size: 1.05rem;
       font-weight: 300;
@@ -101,13 +171,40 @@
       font-weight: 500;
     }
 
-    /* ── Visualization blocks ── */
-    .viz-block {
-      background: #0f172a;
+    .prose ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 var(--space-sm);
+    }
+
+    .prose ul li {
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: var(--text-secondary);
+      line-height: 1.85;
+      padding-left: 20px;
+      position: relative;
+      margin-bottom: 6px;
+    }
+
+    .prose ul li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 13px;
+      width: 6px;
+      height: 1px;
+      background: #f59e0b;
+      opacity: 0.6;
+    }
+
+    /* ── Viz cards ── */
+    .viz-card {
+      background: #0a0f1e;
       border-radius: var(--radius-lg);
       padding: var(--space-md);
       margin: var(--space-lg) 0;
-      border: 1px solid rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.06);
       max-width: 860px;
       overflow: hidden;
     }
@@ -123,7 +220,7 @@
       font-size: 0.72rem;
       font-weight: 700;
       letter-spacing: 2.5px;
-      color: #334155;
+      color: #1e293b;
       padding-top: 4px;
       white-space: nowrap;
       font-variant-numeric: tabular-nums;
@@ -150,7 +247,7 @@
       flex-wrap: wrap;
       margin-top: 18px;
       padding-top: 16px;
-      border-top: 1px solid rgba(255,255,255,0.05);
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
     }
 
     .legend-item {
@@ -168,14 +265,73 @@
       flex-shrink: 0;
     }
 
-    @keyframes pulseEdge {
-      0%, 100% { stroke-opacity: 0.75; stroke-width: 4.5px; }
-      50% { stroke-opacity: 1; stroke-width: 6px; }
+    /* ── Graph theory callout ── */
+    .graph-theory-aside {
+      background: rgba(245, 158, 11, 0.04);
+      border-left: 2px solid rgba(245, 158, 11, 0.35);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 20px 24px;
+      margin: var(--space-md) 0;
+      max-width: 720px;
     }
 
-    .link-suspicious {
-      animation: pulseEdge 2.2s ease-in-out infinite;
+    .graph-theory-aside .aside-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #f59e0b;
+      margin-bottom: 12px;
     }
+
+    .graph-theory-aside p {
+      font-size: 0.97rem;
+      font-weight: 300;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      margin-bottom: 10px;
+    }
+
+    .graph-theory-aside ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .graph-theory-aside ul li {
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      padding-left: 18px;
+      position: relative;
+      margin-bottom: 4px;
+    }
+
+    .graph-theory-aside ul li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 12px;
+      width: 6px;
+      height: 1px;
+      background: #f59e0b;
+      opacity: 0.5;
+    }
+
+    /* ── Scroll reveal ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 700ms cubic-bezier(0.4, 0, 0.2, 1),
+                  transform 700ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
   </style>
 </head>
 <body>
@@ -213,264 +369,430 @@
     <h1 class="article-title">The collusion problem in poker</h1>
 
     <p class="article-lede">
-      Poker is built on incomplete information. You can see your own cards and the shared cards on the table,
-      but not what your opponents are holding. That hidden information is the entire game.
-      Collusion happens when two or more players at the same table secretly share that information with each other,
-      or coordinate their decisions to move money in a direction that benefits their group.
-      It is cheating, and it is surprisingly hard to prove.
+      Poker is built on incomplete information. You can see your own cards and the shared cards on
+      the table, but not what your opponents are holding. That hidden information is the entire game.
+      Collusion happens when two or more players at the same table secretly share that information
+      with each other, or coordinate their decisions to move money in a direction that benefits their
+      group. It is cheating, and it is surprisingly hard to prove.
     </p>
 
     <p class="article-lede">
-      What makes it difficult is not that the behavior is exotic. It is that the behavior is ordinary.
-      Players fold, call, and bet all day long. Most of the time those decisions are completely legitimate.
-      The question is how you tell the difference when <strong>the data looks the same either way.</strong>
+      What makes it difficult is not that the behavior is exotic. It is that the behavior is
+      ordinary. Players fold, call, and bet all day long. Most of the time those decisions are
+      completely legitimate. The question is how you tell the difference when
+      <strong>the data looks the same either way.</strong>
     </p>
 
-    <div class="divider"></div>
+    <!-- ── Sticky chapter nav ── -->
+    <nav class="chapter-nav" aria-label="Chapter navigation">
+      <a class="chapter-pill active" href="#ch-01">01 The Problem</a>
+      <a class="chapter-pill" href="#ch-02">02 Why It's Hard</a>
+      <a class="chapter-pill" href="#ch-03">03 The Approach</a>
+      <a class="chapter-pill" href="#ch-04">04 The Signals</a>
+      <a class="chapter-pill" href="#ch-05">05 Reflection</a>
+    </nav>
 
-    <!-- ── PIECE 2: THE PROBLEM ── -->
-    <article class="prose">
+    <!-- ══════════════════════════════════════════
+         Chapter 01: The Problem
+         ══════════════════════════════════════════ -->
+    <section id="ch-01" class="chapter">
+      <p class="chapter-label">01 · The Problem</p>
 
-      <h2 class="prose-heading">The problem with looking at individuals</h2>
+      <article class="prose">
 
-      <p>
-        If you pull up a player's stats and they look normal, you move on. That is the natural instinct. 
-        Win rate is fine, fold frequency looks right, nothing jumps out. The problem is that collusion does 
-        not always show up in individual profiles at all. Two players can look completely unremarkable on their 
-        own while quietly and consistently benefiting each other across hundreds of hands.
-      </p>
+        <h2 class="prose-heading">The problem with looking at individuals</h2>
 
-      <p>
-        The anomaly lives in the relationship between them, not in either player alone.
-      </p>
+        <p>
+          If you pull up a player's stats and they look normal, you move on. That is the natural
+          instinct. Win rate is fine, fold frequency looks right, nothing jumps out. The problem is
+          that collusion does not always show up in individual profiles at all. Two players can look
+          completely unremarkable on their own while quietly and consistently benefiting each other
+          across hundreds of hands.
+        </p>
 
-      <p>
-        This makes poker collusion genuinely hard to catch. In most fraud problems, the bad actor does 
-        something that sticks out: unusual login patterns, a transaction that does not fit the account history, 
-        a withdrawal that breaks a rule. In poker, the colluding player is allowed to call, fold, 
-        or bet. Those are legal actions. The only thing that makes them wrong is the reason behind them, 
-        and that reason is invisible to any system that looks at one player at a time.
-      </p>
+        <p>
+          The anomaly lives in the relationship between them, not in either player alone.
+        </p>
 
-      <h2 class="prose-heading">Volume is the first wall</h2>
+        <p>
+          This makes poker collusion genuinely hard to catch. In most fraud problems, the bad actor
+          does something that sticks out: unusual login patterns, a transaction that does not fit the
+          account history, a withdrawal that breaks a rule. In poker, the colluding player is allowed
+          to call, fold, or bet. Those are legal actions. The only thing that makes them wrong is the
+          reason behind them, and that reason is invisible to any system that looks at one player at a
+          time.
+        </p>
 
-      <p>
-        A moderately busy online poker room generates tens of thousands of hand histories a day.
-        Each hand can have anywhere from two to nine players, each making multiple decisions
-        across several rounds of betting. Aggregate that over a month and you are looking at
-        millions of individual decision records. Nobody is reading all of that.
-      </p>
+        <h2 class="prose-heading">Volume is the first wall</h2>
 
-      <p>
-        The problem is not finding something suspicious. The problem is knowing which suspicious
-        things are worth the time it takes to examine them. Look too broadly and you drown in
-        ordinary variance that resembles a pattern. Look too narrowly and the real problems
-        stay invisible. The only way through is to let the data do the filtering first.
-      </p>
+        <p>
+          A moderately busy online poker room generates tens of thousands of hand histories a day.
+          Each hand can have anywhere from two to nine players, each making multiple decisions across
+          several rounds of betting. Aggregate that over a month and you are looking at millions of
+          individual decision records. Nobody is reading all of that.
+        </p>
 
-      <h2 class="prose-heading">Why simple signals fail</h2>
+        <p>
+          The problem is not finding something suspicious. The problem is knowing which suspicious
+          things are worth the time it takes to examine them. Look too broadly and you drown in
+          ordinary variance that resembles a pattern. Look too narrowly and the real problems stay
+          invisible. The only way through is to let the data do the filtering first.
+        </p>
 
-      <p>
-        The first instinct most people have is to look at how often two players share a table.
-        If they keep showing up together, maybe that means something. It rarely does.
-        Players develop preferences for certain stake levels, certain time zones, certain game types.
-        In smaller player pools it is entirely normal to sit across from the same faces day after day.
-        Frequency of co-play is noise, not signal.
-      </p>
+      </article>
+    </section>
 
-      <p>
-        Chip flow is more interesting, but it still breaks down in isolation. Poker has genuine variance.
-        A player can lose money consistently to one specific opponent for weeks just by running into
-        bad luck at the wrong moments. That happens. You need a large enough sample before any
-        concentration in chip flow starts to mean something, and even then it is not proof of anything.
-        It just tells you there is something worth looking at more carefully.
-      </p>
+    <div class="divider reveal"></div>
 
-      <p>
-        The principle that holds the whole approach together is simple: <strong>no single signal is enough.</strong>
-        Each question narrows the field. Something only becomes worth acting on when several
-        independent angles point at the same pair, for different reasons, at the same time.
-      </p>
+    <!-- ══════════════════════════════════════════
+         Chapter 02: Why It's Hard
+         ══════════════════════════════════════════ -->
+    <section id="ch-02" class="chapter">
+      <p class="chapter-label reveal">02 · Why It's Hard</p>
 
-    </article>
+      <article class="prose">
 
-    <div class="divider"></div>
+        <h2 class="prose-heading">Why simple signals fail</h2>
 
-    <!-- ── PIECE 3: THE FRAMEWORK ── -->
-    <article class="prose">
+        <p>
+          The first instinct most people have is to look at how often two players share a table. If
+          they keep showing up together, maybe that means something. It rarely does. Players develop
+          preferences for certain stake levels, certain time zones, certain game types. In smaller
+          player pools it is entirely normal to sit across from the same faces day after day.
+          Frequency of co-play is noise, not signal.
+        </p>
 
-      <h2 class="prose-heading">You need more than one signal</h2>
+        <p>
+          Chip flow is more interesting, but it still breaks down in isolation. Poker has genuine
+          variance. A player can lose money consistently to one specific opponent for weeks just by
+          running into bad luck at the wrong moments. That happens. You need a large enough sample
+          before any concentration in chip flow starts to mean something, and even then it is not
+          proof of anything. It just tells you there is something worth looking at more carefully.
+        </p>
 
-      <p>
-        The unit of suspicion in collusion is not a player. It is a pair.
-        Two people whose history, when you lay it out side by side, looks wrong in ways that
-        neither of them would look wrong on their own. Getting to that pair means cutting
-        through an enormous amount of ordinary data, and the only way to do that reliably
-        is to ask several independent questions and only pay attention when more than one
-        of them comes back with a concerning answer.
-      </p>
+        <p>
+          The principle that holds the whole approach together is simple:
+          <strong>no single signal is enough.</strong> Each question narrows the field. Something
+          only becomes worth acting on when several independent angles point at the same pair, for
+          different reasons, at the same time.
+        </p>
 
-      <p>
-        Three questions turned out to be the right structure. The first: where is the money going?
-        The second: does this player behave differently when that specific person is at the table?
-        The third: do the decisions themselves make sense, or do they consistently go against
-        the player's own interest?
-      </p>
+      </article>
+    </section>
 
-      <p>
-        None of those questions settles anything alone. Together, they are quite hard to explain away.
-      </p>
+    <div class="divider reveal"></div>
 
-      <h2 class="prose-heading">Layer one: follow the chips</h2>
+    <!-- ══════════════════════════════════════════
+         Chapter 03: The Approach
+         ══════════════════════════════════════════ -->
+    <section id="ch-03" class="chapter">
+      <p class="chapter-label reveal">03 · The Approach</p>
 
-      <p>
-        The most concrete thing you can measure in poker is chip flow. At the end of every hand, money
-        moves from some players to others. Over thousands of hands, you can map exactly how much each
-        player won or lost against every specific opponent they faced.
-      </p>
+      <article class="prose">
 
-      <p>
-        Healthy players have chip flow that is spread around. They win some hands against this person,
-        lose some against that one, and over time the picture looks roughly diffuse. What stands out
-        is concentration: a pair where one player is sending a disproportionate share of their losses
-        consistently to the same destination. That alone does not prove anything.
-        But it is a meaningful filter, and at this scale a meaningful filter is exactly what you need.
-      </p>
+        <h2 class="prose-heading">You need more than one signal</h2>
 
-      <p>
-        The important word is concentration. It is not just about total volume of chips moving between two players.
-        A player who loses a lot to one opponent might just be running bad or playing weaker opponents.
-        What matters is whether that concentration is statistically unusual given how many opponents they
-        faced and how many hands they shared. You have to normalize for opportunity, otherwise you are just
-        flagging players who sat at the same table a lot.
-      </p>
+        <p>
+          The unit of suspicion in collusion is not a player. It is a pair. Two people whose history,
+          when you lay it out side by side, looks wrong in ways that neither of them would look wrong
+          on their own. Getting to that pair means cutting through an enormous amount of ordinary
+          data, and the only way to do that reliably is to ask several independent questions and only
+          pay attention when more than one of them comes back with a concerning answer.
+        </p>
 
-      <h2 class="prose-heading">Layer two: behavior changes at the table</h2>
+        <p>
+          Three questions turned out to be the right structure. The first: where is the money going?
+          The second: does this player behave differently when that specific person is at the table?
+          The third: do the decisions themselves make sense, or do they consistently go against the
+          player's own interest?
+        </p>
 
-      <p>
-        Once the chip flow picture looks unusual, the next question is whether the player's
-        decisions actually shift when that specific person is at the table. This is where
-        the analysis gets more interesting.
-      </p>
+        <p>
+          None of those questions settles anything alone. Together, they are quite hard to explain away.
+        </p>
 
-      <p>
-        The idea is to take a specific type of situation, a particular position at the table, a particular
-        stack depth, a particular betting pattern facing them, and compare how one player acts in that
-        situation against all their opponents versus how they act in the same situation against one
-        specific opponent. If the numbers are meaningfully different, that is a sign worth paying attention to.
-      </p>
+        <h2 class="prose-heading">Layer one: follow the chips</h2>
 
-      <p>
-        For example: a player might call bets aggressively across the board, but suddenly become passive
-        and fold far more often in identical spots when one particular player is betting into them.
-        Or they might stop raising their strong hands when that player is in the pot. Neither of those
-        things is impossible by coincidence. But when the gap is large and consistent across hundreds
-        of hands, coincidence starts to look like a poor explanation.
-      </p>
+        <p>
+          The most concrete thing you can measure in poker is chip flow. At the end of every hand,
+          money moves from some players to others. Over thousands of hands, you can map exactly how
+          much each player won or lost against every specific opponent they faced.
+        </p>
 
-      <h2 class="prose-heading">Layer three: are the decisions defensible?</h2>
+        <p>
+          Healthy players have chip flow that is spread around. They win some hands against this
+          person, lose some against that one, and over time the picture looks roughly diffuse. What
+          stands out is concentration: a pair where one player is sending a disproportionate share of
+          their losses consistently to the same destination. That alone does not prove anything. But
+          it is a meaningful filter, and at this scale a meaningful filter is exactly what you need.
+        </p>
 
-      <p>
-        The third and most technically demanding layer asks whether the decisions themselves make sense
-        from a game theory perspective. Modern poker has a well-developed body of research around optimal
-        play. Solver software can calculate, for a given situation, what a rational and unexploitable
-        player should do. Not everyone plays perfectly, but professionals and serious players tend to
-        cluster around those benchmarks in aggregate.
-      </p>
+        <p>
+          The important word is concentration. It is not just about total volume of chips moving
+          between two players. A player who loses a lot to one opponent might just be running bad or
+          playing weaker opponents. What matters is whether that concentration is statistically
+          unusual given how many opponents they faced and how many hands they shared. You have to
+          normalize for opportunity, otherwise you are just flagging players who sat at the same
+          table a lot.
+        </p>
 
-      <p>
-        When a player's decisions in contested spots against one specific opponent consistently deviate
-        from what the math would suggest, and that deviation consistently costs themselves chips
-        while benefiting that opponent, the picture gets hard to dismiss. Not because any single
-        observation is conclusive, but because you now have chip flow that looks concentrated,
-        behavior that shifts around one person, and decisions that quietly work against the player's
-        own interest. Three separate observations. One pattern.
-      </p>
+        <h2 class="prose-heading">Layer two: behavior changes at the table</h2>
 
-    </article>
+        <p>
+          Once the chip flow picture looks unusual, the next question is whether the player's
+          decisions actually shift when that specific person is at the table. This is where the
+          analysis gets more interesting.
+        </p>
 
-    <div class="divider"></div>
+        <p>
+          The idea is to take a specific type of situation (a particular position at the table, a
+          particular stack depth, a particular betting pattern facing them) and compare how one
+          player acts in that situation against all their opponents versus how they act in the same
+          situation against one specific opponent. If the numbers are meaningfully different, that is
+          a sign worth paying attention to.
+        </p>
 
-    <!-- ── PIECE 4: THE SIGNALS + VISUALS ── -->
-    <article class="prose">
+        <p>
+          For example: a player might call bets aggressively across the board, but suddenly become
+          passive and fold far more often in identical spots when one particular player is betting
+          into them. Or they might stop raising their strong hands when that player is in the pot.
+          Neither of those things is impossible by coincidence. But when the gap is large and
+          consistent across hundreds of hands, coincidence starts to look like a poor explanation.
+        </p>
 
-      <h2 class="prose-heading">Seeing it in the data</h2>
+        <h2 class="prose-heading">Layer three: are the decisions defensible?</h2>
 
-      <p>
-        Words can describe a pattern. Actually seeing one is different. The three visualizations
-        below use synthetic data — no real players, no real hands — but the structures they show
-        are real. This is what each signal looks like when it appears.
-      </p>
+        <p>
+          The third and most technically demanding layer asks whether the decisions themselves make
+          sense from a game theory perspective. Modern poker has a well-developed body of research
+          around optimal play. Solver software can calculate, for a given situation, what a rational
+          and unexploitable player should do. Not everyone plays perfectly, but professionals and
+          serious players tend to cluster around those benchmarks in aggregate.
+        </p>
 
-    </article>
+        <p>
+          When a player's decisions in contested spots against one specific opponent consistently
+          deviate from what the math would suggest, and that deviation consistently costs themselves
+          chips while benefiting that opponent, the picture gets hard to dismiss. Not because any
+          single observation is conclusive, but because you now have chip flow that looks
+          concentrated, behavior that shifts around one person, and decisions that quietly work
+          against the player's own interest. Three separate observations. One pattern.
+        </p>
 
-    <div class="viz-block">
-      <div class="viz-header">
-        <span class="viz-number">01</span>
-        <div>
-          <div class="viz-title">Chip flow between players</div>
-          <div class="viz-subtitle">Each line shows the direction and relative volume of chip movement between two players over a sample period. In a healthy game those flows are diffuse. The amber edge is where concentration appeared.</div>
+      </article>
+    </section>
+
+    <div class="divider reveal"></div>
+
+    <!-- ══════════════════════════════════════════
+         Chapter 04: The Signals
+         ══════════════════════════════════════════ -->
+    <section id="ch-04" class="chapter">
+      <p class="chapter-label reveal">04 · The Signals</p>
+
+      <article class="prose">
+
+        <h2 class="prose-heading">Seeing it in the data</h2>
+
+        <p>
+          Words can describe a pattern. Actually seeing one is different. The three visualizations
+          below use synthetic data, no real players or real hands, but the structures they show are
+          real. This is what each signal looks like when it appears.
+        </p>
+
+        <!-- Graph theory foundations -->
+        <div class="graph-theory-aside">
+          <p class="aside-label reveal" style="transition-delay:0ms">Why network methods work</p>
+          <p class="reveal" style="transition-delay:130ms">
+            Modeling a poker table as a directed graph gives this approach a mathematical foundation
+            that individual stat-sheets cannot provide. Each player is a node. Every chip transfer
+            that ends a hand becomes a directed, weighted edge between two nodes. Over thousands of
+            hands, that graph accumulates a record of who sent value where, and how much.
+          </p>
+          <div id="concept-chart" class="reveal" style="height:230px;margin:16px -2px 20px;border-radius:10px;overflow:hidden;transition-delay:190ms;"></div>
+          <ul>
+            <li class="reveal" style="transition-delay:350ms"><strong>Edge weight concentration:</strong> in a fair game, losses distribute
+              roughly evenly across opponents. Unusual volume concentrated on one edge is a signal
+              that the relationship between those two nodes is not random.</li>
+            <li class="reveal" style="transition-delay:490ms"><strong>Local pair structure:</strong> repeated patterns between a specific pair
+              matter more than global table volume. Two players can look normal in aggregate while
+              being anomalous relative to each other.</li>
+            <li class="reveal" style="transition-delay:630ms"><strong>What graphs capture that stats hide:</strong> individual metrics flatten
+              relationships into per-player averages. Graph representation preserves direction,
+              pairing, and concentration. Those are exactly the dimensions where collusion lives.</li>
+          </ul>
+        </div>
+
+      </article>
+
+      <!-- Chart 01: Chip Flow Network -->
+      <div class="viz-card reveal">
+        <div class="viz-header">
+          <span class="viz-number">01</span>
+          <div>
+            <div class="viz-title">Chip flow between players</div>
+            <div class="viz-subtitle">Each edge shows the direction and relative volume of chip movement between two players over a sample period. In a healthy game those flows are diffuse. The amber edge is where concentration appeared.</div>
+          </div>
+        </div>
+        <div id="net-chart" style="height: 420px;"></div>
+        <div class="viz-legend">
+          <div class="legend-item">
+            <div class="legend-dot" style="background: rgba(96,165,250,0.35); border: 1.5px solid rgba(96,165,250,0.5);"></div>
+            Regular players
+          </div>
+          <div class="legend-item">
+            <div class="legend-dot" style="background: rgba(245,158,11,0.15); border: 2px solid rgba(245,158,11,0.75);"></div>
+            Flagged pair (P3, P7)
+          </div>
+          <div class="legend-item">
+            <div class="legend-dot" style="background: #f59e0b;"></div>
+            Concentrated edge (P3 → P7)
+          </div>
         </div>
       </div>
-      <div id="net-container" style="height:360px;"></div>
-      <div class="viz-legend">
-        <div class="legend-item"><div class="legend-dot" style="background:#334155;"></div>Normal chip flow</div>
-        <div class="legend-item"><div class="legend-dot" style="background:#f59e0b;"></div>Flagged concentration (P3 → P7)</div>
-        <div class="legend-item"><div class="legend-dot" style="background:#0f172a; border: 2px solid #f59e0b;"></div>Players of interest</div>
-      </div>
-    </div>
 
-    <article class="prose">
-      <p>
-        In a healthy game, losses are spread around. You lose a little here, win some there, and
-        over time nothing stands out. In the network above, seven of the eight players have roughly
-        balanced, low-volume flows between them. One pair does not. One edge is thick, directional,
-        and consistent enough that it reads differently from everything around it.
-      </p>
-    </article>
+      <article class="prose">
+        <p>
+          In a healthy game, losses are spread around. You lose a little here, win some there, and
+          over time nothing stands out. In the network above, seven of the eight players have roughly
+          balanced, low-volume flows between them. One pair does not. One edge is thick, directional,
+          and consistent enough that it reads differently from everything around it.
+        </p>
+      </article>
 
-    <div class="viz-block">
-      <div class="viz-header">
-        <span class="viz-number">02</span>
-        <div>
-          <div class="viz-title">Behavioral fingerprint comparison</div>
-          <div class="viz-subtitle">How the same player distributes their decisions across identical situations — first against the general player pool, then specifically against the player of interest. The gap between the two profiles is the signal.</div>
+      <!-- Chart 02: Behavioral Fingerprint -->
+      <div class="viz-card reveal">
+        <div class="viz-header">
+          <span class="viz-number">02</span>
+          <div>
+            <div class="viz-title">Behavioral fingerprint comparison</div>
+            <div class="viz-subtitle">How the same player distributes their decisions across identical situations: first against the general player pool, then specifically against the player of interest. The shift in shape is the signal.</div>
+          </div>
+        </div>
+        <div id="radar-chart" style="height: 340px;"></div>
+        <div class="viz-legend">
+          <div class="legend-item">
+            <div class="legend-dot" style="background: #60a5fa;"></div>
+            vs All Opponents
+          </div>
+          <div class="legend-item">
+            <div class="legend-dot" style="background: #f59e0b;"></div>
+            vs Player of Interest
+          </div>
         </div>
       </div>
-      <div id="behavior-chart"></div>
-    </div>
 
-    <article class="prose">
-      <p>
-        The player on the left looks like a normal, moderately aggressive player. The player on
-        the right — same person, same situation types, different opponent — folds far more and
-        almost never pushes back. That shift does not happen by itself. When it is large,
-        consistent, and specific to one matchup, it means something changed.
-      </p>
-    </article>
+      <article class="prose">
+        <p>
+          The blue polygon is normal behavior: the mix of decisions this player makes across all
+          opponents in comparable situations. The amber polygon is the same player, the same
+          situation types, but a different opponent. The shape collapses. Fold frequency climbs,
+          aggression disappears, raising drops to almost nothing. That shift does not happen by
+          itself.
+        </p>
+      </article>
 
-    <div class="viz-block">
-      <div class="viz-header">
-        <span class="viz-number">03</span>
-        <div>
-          <div class="viz-title">Value departure from optimal play</div>
-          <div class="viz-subtitle">Across six repeated situation types, the average gap between what mathematically optimal play would yield and what was actually observed. More negative means more value consistently left on the table.</div>
+      <!-- Chart 03: GTO Deviation -->
+      <div class="viz-card reveal">
+        <div class="viz-header">
+          <span class="viz-number">03</span>
+          <div>
+            <div class="viz-title">Value departure from optimal play</div>
+            <div class="viz-subtitle">Each point is one situation type, one sample window. The y-axis shows how far the player's observed EV fell below what solver-optimal play would have yielded. Two clear clusters emerge: one for normal matchups, one for the flagged pair.</div>
+          </div>
+        </div>
+        <div id="scatter-chart" style="height: 340px;"></div>
+        <div class="viz-legend">
+          <div class="legend-item">
+            <div class="legend-dot" style="background: #60a5fa;"></div>
+            vs All Opponents
+          </div>
+          <div class="legend-item">
+            <div class="legend-dot" style="background: #f87171;"></div>
+            vs Player of Interest
+          </div>
         </div>
       </div>
-      <div id="gto-chart"></div>
-    </div>
 
-    <article class="prose">
-      <p>
-        Everyone departs from optimal play sometimes. Variance, pressure, fatigue — these things
-        affect decisions and that is normal. What is not normal is when the departures cluster
-        around one specific opponent, when they are consistently larger in that matchup, and when
-        the value that walks away from the player tends to land in the same place every time.
-        At that point, variance stops being a satisfying explanation.
-      </p>
-    </article>
+      <article class="prose">
+        <p>
+          Everyone departs from optimal play sometimes. Variance, pressure, fatigue all affect
+          decisions and that is normal. What is not normal is when the departures cluster around one
+          specific opponent, when they are consistently larger in that matchup, and when the value
+          that walks away from the player tends to land in the same place every time. At that point,
+          variance stops being a satisfying explanation.
+        </p>
+      </article>
 
-    <div class="divider"></div>
+    </section>
+
+    <div class="divider reveal"></div>
+
+    <!-- ══════════════════════════════════════════
+         Chapter 05: Reflection
+         ══════════════════════════════════════════ -->
+    <section id="ch-05" class="chapter">
+      <p class="chapter-label reveal">05 · Reflection</p>
+
+      <article class="prose">
+
+        <h2 class="prose-heading">What this framework does well</h2>
+
+        <p>
+          The layered approach works because each signal operates independently. Chip flow does not
+          know what behavioral fingerprinting found. GTO deviation analysis does not depend on what
+          the network showed. When all three converge on the same pair, the probability that
+          coincidence is responsible shrinks rapidly. That convergence is what makes the output
+          actionable rather than speculative.
+        </p>
+
+        <p>
+          The graph representation also solves the volume problem in a way that player-level stats
+          cannot. It forces the question of relationship before the question of individual behavior,
+          which is the right order. That is where the collusion lives.
+        </p>
+
+        <h2 class="prose-heading">Where it falls short</h2>
+
+        <p>
+          This framework is a tool for prioritization, not proof. A case flagged by all three signals
+          still requires human review. The signals narrow the field; they do not make a final
+          determination. That distinction matters, and any implementation should preserve it
+          explicitly.
+        </p>
+
+        <p>
+          A few things the framework does not catch well:
+        </p>
+
+        <ul>
+          <li><strong>Short-session colluders.</strong> Pairs who limit their cooperation to brief,
+            high-intensity windows can evade statistical significance thresholds. You need sample
+            size before this works reliably.</li>
+          <li><strong>Rotating partners.</strong> Colluders who rotate who they are helping from
+            session to session generate more diffuse patterns that look less concentrated on any
+            single pair edge.</li>
+          <li><strong>Genuine bad luck concentrated on one opponent.</strong> Variance is real.
+            A player can run badly against one person for weeks. The framework is designed to reduce
+            false positives, but it cannot eliminate them. Every flagged case needs context.</li>
+          <li><strong>Three-way or larger groups.</strong> The pair-based structure misses organized
+            groups of three or more. Extending to group-level detection requires a different graph
+            algorithm: community detection rather than edge concentration.</li>
+        </ul>
+
+        <h2 class="prose-heading">What this is an example of</h2>
+
+        <p>
+          Poker is a convenient setting because the rules are precise and the decisions are recorded.
+          But the same underlying pattern shows up across fraud, AML, and network security: bad
+          actors with normal-looking individual behavior who only reveal themselves through their
+          relationships. The signal-layering principle and the pair-first approach are not
+          poker-specific. They translate to any domain where the unit of wrongdoing is a relationship
+          rather than a person.
+        </p>
+
+      </article>
+    </section>
 
   </main>
 
@@ -478,167 +800,544 @@
     <p>© <span id="year"></span> Tom Chévez, Costa Rica</p>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
   <script src="../../script.js"></script>
   <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // ── Chapter nav: smooth scroll + active pill ──
+    (function initChapterNav() {
+      const pills = document.querySelectorAll('.chapter-pill');
+      const pillMap = {};
+      pills.forEach(p => {
+        const id = p.getAttribute('href').slice(1);
+        pillMap[id] = p;
+        p.addEventListener('click', e => {
+          e.preventDefault();
+          const target = document.getElementById(id);
+          if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      });
+
+      const activeObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            Object.values(pillMap).forEach(p => p.classList.remove('active'));
+            const pill = pillMap[entry.target.id];
+            if (pill) pill.classList.add('active');
+          }
+        });
+      }, { rootMargin: '-20% 0px -70% 0px' });
+
+      document.querySelectorAll('.chapter').forEach(ch => activeObserver.observe(ch));
+    })();
+
+    // ── Page reveal: fade-up on scroll ──
+    (function initReveal() {
+      const revealObs = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            revealObs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+      document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+    })();
+
+    // ── 00: CONCEPT GRAPH (Why network methods work) ──
+    (function initConceptGraph() {
+      const container = document.getElementById('concept-chart');
+      if (!container) return;
+      const chart = echarts.init(container, null, { renderer: 'canvas' });
+
+      // 4 nodes: Feeder + Account (colluders), Regular A + B (normal players)
+      const conceptNodes = [
+        { id: 'Feeder',    name: 'Feeder',    sus: true,  x: 145, y: 115 },
+        { id: 'Account',   name: 'Account',   sus: true,  x: 490, y: 50  },
+        { id: 'Regular A', name: 'Regular A', sus: false, x: 560, y: 160 },
+        { id: 'Regular B', name: 'Regular B', sus: false, x: 330, y: 190 }
+      ];
+
+      // Normal edges first, dump edge last
+      const conceptEdgeDefs = [
+        { source: 'Regular A', target: 'Regular B', value: 88,  sus: false },
+        { source: 'Regular B', target: 'Regular A', value: 95,  sus: false },
+        { source: 'Regular A', target: 'Feeder',    value: 70,  sus: false },
+        { source: 'Feeder',    target: 'Regular A', value: 65,  sus: false },
+        { source: 'Feeder',    target: 'Account',   value: 290, sus: true  }
+      ];
+
+      function makeConceptEdge(e, pulseSin) {
+        if (e.sus) {
+          const p = pulseSin !== undefined ? pulseSin : 0;
+          return {
+            source: e.source, target: e.target,
+            label: { show: true, formatter: '290 bb', color: '#f59e0b', fontSize: 9,
+                     fontWeight: 700, backgroundColor: 'rgba(0,0,0,0.45)', padding: [2, 5],
+                     borderRadius: 4 },
+            lineStyle: {
+              color: '#f59e0b',
+              width:      pulseSin !== undefined ? 4.2 + 2.2 * (p * 0.5 + 0.5) : 4.5,
+              shadowBlur: pulseSin !== undefined ? 10  + 16  * (p * 0.5 + 0.5) : 14,
+              shadowColor: '#f59e0b',
+              opacity:    pulseSin !== undefined ? 0.75 + 0.25 * (p * 0.5 + 0.5) : 0.9,
+              curveness: 0.28
+            }
+          };
+        }
+        return {
+          source: e.source, target: e.target,
+          label: { show: false },
+          lineStyle: {
+            color: '#334155', width: Math.max(0.8, e.value / 55),
+            curveness: 0.2, opacity: 0.4
+          }
+        };
+      }
+
+      chart.setOption({
+        backgroundColor: 'transparent',
+        series: [{
+          type: 'graph', layout: 'none', roam: false, animation: true, animationDuration: 600,
+          edgeSymbol: ['none', 'arrow'], edgeSymbolSize: [0, 6],
+          data: conceptNodes.map(n => ({
+            id: n.id, name: n.name, x: n.x, y: n.y, symbolSize: 44,
+            label: { show: true, color: n.sus ? '#f59e0b' : '#60a5fa', fontSize: 10, fontWeight: 600 },
+            itemStyle: {
+              color: '#0a0f1e',
+              borderColor: n.sus ? 'rgba(245,158,11,0.8)' : 'rgba(96,165,250,0.4)',
+              borderWidth: n.sus ? 2 : 1.5,
+              shadowBlur: n.sus ? 14 : 0, shadowColor: '#f59e0b'
+            }
+          })),
+          edges: []
+        }]
+      });
+
+      let conceptStarted = false;
+      const conceptObs = new IntersectionObserver(entries => {
+        if (entries[0].isIntersecting && !conceptStarted) {
+          conceptStarted = true;
+          let i = 0;
+          const shown = [];
+          function addConceptEdge() {
+            if (i >= conceptEdgeDefs.length) {
+              let ph = 0;
+              setInterval(() => {
+                ph += 0.07;
+                chart.setOption({ series: [{ edges: conceptEdgeDefs.map(e =>
+                  makeConceptEdge(e, e.sus ? Math.sin(ph) : undefined)
+                ) }] });
+              }, 50);
+              return;
+            }
+            shown.push(conceptEdgeDefs[i]); i++;
+            chart.setOption({ series: [{ edges: shown.map(e => makeConceptEdge(e)) }] });
+            setTimeout(addConceptEdge, i === conceptEdgeDefs.length ? 700 : 320);
+          }
+          setTimeout(addConceptEdge, 350);
+        }
+      }, { threshold: 0.2 });
+      conceptObs.observe(container);
+
+      window.addEventListener('resize', () => chart.resize());
+    })();
 
     // ── 01: CHIP FLOW NETWORK ──
     (function initNetwork() {
-      const W = 800, H = 360;
-      const nodes = [
-        {id:"P1"},{id:"P2"},{id:"P3"},{id:"P4"},
-        {id:"P5"},{id:"P6"},{id:"P7"},{id:"P8"}
-      ];
-      const links = [
-        {source:"P1",target:"P2",value:1.4,sus:false},
-        {source:"P2",target:"P6",value:1.0,sus:false},
-        {source:"P4",target:"P1",value:1.6,sus:false},
-        {source:"P5",target:"P4",value:0.8,sus:false},
-        {source:"P6",target:"P8",value:1.2,sus:false},
-        {source:"P8",target:"P2",value:0.9,sus:false},
-        {source:"P2",target:"P4",value:1.1,sus:false},
-        {source:"P1",target:"P5",value:0.7,sus:false},
-        {source:"P3",target:"P7",value:7.4,sus:true}
+      const container = document.getElementById('net-chart');
+      const chart = echarts.init(container, null, { renderer: 'canvas' });
+
+      // Responsive layout: nodes placed on an oval around the felt table
+      function getLayout() {
+        const w = Math.max(container.offsetWidth || 760, 320);
+        const h = container.offsetHeight || 420;
+        return { w, h, CX: w * 0.5, CY: h * 0.5,
+                 RX: Math.min(w * 0.37, 265), RY: Math.min(h * 0.38, 148) };
+      }
+
+      function buildNodes(L) {
+        function op(deg, sus) {
+          const a = deg * Math.PI / 180;
+          return { x: L.CX + L.RX * Math.cos(a), y: L.CY - L.RY * Math.sin(a), sus };
+        }
+        return [
+          { id: 'P1', name: 'P1', ...op(90,   false) },
+          { id: 'P2', name: 'P2', ...op(37,   false) },
+          { id: 'P3', name: 'P3', ...op(-12,  true)  },
+          { id: 'P4', name: 'P4', ...op(-55,  false) },
+          { id: 'P5', name: 'P5', ...op(-90,  false) },
+          { id: 'P6', name: 'P6', ...op(-143, false) },
+          { id: 'P7', name: 'P7', ...op(188,  true)  },
+          { id: 'P8', name: 'P8', ...op(143,  false) },
+        ];
+      }
+
+      // Sus edge always last so it reveals as the climax
+      const edgeDefs = [
+        { source: 'P1', target: 'P2', value: 1.4, sus: false },
+        { source: 'P4', target: 'P1', value: 1.6, sus: false },
+        { source: 'P8', target: 'P2', value: 0.9, sus: false },
+        { source: 'P6', target: 'P8', value: 1.2, sus: false },
+        { source: 'P5', target: 'P4', value: 0.8, sus: false },
+        { source: 'P2', target: 'P4', value: 1.1, sus: false },
+        { source: 'P2', target: 'P6', value: 1.0, sus: false },
+        { source: 'P1', target: 'P5', value: 0.7, sus: false },
+        { source: 'P3', target: 'P7', value: 7.4, sus: true  }
       ];
 
-      const svg = d3.select("#net-container").append("svg")
-        .attr("width","100%").attr("height",H)
-        .attr("viewBox",`0 0 ${W} ${H}`)
-        .attr("preserveAspectRatio","xMidYMid meet");
+      function makeNetEdge(e, pulseSin) {
+        if (e.sus) {
+          const p = pulseSin !== undefined ? pulseSin : 0;
+          return {
+            source: e.source, target: e.target,
+            lineStyle: {
+              color: '#f59e0b',
+              width:      pulseSin !== undefined ? 4.5 + 2   * (p * 0.5 + 0.5) : 4.5,
+              shadowBlur: pulseSin !== undefined ? 10  + 14  * (p * 0.5 + 0.5) : 14,
+              shadowColor: '#f59e0b',
+              opacity:    pulseSin !== undefined ? 0.75 + 0.25 * (p * 0.5 + 0.5) : 0.9,
+              curveness: 0.3
+            }
+          };
+        }
+        return {
+          source: e.source, target: e.target,
+          lineStyle: { color: '#334155', width: Math.max(0.8, e.value * 0.85), curveness: 0.22, opacity: 0.45 }
+        };
+      }
 
-      const defs = svg.append("defs");
-      ["normal","sus"].forEach(t => {
-        defs.append("marker")
-          .attr("id",`arr-${t}`)
-          .attr("viewBox","0 -5 10 10")
-          .attr("refX",10).attr("refY",0)
-          .attr("markerWidth",5).attr("markerHeight",5)
-          .attr("orient","auto")
-          .append("path")
-          .attr("d","M0,-5L10,0L0,5")
-          .attr("fill", t==="sus" ? "#f59e0b" : "#475569");
+      function buildGraphic(L) {
+        return [{
+          type: 'ellipse',
+          shape: { cx: L.CX, cy: L.CY, rx: L.RX + 26, ry: L.RY + 22 },
+          style: { fill: '#091a10', stroke: '#1a4028', lineWidth: 2.5,
+                   shadowBlur: 24, shadowColor: 'rgba(0,50,20,0.55)' },
+          z: 0, silent: true
+        }];
+      }
+
+      function buildNodeData(nodes) {
+        return nodes.map(n => ({
+          id: n.id, name: n.name, x: n.x, y: n.y, symbolSize: 40,
+          label: { show: true, color: n.sus ? '#f59e0b' : '#60a5fa',
+                   fontSize: 11, fontWeight: 600,
+                   fontFamily: '-apple-system, BlinkMacSystemFont, sans-serif' },
+          itemStyle: {
+            color: '#0a0f1e',
+            borderColor: n.sus ? 'rgba(245,158,11,0.8)' : 'rgba(96,165,250,0.35)',
+            borderWidth: n.sus ? 2 : 1.5,
+            shadowBlur: n.sus ? 14 : 0, shadowColor: '#f59e0b'
+          },
+          emphasis: { itemStyle: {
+            shadowBlur: 22,
+            shadowColor: n.sus ? '#f59e0b' : '#60a5fa',
+            borderColor: n.sus ? '#f59e0b' : '#60a5fa', borderWidth: 2.5
+          }}
+        }));
+      }
+
+      let L = getLayout();
+      let nodes = buildNodes(L);
+
+      // Initial render: felt oval + nodes visible, no edges yet
+      chart.setOption({
+        backgroundColor: 'transparent',
+        graphic: buildGraphic(L),
+        series: [{
+          type: 'graph', layout: 'none', roam: false,
+          animation: true, animationDuration: 700,
+          edgeSymbol: ['none', 'arrow'], edgeSymbolSize: [0, 8],
+          data: buildNodeData(nodes), edges: []
+        }]
       });
 
-      const linkEls = svg.append("g").selectAll("line")
-        .data(links).enter().append("line")
-        .attr("stroke", d => d.sus ? "#f59e0b" : "#334155")
-        .attr("stroke-width", d => d.sus ? 4.5 : Math.max(1, d.value * 0.9))
-        .attr("stroke-opacity", d => d.sus ? 0.9 : 0.5)
-        .attr("marker-end", d => `url(#arr-${d.sus?"sus":"normal"})`)
-        .attr("class", d => d.sus ? "link-suspicious" : "");
+      let netStarted = false;
+      const netObs = new IntersectionObserver(entries => {
+        if (entries[0].isIntersecting && !netStarted) {
+          netStarted = true;
+          let i = 0;
+          const shown = [];
+          function revealNext() {
+            if (i >= edgeDefs.length) {
+              // All edges visible — start amber pulse on the sus edge
+              let ph = 0;
+              setInterval(() => {
+                ph += 0.06;
+                const sin = Math.sin(ph);
+                chart.setOption({ series: [{ edges: edgeDefs.map(e => makeNetEdge(e, e.sus ? sin : undefined)) }] });
+              }, 50);
+              return;
+            }
+            shown.push(edgeDefs[i]); i++;
+            chart.setOption({ series: [{ edges: shown.map(e => makeNetEdge(e)) }] });
+            setTimeout(revealNext, i === edgeDefs.length ? 700 : 310);
+          }
+          setTimeout(revealNext, 500);
+        }
+      }, { threshold: 0.25 });
+      netObs.observe(container);
 
-      const highlighted = new Set(["P3","P7"]);
-      const nodeEls = svg.append("g").selectAll("g")
-        .data(nodes).enter().append("g");
-
-      nodeEls.append("circle")
-        .attr("r",20)
-        .attr("fill","#0f172a")
-        .attr("stroke", d => highlighted.has(d.id) ? "#f59e0b" : "#1e293b")
-        .attr("stroke-width", d => highlighted.has(d.id) ? 2.5 : 1.5);
-
-      nodeEls.append("text")
-        .text(d => d.id)
-        .attr("text-anchor","middle")
-        .attr("dominant-baseline","central")
-        .attr("fill", d => highlighted.has(d.id) ? "#f59e0b" : "#64748b")
-        .attr("font-size","11px")
-        .attr("font-family","-apple-system,BlinkMacSystemFont,sans-serif")
-        .attr("font-weight","600")
-        .attr("pointer-events","none");
-
-      d3.forceSimulation(nodes)
-        .force("link", d3.forceLink(links).id(d=>d.id).distance(140).strength(0.7))
-        .force("charge", d3.forceManyBody().strength(-300))
-        .force("center", d3.forceCenter(W/2, H/2))
-        .force("collision", d3.forceCollide().radius(34))
-        .on("tick", () => {
-          linkEls
-            .attr("x1", d => d.source.x)
-            .attr("y1", d => d.source.y)
-            .attr("x2", d => {
-              const dx = d.target.x - d.source.x, dy = d.target.y - d.source.y;
-              const l = Math.hypot(dx,dy) || 1;
-              return d.target.x - (dx/l)*24;
-            })
-            .attr("y2", d => {
-              const dx = d.target.x - d.source.x, dy = d.target.y - d.source.y;
-              const l = Math.hypot(dx,dy) || 1;
-              return d.target.y - (dy/l)*24;
-            });
-          nodeEls.attr("transform", d => `translate(${d.x},${d.y})`);
-        });
+      window.addEventListener('resize', () => {
+        L = getLayout(); nodes = buildNodes(L);
+        chart.resize();
+        chart.setOption({ graphic: buildGraphic(L), series: [{ data: buildNodeData(nodes) }] });
+      });
     })();
 
-    // ── 02: BEHAVIORAL FINGERPRINT ──
-    new ApexCharts(document.getElementById("behavior-chart"), {
-      series: [
-        { name: "vs All Opponents", data: [38, 45, 17] },
-        { name: "vs Player of Interest", data: [64, 32, 4] }
-      ],
-      chart: {
-        type: "bar", height: 300, background: "transparent",
-        toolbar: { show: false },
-        animations: { enabled: true, speed: 900, easing: "easeinout",
-          animateGradually: { enabled: true, delay: 120 } }
-      },
-      theme: { mode: "dark" },
-      colors: ["#60a5fa", "#f59e0b"],
-      plotOptions: { bar: { columnWidth: "52%", borderRadius: 5, grouped: true } },
-      dataLabels: {
-        enabled: true,
-        formatter: v => v + "%",
-        style: { fontSize: "11px", fontWeight: 600, colors: ["#0f172a"] }
-      },
-      xaxis: {
-        categories: ["Fold", "Call", "Raise / Bet"],
-        labels: { style: { colors: "#475569", fontSize: "13px", fontWeight: 500 } },
-        axisBorder: { color: "#1e293b" }, axisTicks: { color: "#1e293b" }
-      },
-      yaxis: {
-        max: 80,
-        labels: { formatter: v => v + "%", style: { colors: "#475569" } }
-      },
-      grid: { borderColor: "#1e293b", strokeDashArray: 4 },
-      legend: { labels: { colors: "#94a3b8" }, fontSize: "13px" },
-      tooltip: { theme: "dark", y: { formatter: v => v + "% of decisions" } }
-    }).render();
+    // ── 02: BEHAVIORAL FINGERPRINT (Radar) - scroll-triggered ──
+    (function initRadar() {
+      const container = document.getElementById('radar-chart');
+      const chart = echarts.init(container, null, { renderer: 'canvas' });
 
-    // ── 03: GTO DEVIATION ──
-    new ApexCharts(document.getElementById("gto-chart"), {
-      series: [
-        { name: "vs All Opponents", data: [-0.9, -1.3, -0.7, -1.6, -1.0, -1.2] },
-        { name: "vs Player of Interest", data: [-3.3, -5.0, -3.1, -5.4, -3.8, -4.5] }
-      ],
-      chart: {
-        type: "bar", height: 300, background: "transparent",
-        toolbar: { show: false },
-        animations: { enabled: true, speed: 900 }
-      },
-      theme: { mode: "dark" },
-      colors: ["#60a5fa", "#ef4444"],
-      plotOptions: { bar: { columnWidth: "52%", borderRadius: 5, grouped: true } },
-      dataLabels: { enabled: false },
-      xaxis: {
-        categories: ["Spot A", "Spot B", "Spot C", "Spot D", "Spot E", "Spot F"],
-        labels: { style: { colors: "#475569", fontSize: "12px" } },
-        axisBorder: { color: "#1e293b" }, axisTicks: { color: "#1e293b" }
-      },
-      yaxis: {
-        labels: { formatter: v => v + " bb", style: { colors: "#475569" } },
-        title: { text: "EV vs optimal (big blinds)", style: { color: "#475569", fontSize: "11px" } }
-      },
-      annotations: {
-        yaxis: [{ y: 0, borderColor: "#334155", strokeDashArray: 0,
-          label: { text: "Optimal", offsetX: 46,
-            style: { color: "#64748b", background: "transparent", border: "0" } } }]
-      },
-      grid: { borderColor: "#1e293b", strokeDashArray: 4 },
-      legend: { labels: { colors: "#94a3b8" }, fontSize: "13px" },
-      tooltip: { theme: "dark", y: { formatter: v => v + " bb vs optimal" } }
-    }).render();
+      const radarOption = {
+        backgroundColor: 'transparent',
+        legend: { show: false },
+        radar: {
+          center: ['50%', '52%'],
+          radius: '68%',
+          startAngle: 90,
+          indicator: [
+            { name: 'Fold freq.',   max: 100 },
+            { name: 'Call freq.',   max: 100 },
+            { name: 'Bet sizing',   max: 100 },
+            { name: 'Raise freq.',  max: 100 },
+            { name: 'Check-raise',  max: 100 },
+            { name: '3-bet freq.',  max: 100 }
+          ],
+          splitNumber: 4,
+          axisName: {
+            color: '#475569',
+            fontSize: 11,
+            fontFamily: '-apple-system, BlinkMacSystemFont, sans-serif',
+            fontWeight: 400,
+            padding: [0, 4]
+          },
+          splitLine: { lineStyle: { color: 'rgba(255,255,255,0.05)' } },
+          splitArea: { show: false },
+          axisLine: { lineStyle: { color: 'rgba(255,255,255,0.07)' } }
+        },
+        series: [{
+          type: 'radar',
+          animation: true,
+          animationDuration: 1200,
+          animationEasing: 'cubicOut',
+          data: [
+            {
+              value: [38, 45, 52, 17, 9, 13],
+              name: 'vs All Opponents',
+              lineStyle: { color: '#60a5fa', width: 2 },
+              itemStyle: { color: '#60a5fa' },
+              areaStyle: { color: 'rgba(96, 165, 250, 0.12)' },
+              symbol: 'circle',
+              symbolSize: 5
+            },
+            {
+              value: [64, 31, 20, 4, 2, 3],
+              name: 'vs Player of Interest',
+              lineStyle: { color: '#f59e0b', width: 2 },
+              itemStyle: { color: '#f59e0b' },
+              areaStyle: { color: 'rgba(245, 158, 11, 0.12)' },
+              symbol: 'circle',
+              symbolSize: 5
+            }
+          ]
+        }],
+        tooltip: {
+          trigger: 'item',
+          backgroundColor: '#0f172a',
+          borderColor: 'rgba(255,255,255,0.08)',
+          textStyle: { color: '#94a3b8', fontSize: 12 },
+          formatter: params => {
+            const labels = ['Fold freq.', 'Call freq.', 'Bet sizing', 'Raise freq.', 'Check-raise', '3-bet freq.'];
+            return params.name + '<br/>' +
+              params.value.map((v, i) => `${labels[i]}: <b>${v}%</b>`).join('<br/>');
+          }
+        }
+      };
+
+      // Start with zeroed data so the unfurl animation plays on scroll
+      chart.setOption(Object.assign({}, radarOption, {
+        series: [Object.assign({}, radarOption.series[0], {
+          data: radarOption.series[0].data.map(d =>
+            Object.assign({}, d, { value: d.value.map(() => 0) })
+          )
+        })]
+      }));
+
+      const radarObs = new IntersectionObserver(entries => {
+        if (entries[0].isIntersecting) {
+          chart.setOption(radarOption);
+          radarObs.disconnect();
+        }
+      }, { threshold: 0.3 });
+      radarObs.observe(container);
+
+      window.addEventListener('resize', () => chart.resize());
+    })();
+
+    // ── 03: GTO DEVIATION (Scatter) - scroll-triggered ──
+    (function initScatter() {
+      const container = document.getElementById('scatter-chart');
+      const chart = echarts.init(container, null, { renderer: 'canvas' });
+
+      // Blue series: vs all opponents, tightly clustered, low deviation
+      const blueData = [
+        [1.1,-0.5],[1.3,-0.9],[1.2,-0.6],[1.4,-1.1],[1.0,-0.4],
+        [2.0,-0.8],[2.2,-1.4],[2.1,-0.7],[2.4,-1.2],[2.3,-1.6],[2.0,-0.9],
+        [3.1,-0.6],[3.3,-1.3],[3.2,-0.9],[3.5,-1.7],[3.0,-1.0],[3.4,-0.8],
+        [4.0,-1.1],[4.2,-0.7],[4.3,-1.5],[4.1,-1.9],[4.4,-0.6],[4.0,-1.2],
+        [5.1,-0.8],[5.3,-1.6],[5.2,-1.1],[5.4,-0.9],[5.0,-1.4],[5.5,-1.7],
+        [6.0,-1.0],[6.2,-1.8],[6.1,-0.7],[6.3,-1.4],[6.4,-2.0],[6.0,-1.3],
+        [7.1,-0.9],[7.3,-1.7],[7.2,-1.2],[7.4,-1.5],[7.0,-2.1],[7.5,-1.0],
+        [8.0,-1.1],[8.2,-1.9],[8.1,-0.8],[8.3,-1.6],[8.4,-2.2],[8.0,-1.4],
+        [9.0,-1.3],[9.2,-2.0],[9.1,-1.0],[9.4,-1.7],[9.3,-2.3],
+        [10.0,-1.5],[10.2,-2.1],[10.1,-1.2]
+      ];
+
+      // Red series: vs player of interest, high deviation, distinct cluster
+      const redData = [
+        [1.3,-3.1],[1.5,-3.8],[1.2,-3.4],
+        [2.1,-3.3],[2.4,-4.2],[2.2,-3.6],[2.5,-3.9],
+        [3.0,-3.5],[3.3,-4.5],[3.1,-3.8],[3.4,-5.0],
+        [4.2,-3.7],[4.0,-4.8],[4.3,-3.4],[4.5,-5.3],
+        [5.1,-3.9],[5.3,-4.6],[5.0,-4.1],[5.4,-5.1],
+        [6.0,-4.2],[6.2,-5.0],[6.1,-3.8],[6.3,-5.4],
+        [7.1,-4.5],[7.3,-5.2],[7.0,-4.0],[7.4,-5.6],
+        [8.0,-4.7],[8.2,-5.4],[8.1,-4.2],[8.3,-5.8],
+        [9.0,-4.9],[9.2,-5.6],[9.1,-4.4],[9.3,-5.9],
+        [10.0,-5.1],[10.2,-5.8],[10.1,-4.7]
+      ];
+
+      // Trend line for red cluster (linear regression approx: y = -3.0 - 0.28x)
+      const trendLine = [[1, -3.28], [10, -5.8]];
+
+      const scatterOption = {
+        backgroundColor: 'transparent',
+        animation: true,
+        animationDuration: 1200,
+        animationEasing: 'cubicOut',
+        animationDelay: idx => idx * 12,
+        grid: { top: 28, right: 30, bottom: 48, left: 60 },
+        xAxis: {
+          type: 'value',
+          name: 'Situation complexity',
+          nameLocation: 'center',
+          nameGap: 30,
+          nameTextStyle: { color: '#475569', fontSize: 11 },
+          min: 0, max: 11,
+          splitLine: { lineStyle: { color: 'rgba(255,255,255,0.05)' } },
+          axisLine: { lineStyle: { color: '#1e293b' } },
+          axisTick: { lineStyle: { color: '#1e293b' } },
+          axisLabel: { color: '#475569', fontSize: 11 }
+        },
+        yAxis: {
+          type: 'value',
+          name: 'EV vs optimal (bb)',
+          nameLocation: 'center',
+          nameGap: 44,
+          nameTextStyle: { color: '#475569', fontSize: 11 },
+          min: -7, max: 0.5,
+          splitLine: { lineStyle: { color: 'rgba(255,255,255,0.05)' } },
+          axisLine: { lineStyle: { color: '#1e293b' } },
+          axisTick: { lineStyle: { color: '#1e293b' } },
+          axisLabel: {
+            color: '#475569',
+            fontSize: 11,
+            formatter: v => v + ' bb'
+          }
+        },
+        series: [
+          {
+            name: 'vs All Opponents',
+            type: 'scatter',
+            data: blueData,
+            symbolSize: 7,
+            itemStyle: {
+              color: 'rgba(96, 165, 250, 0.75)',
+              shadowBlur: 4,
+              shadowColor: 'rgba(96,165,250,0.3)'
+            },
+            emphasis: { itemStyle: { color: '#60a5fa', shadowBlur: 10 } }
+          },
+          {
+            name: 'vs Player of Interest',
+            type: 'scatter',
+            data: redData,
+            symbolSize: 7,
+            itemStyle: {
+              color: 'rgba(248, 113, 113, 0.82)',
+              shadowBlur: 4,
+              shadowColor: 'rgba(248,113,113,0.3)'
+            },
+            emphasis: { itemStyle: { color: '#f87171', shadowBlur: 10 } }
+          },
+          {
+            name: 'Trend (vs POI)',
+            type: 'line',
+            data: trendLine,
+            showSymbol: false,
+            lineStyle: {
+              color: 'rgba(248, 113, 113, 0.4)',
+              width: 1.5,
+              type: 'dashed'
+            },
+            tooltip: { show: false },
+            silent: true
+          },
+          {
+            name: 'Optimal',
+            type: 'line',
+            data: [[0, 0], [11, 0]],
+            showSymbol: false,
+            lineStyle: { color: 'rgba(255,255,255,0.08)', width: 1 },
+            tooltip: { show: false },
+            silent: true,
+            markLine: {
+              silent: true,
+              data: [{ yAxis: 0 }],
+              lineStyle: { color: 'rgba(255,255,255,0.08)', width: 1, type: 'solid' },
+              label: {
+                show: true,
+                position: 'end',
+                formatter: 'Optimal',
+                color: '#334155',
+                fontSize: 10
+              }
+            }
+          }
+        ],
+        tooltip: {
+          trigger: 'item',
+          backgroundColor: '#0f172a',
+          borderColor: 'rgba(255,255,255,0.08)',
+          textStyle: { color: '#94a3b8', fontSize: 12 },
+          formatter: params => {
+            if (!params.data || params.data.length < 2) return '';
+            return `${params.seriesName}<br/>Complexity: <b>${params.data[0].toFixed(1)}</b><br/>Deviation: <b>${params.data[1].toFixed(1)} bb</b>`;
+          }
+        }
+      };
+
+      // Render empty first, animate in when scrolled into view
+      chart.setOption({
+        ...scatterOption,
+        animation: false,
+        series: scatterOption.series.map(s => ({ ...s, data: [] }))
+      });
+
+      const scatterObserver = new IntersectionObserver(entries => {
+        if (entries[0].isIntersecting) {
+          chart.setOption(scatterOption);
+          scatterObserver.disconnect();
+        }
+      }, { threshold: 0.25 });
+      scatterObserver.observe(container);
+
+      window.addEventListener('resize', () => chart.resize());
+    })();
   </script>
 </body>
 </html>
