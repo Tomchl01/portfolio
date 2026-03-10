@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>The Problem Around Collusion in Poker | Tom Chévez</title>
+  <title>The Collusion Problem in Poker | Tom Chévez</title>
   <meta name="description" content="A case study on building a layered detection framework for coordinated collusion in online poker. Chip-flow analysis, behavioral fingerprinting, and GTO deviation scoring explained for any audience." />
   <link rel="stylesheet" href="../../style.css" />
   <style>
@@ -134,21 +134,20 @@
       <span class="meta-tag">2026</span>
     </div>
 
-    <h1 class="article-title">The problem around collusion in poker</h1>
+    <h1 class="article-title">The collusion problem in poker</h1>
 
     <p class="article-lede">
-      Poker is built on incomplete information. You can see your own cards and the shared cards on the table, 
-      but not what your opponents are holding. That hidden information is the entire game. 
-      Collusion happens when two or more players at the same table secretly share that information with each other, 
-      or coordinate their decisions to move money in a direction that benefits their group. 
+      Poker is built on incomplete information. You can see your own cards and the shared cards on the table,
+      but not what your opponents are holding. That hidden information is the entire game.
+      Collusion happens when two or more players at the same table secretly share that information with each other,
+      or coordinate their decisions to move money in a direction that benefits their group.
       It is cheating, and it is surprisingly hard to prove.
     </p>
 
     <p class="article-lede">
-      This is a behind-the-scenes account of how I built a system to find it. 
-      You do not need to know poker to follow along. 
-      The interesting parts are not really about cards at all. 
-      They are about <strong>how you find coordinated dishonesty inside a river of normal-looking data.</strong>
+      What makes it difficult is not that the behavior is exotic. It is that the behavior is ordinary.
+      Players fold, call, and bet all day long. Most of the time those decisions are completely legitimate.
+      The question is how you tell the difference when <strong>the data looks the same either way.</strong>
     </p>
 
     <div class="divider"></div>
