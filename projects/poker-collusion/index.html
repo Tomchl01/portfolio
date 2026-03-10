@@ -73,6 +73,33 @@
       background: var(--glass-border);
       margin: var(--space-lg) 0;
     }
+
+    /* ── Prose body ── */
+    .prose {
+      max-width: 720px;
+    }
+
+    .prose-heading {
+      font-size: clamp(1.3rem, 2.5vw, 1.7rem);
+      font-weight: 400;
+      letter-spacing: -0.5px;
+      color: var(--text-primary);
+      margin-top: var(--space-lg);
+      margin-bottom: var(--space-sm);
+    }
+
+    .prose p {
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: var(--text-secondary);
+      line-height: 1.85;
+      margin-bottom: var(--space-sm);
+    }
+
+    .prose p strong {
+      color: var(--text-primary);
+      font-weight: 500;
+    }
   </style>
 </head>
 <body>
@@ -115,6 +142,74 @@
       it is <strong>finding the ones that matter</strong>, building a case that holds up to scrutiny, and doing it
       at scale without burying investigators in false positives. This is a behind-the-scenes account of how I approached that problem.
     </p>
+
+    <div class="divider"></div>
+
+    <!-- ── PIECE 2: THE PROBLEM ── -->
+    <article class="prose">
+
+      <h2 class="prose-heading">The problem with looking at individuals</h2>
+
+      <p>
+        If you pull up a player's stats and they look normal, you move on. That is the natural instinct. 
+        Win rate is fine, fold frequency looks right, nothing jumps out. The problem is that collusion does 
+        not always show up in individual profiles at all. Two players can look completely unremarkable on their 
+        own while quietly and consistently benefiting each other across hundreds of hands.
+      </p>
+
+      <p>
+        The anomaly lives in the relationship between them, not in either player alone.
+      </p>
+
+      <p>
+        This makes poker collusion genuinely hard to catch. In most fraud problems, the bad actor does 
+        something that sticks out: unusual login patterns, a transaction that does not fit the account history, 
+        a withdrawal that breaks a rule. In poker, the colluding player is allowed to call, fold, 
+        or bet. Those are legal actions. The only thing that makes them wrong is the reason behind them, 
+        and that reason is invisible to any system that looks at one player at a time.
+      </p>
+
+      <h2 class="prose-heading">Volume is the first wall</h2>
+
+      <p>
+        The second challenge is scale. A moderately busy online poker room generates tens of thousands of 
+        hand histories a day. Each hand can have anywhere from two to nine players, each making three 
+        to fifteen decisions across multiple streets. By the time you aggregate that into something a 
+        human investigator can actually review, you are looking at millions of individual decision records 
+        per month. No team is reading all of that.
+      </p>
+
+      <p>
+        So anything you build has to triage. It needs to surface the cases that deserve a human's 
+        attention and leave behind the ones that do not. Get the triage wrong in one direction and 
+        investigators drown in noise. Get it wrong in the other direction and real colluders go undetected. 
+        Both outcomes are failures, just different kinds.
+      </p>
+
+      <h2 class="prose-heading">Single signals break down fast</h2>
+
+      <p>
+        The naive starting point is a heuristic: flag any pair of players who share a high percentage of 
+        hands together. That sounds reasonable until you remember that players have table preferences, 
+        play on the same stakes for years, and some smaller player pools naturally overlap constantly. 
+        Co-play frequency tells you almost nothing on its own.
+      </p>
+
+      <p>
+        You could try looking at chip flow instead. Flag pairs where one player keeps losing chips to 
+        the same opponent. Closer, but still fragile. Poker has genuine variance. A player can run bad 
+        against one specific person for a long stretch just by chance. You need a lot of hands before 
+        chip flow concentration becomes statistically meaningful, and even then it is not proof of anything. 
+        It is just a reason to look closer.
+      </p>
+
+      <p>
+        This is where I landed on the core design principle for this system: <strong>no single signal 
+        is enough.</strong> The job is to stack independent signals so that each one narrows the 
+        search, and a case only escalates when multiple layers agree.
+      </p>
+
+    </article>
 
     <div class="divider"></div>
 
