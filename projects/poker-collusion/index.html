@@ -193,27 +193,28 @@
         Both outcomes are failures, just different kinds.
       </p>
 
-      <h2 class="prose-heading">Single signals break down fast</h2>
+      <h2 class="prose-heading">Why simple signals fail</h2>
 
       <p>
-        The naive starting point is a heuristic: flag any pair of players who share a high percentage of 
-        hands together. That sounds reasonable until you remember that players have table preferences, 
-        play on the same stakes for years, and some smaller player pools naturally overlap constantly. 
-        Co-play frequency tells you almost nothing on its own.
+        The first instinct most people have is to look at how often two players share a table.
+        If they keep showing up together, maybe that means something. It rarely does.
+        Players develop preferences for certain stake levels, certain time zones, certain game types.
+        In smaller player pools it is entirely normal to sit across from the same faces day after day.
+        Frequency of co-play is noise, not signal.
       </p>
 
       <p>
-        You could try looking at chip flow instead. Flag pairs where one player keeps losing chips to 
-        the same opponent. Closer, but still fragile. Poker has genuine variance. A player can run bad 
-        against one specific person for a long stretch just by chance. You need a lot of hands before 
-        chip flow concentration becomes statistically meaningful, and even then it is not proof of anything. 
-        It is just a reason to look closer.
+        Chip flow is more interesting, but it still breaks down in isolation. Poker has genuine variance.
+        A player can lose money consistently to one specific opponent for weeks just by running into
+        bad luck at the wrong moments. That happens. You need a large enough sample before any
+        concentration in chip flow starts to mean something, and even then it is not proof of anything.
+        It just tells you there is something worth looking at more carefully.
       </p>
 
       <p>
-        This is where I landed on the core design principle for this system: <strong>no single signal 
-        is enough.</strong> The job is to stack independent signals so that each one narrows the 
-        search, and a case only escalates when multiple layers agree.
+        The core principle that holds the whole thing together is simple: <strong>no single signal is enough.</strong>
+        Each layer of the analysis narrows the field. A case only becomes a case when several
+        independent tests point at the same pair, for different reasons, at the same time.
       </p>
 
     </article>
