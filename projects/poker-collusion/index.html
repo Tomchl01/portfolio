@@ -319,6 +319,58 @@
       opacity: 0.5;
     }
 
+    /* ── Ch02 signal toggle ── */
+    .signal-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 22px;
+    }
+
+    .signal-tab {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: #475569;
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 999px;
+      padding: 6px 18px;
+      cursor: pointer;
+      transition: color 200ms ease, border-color 200ms ease, background 200ms ease;
+    }
+
+    .signal-tab:hover { color: #94a3b8; border-color: rgba(255,255,255,0.15); }
+
+    .signal-tab.active {
+      color: #f59e0b;
+      border-color: rgba(245,158,11,0.45);
+      background: rgba(245,158,11,0.07);
+    }
+
+    .signal-verdict {
+      margin-top: 16px;
+      padding: 12px 18px;
+      border-radius: 8px;
+      font-size: 0.88rem;
+      font-weight: 400;
+      line-height: 1.6;
+      transition: opacity 260ms ease;
+    }
+
+    .signal-verdict.miss {
+      background: rgba(96,165,250,0.06);
+      border: 1px solid rgba(96,165,250,0.15);
+      color: #64748b;
+    }
+
+    .signal-verdict.hit {
+      background: rgba(245,158,11,0.06);
+      border: 1px solid rgba(245,158,11,0.3);
+      color: #f59e0b;
+    }
+
     /* ── Ch01 toggle viz ── */
     .ch01-toggle {
       display: flex;
@@ -613,6 +665,28 @@
         </p>
 
       </article>
+
+      <!-- Ch02 interactive: why each signal fails alone -->
+      <div class="viz-card reveal">
+        <div class="viz-header">
+          <span class="viz-number"></span>
+          <div>
+            <div class="viz-title">One signal at a time</div>
+            <div class="viz-subtitle">Each lens flags dozens of pairs. None of them alone tells you anything useful. Pick a signal to see why.</div>
+          </div>
+        </div>
+        <div class="signal-tabs">
+          <button class="signal-tab active" id="sig-coplay">Co-play frequency</button>
+          <button class="signal-tab" id="sig-chipflow">Chip flow</button>
+          <button class="signal-tab" id="sig-behavior">Behavior shift</button>
+          <button class="signal-tab" id="sig-all">All three → one pair</button>
+        </div>
+        <div id="ch02-chart" style="height:300px;"></div>
+        <div class="signal-verdict miss" id="signal-verdict">
+          <strong>Co-play frequency:</strong> P3–P7 share 312 sessions together — but so do 14 other pairs at similar stakes. High co-play is normal. This signal flags the whole room.
+        </div>
+      </div>
+
     </section>
 
     <div class="divider reveal"></div>
@@ -1746,6 +1820,208 @@
 
       btnInd.addEventListener('click', () => switchTo('individual'));
       btnPair.addEventListener('click', () => switchTo('pair'));
+
+      window.addEventListener('resize', () => chart.resize());
+    })();
+
+    // ── Ch02: signal toggle ──
+    (function initCh02() {
+      const container = document.getElementById('ch02-chart');
+      const verdict   = document.getElementById('signal-verdict');
+      if (!container) return;
+      const chart = echarts.init(container, null, { renderer: 'canvas' });
+
+      // All pairs in the pool (synthetic, 18 pairs)
+      const pairs = [
+        'P1–P2','P1–P4','P1–P8','P2–P6','P2–P9',
+        'P3–P5','P3–P7','P3–P9','P4–P6','P4–P11',
+        'P5–P8','P5–P12','P6–P10','P7–P11','P7–P14',
+        'P8–P13','P9–P15','P10–P16'
+      ];
+      const TARGET = 'P3–P7'; // the guilty pair
+      const ti = pairs.indexOf(TARGET);
+
+      // Co-play sessions (P3-P7 high but not uniquely so)
+      const coplaySessions = [
+        210,188,245,196,203,
+        178,312,220,167,198,
+        234,165,190,214,182,
+        199,223,175
+      ];
+
+      // Chip-flow concentration z-score (P3-P7 elevated, but 5 others look similar)
+      const chipZ = [
+        0.8,1.1,0.6,1.4,0.9,
+        0.7,3.1,1.2,1.5,0.5,
+        1.3,1.0,1.6,0.8,1.1,
+        0.9,0.6,1.2
+      ];
+
+      // Behavior shift score (P3-P7 high; only 1 other pair is close)
+      const behavShift = [
+        12,8,15,10,9,
+        7,74,18,11,6,
+        13,9,21,8,12,
+        10,7,14
+      ];
+
+      // Composite — only P3-P7 is top-3 in all three → displayed as dot chart
+      const composite = pairs.map((p, i) => ({
+        name: p,
+        coplay: coplaySessions[i],
+        chip:   chipZ[i],
+        behav:  behavShift[i],
+        flagAll: (coplaySessions[i] > 260) && (chipZ[i] > 2.5) && (behavShift[i] > 50)
+      }));
+
+      function colorFor(i, metric) {
+        const isTgt = i === ti;
+        if (metric === 'all') return isTgt ? '#f59e0b' : 'rgba(96,165,250,0.18)';
+        return isTgt ? 'rgba(245,158,11,0.9)' : 'rgba(96,165,250,0.45)';
+      }
+
+      function makeBar(values, label, yMax, isFlagged) {
+        return {
+          backgroundColor: 'transparent',
+          animation: true, animationDuration: 600, animationEasing: 'cubicOut',
+          grid: { top: 24, right: 24, bottom: 52, left: 56 },
+          xAxis: {
+            type: 'category', data: pairs,
+            axisLabel: {
+              color: (val) => val === TARGET ? '#f59e0b' : '#334155',
+              fontSize: 9, rotate: 38, interval: 0
+            },
+            axisLine: { lineStyle: { color: 'rgba(255,255,255,0.06)' } },
+            axisTick: { show: false }
+          },
+          yAxis: {
+            type: 'value',
+            name: label, nameLocation: 'center', nameGap: 40,
+            nameTextStyle: { color: '#475569', fontSize: 10 },
+            max: yMax,
+            splitLine: { lineStyle: { color: 'rgba(255,255,255,0.05)' } },
+            axisLine: { show: false }, axisTick: { show: false },
+            axisLabel: { color: '#475569', fontSize: 10 }
+          },
+          series: [{
+            type: 'bar',
+            data: values.map((v, i) => ({
+              value: v,
+              itemStyle: {
+                color: colorFor(i, isFlagged ? 'all' : 'single'),
+                borderRadius: [3, 3, 0, 0]
+              }
+            })),
+            barMaxWidth: 28
+          }],
+          tooltip: {
+            trigger: 'axis',
+            backgroundColor: '#0f172a',
+            borderColor: 'rgba(255,255,255,0.08)',
+            textStyle: { color: '#94a3b8', fontSize: 11 },
+            formatter: p => `${p[0].name}: <b>${p[0].value}</b>`
+          }
+        };
+      }
+
+      // "All three" view: scatter where x=chip z-score, y=behavior shift, size=coplay
+      const allOption = {
+        backgroundColor: 'transparent',
+        animation: true, animationDuration: 700, animationEasing: 'cubicOut',
+        grid: { top: 24, right: 60, bottom: 48, left: 60 },
+        xAxis: {
+          type: 'value', name: 'Chip-flow z-score', nameLocation: 'center', nameGap: 30,
+          nameTextStyle: { color: '#475569', fontSize: 10 },
+          splitLine: { lineStyle: { color: 'rgba(255,255,255,0.05)' } },
+          axisLine: { show: false }, axisTick: { show: false },
+          axisLabel: { color: '#475569', fontSize: 10 }
+        },
+        yAxis: {
+          type: 'value', name: 'Behavior shift', nameLocation: 'center', nameGap: 40,
+          nameTextStyle: { color: '#475569', fontSize: 10 },
+          splitLine: { lineStyle: { color: 'rgba(255,255,255,0.05)' } },
+          axisLine: { show: false }, axisTick: { show: false },
+          axisLabel: { color: '#475569', fontSize: 10 }
+        },
+        series: [{
+          type: 'scatter',
+          data: composite.map(c => ({
+            name: c.name,
+            value: [c.chip, c.behav],
+            symbolSize: 8 + (c.coplay - 160) / 18,
+            itemStyle: {
+              color: c.flagAll ? '#f59e0b' : 'rgba(96,165,250,0.35)',
+              shadowBlur: c.flagAll ? 20 : 0,
+              shadowColor: '#f59e0b'
+            },
+            label: {
+              show: c.flagAll, formatter: c.name,
+              color: '#f59e0b', fontSize: 9, fontWeight: 700,
+              position: 'right', offset: [4, 0]
+            }
+          }))
+        }],
+        tooltip: {
+          trigger: 'item',
+          backgroundColor: '#0f172a',
+          borderColor: 'rgba(255,255,255,0.08)',
+          textStyle: { color: '#94a3b8', fontSize: 11 },
+          formatter: p => `${p.name}<br/>Chip z: <b>${p.value[0].toFixed(1)}</b><br/>Behavior: <b>${p.value[1]}</b>`
+        }
+      };
+
+      const VERDICTS = {
+        coplay: {
+          cls: 'miss',
+          html: '<strong>Co-play frequency:</strong> P3–P7 share 312 sessions — but so do 14 other pairs at similar stakes. High co-play is normal. This signal flags the whole room.'
+        },
+        chipflow: {
+          cls: 'miss',
+          html: '<strong>Chip flow alone:</strong> The z-score on P3–P7 is elevated, but 5 other pairs are in the same band. Bad runs happen. Without more, this is just a list of candidates.'
+        },
+        behavior: {
+          cls: 'miss',
+          html: '<strong>Behavior shift alone:</strong> P3–P7 scores 74 — the highest in the pool. But one strong reading could be a small sample or a bad run against that opponent\'s style. Still not enough.'
+        },
+        all: {
+          cls: 'hit',
+          html: '<strong>All three together:</strong> Only one pair clears every threshold at once — P3–P7. High co-play, extreme chip concentration, and a dramatic behavior shift. Three independent angles. One answer.'
+        }
+      };
+
+      function setVerdict(key) {
+        verdict.className = 'signal-verdict ' + VERDICTS[key].cls;
+        verdict.innerHTML = VERDICTS[key].html;
+      }
+
+      chart.setOption(makeBar(coplaySessions, 'Sessions together', 360, false));
+      setVerdict('coplay');
+
+      function activate(tab) {
+        document.querySelectorAll('.signal-tab').forEach(b => b.classList.remove('active'));
+        tab.classList.add('active');
+      }
+
+      document.getElementById('sig-coplay').addEventListener('click', function() {
+        activate(this);
+        chart.setOption(makeBar(coplaySessions, 'Sessions together', 360, false), true);
+        setVerdict('coplay');
+      });
+      document.getElementById('sig-chipflow').addEventListener('click', function() {
+        activate(this);
+        chart.setOption(makeBar(chipZ, 'Chip-flow z-score', 4, false), true);
+        setVerdict('chipflow');
+      });
+      document.getElementById('sig-behavior').addEventListener('click', function() {
+        activate(this);
+        chart.setOption(makeBar(behavShift, 'Behavior shift score', 90, false), true);
+        setVerdict('behavior');
+      });
+      document.getElementById('sig-all').addEventListener('click', function() {
+        activate(this);
+        chart.setOption(allOption, true);
+        setVerdict('all');
+      });
 
       window.addEventListener('resize', () => chart.resize());
     })();
