@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>The Collusion Problem in Poker | Tom Chévez</title>
-  <meta name="description" content="A case study on building a layered detection framework for coordinated collusion in online poker. Chip-flow analysis, behavioral fingerprinting, and GTO deviation scoring explained for any audience." />
+  <meta name="description" content="A case study on detecting coordinated collusion in online poker using chip flow analysis, decision pattern comparison, and deviation scoring." />
   <link rel="stylesheet" href="../../style.css" />
   <style>
     html { scroll-behavior: smooth; }
@@ -587,7 +587,7 @@
         </p>
 
         <p>
-          That's what makes it genuinely hard to catch. Most fraud leaves a footprint — unusual
+          That's what makes it genuinely hard to catch. Most fraud leaves a clear trail: unusual
           login locations, a transaction that doesn't fit the account's history, a withdrawal that
           trips a rule. In poker, the colluding player is doing legal things: calling, folding,
           betting. The only thing wrong is the reason behind those decisions, and that reason
@@ -598,15 +598,15 @@
 
         <p>
           A moderately busy online poker room generates tens of thousands of hand histories a day.
-          Two to nine players per hand, multiple decisions per player per street — aggregate that
-          over a month and you're in the millions of individual records. Nobody's reading that
+          Two to nine players per hand, multiple decisions per player per street. Add that up over
+          a month and you're looking at millions of individual records. Nobody's reading that
           manually.
         </p>
 
         <p>
-          The hard part isn't finding something suspicious — it's knowing which suspicious things
-          are actually worth pursuing. Cast too wide and you're chasing noise. Too narrow and real
-          cases stay hidden. The data has to narrow things down first, or the work becomes impossible.
+          The hard part is knowing which suspicious things are actually worth pursuing. Cast too
+          wide and you're chasing noise. Too narrow and real cases stay hidden. The data has to
+          narrow things down first, or the work becomes impossible.
         </p>
 
       </article>
@@ -645,16 +645,16 @@
 
         <p>
           The first thing most people look at is how often two players share a table. They keep
-          sitting together — that must mean something. It usually doesn't. Players have preferences:
+          sitting together, and you'd think that means something. Usually it doesn't. Players have preferences:
           specific stakes, specific hours, specific game types. In a smaller pool you naturally run
           into the same faces over and over. Co-play frequency alone is noise.
         </p>
 
         <p>
-          Chip flow is more useful, but it still falls apart on its own. Poker variance is real —
-          you can run badly against one person for weeks through pure bad luck. You need enough
-          hands before any concentration in flow starts to mean something, and even then it's not
-          proof. It's a reason to look harder, nothing more.
+          Chip flow is more useful, but it still falls apart on its own. Variance is real. You
+          can run badly against one person for weeks through pure bad luck. You need enough hands
+          before any concentration in flow starts to mean something, and even then it's not proof.
+          It gives you a reason to look harder, but that's it.
         </p>
 
         <p>
@@ -682,7 +682,7 @@
         </div>
         <div id="ch02-chart" style="height:300px;"></div>
         <div class="signal-verdict miss" id="signal-verdict">
-          <strong>Co-play frequency:</strong> P3–P7 share 312 sessions together — but so do 14 other pairs at similar stakes. High co-play is normal. This signal flags the whole room.
+          <strong>Co-play frequency:</strong> P3–P7 share 312 sessions together, but so do 14 other pairs at similar stakes. High co-play is normal. This signal flags the whole room.
         </div>
       </div>
 
@@ -701,10 +701,10 @@
         <h2 class="prose-heading">You need more than one signal</h2>
 
         <p>
-          The unit of suspicion isn't a player — it's a pair. Two people whose history, laid out
-          side by side, looks wrong in ways that neither of them would look wrong alone. Getting
-          there means cutting through a lot of ordinary data, and the only reliable approach is to
-          ask several separate questions and only flag a pair when more than one raises a concern.
+          The target here is a pair of players, not an individual. Two people whose combined
+          history points to something neither of their own profiles would show. Getting there means
+          cutting through a lot of ordinary data, and the only reliable approach is to ask several
+          separate questions and flag a pair only when more than one raises a concern.
         </p>
 
         <p>
@@ -726,9 +726,9 @@
         </p>
 
         <p>
-          In a normal game, a player's chip flow spreads around the table — win some here, lose
-          some there. What stands out is when one player sends a disproportionate share of their
-          losses consistently to the same person. That alone doesn't prove anything, but it's a
+          In a normal game, a player's chips spread around the table. Win some here, lose some
+          there. What stands out is when one player sends a disproportionate share of their losses
+          consistently to the same person. That alone doesn't prove anything, but it's a
           meaningful filter. At this volume, any good filter matters.
         </p>
 
@@ -747,9 +747,9 @@
         </p>
 
         <p>
-          Take a specific situation type — a particular position, stack depth, facing a particular
-          bet size — and compare how a player acts in that spot across all opponents versus against
-          one specific person. If the numbers shift meaningfully, that's worth attention.
+          Take a specific situation type (a particular position, a certain stack depth, a bet
+          size) and compare how a player acts in that spot against everyone versus against one
+          specific person. If the numbers shift meaningfully, that's worth attention.
         </p>
 
         <p>
@@ -770,7 +770,7 @@
 
         <p>
           When someone's decisions against one specific opponent consistently fall short of what
-          the math would suggest — and the chips they lose keep going to the same place — the
+          the math would suggest, and the chips they lose keep going to the same place, the
           picture gets hard to dismiss. Money flowing one way. Behavior that changes around one
           person. Decisions that quietly work against their own interest. Three separate
           observations. One pattern.
@@ -792,9 +792,8 @@
         <h2 class="prose-heading">Seeing it in the data</h2>
 
         <p>
-          You can describe a pattern in words. Seeing it is different. The visualizations below
-          are synthetic — no real players, no real hands — but the structures are real. This is
-          what each signal actually looks like.
+          You can describe a pattern in words. The charts below use made-up data: no real players,
+          no real hands. But the structures they show are real.
         </p>
 
         <!-- Graph theory foundations -->
@@ -802,9 +801,9 @@
           <p class="aside-label reveal" style="transition-delay:0ms">Why network methods work</p>
           <p class="reveal" style="transition-delay:130ms">
             Think of the table as a map: each player is a dot, and every time chips move at the
-            end of a hand, an arrow is drawn between those two players — sized by how much moved
+            end of a hand, an arrow is drawn between those two players, sized by how much moved
             and pointing in which direction. Run that over thousands of hands and you have a
-            complete picture of who sent money where — something a per-player stat sheet can't show.
+            complete picture of who sent money where. That's something a per-player stat sheet can't show.
           </p>
           <div id="concept-chart" class="reveal" style="height:230px;margin:16px -2px 20px;border-radius:10px;overflow:hidden;transition-delay:190ms;"></div>
           <ul>
@@ -815,8 +814,8 @@
               look completely different from how they play overall. The relationship between two
               players matters more than either player's total numbers.</li>
             <li class="reveal" style="transition-delay:630ms"><strong>What a map shows that stats don't:</strong> a per-player stat table averages
-              everything out. A network diagram keeps the direction, the pairing, and the volume —
-              the exact things that reveal collusion.</li>
+              everything out. A network diagram keeps the direction, the pairing, and the volume.
+              Those are the exact things that reveal collusion.</li>
           </ul>
         </div>
 
@@ -862,7 +861,7 @@
         <div class="viz-header">
           <span class="viz-number">02</span>
           <div>
-            <div class="viz-title">Behavioral fingerprint comparison</div>
+            <div class="viz-title">How decisions shift by opponent</div>
             <div class="viz-subtitle">How this player normally acts in a given situation, compared to how they act in that same situation against one specific opponent. The difference in shape is the problem.</div>
           </div>
         </div>
@@ -912,10 +911,10 @@
 
       <article class="prose">
         <p>
-          Nobody makes the right decision every time. Variance, pressure, fatigue — it adds up,
-          and that's expected. What's harder to explain is when the worst decisions cluster around
-          one specific opponent, and all the chips lost in those situations keep going to the same
-          player. At some point, bad luck stops being a satisfying answer.
+          Nobody makes the right decision every time. Variance, pressure, and fatigue all take a
+          toll, and that's expected. What's harder to explain is when the worst decisions cluster
+          around one specific opponent, and all the chips lost keep going to the same player.
+          At some point, bad luck stops being a satisfying answer.
         </p>
       </article>
 
@@ -934,7 +933,7 @@
         <h2 class="prose-heading">What it does well</h2>
 
         <p>
-          Each signal works independently — chip flow doesn't know what the behavioral analysis
+          Each signal works independently. Chip flow doesn't know what the behavior comparison
           found, and the decision scoring doesn't know what the network showed. When all three land
           on the same pair anyway, it's hard to write off as coincidence. That's what makes the
           results worth acting on.
@@ -949,9 +948,9 @@
         <h2 class="prose-heading">Where it falls short</h2>
 
         <p>
-          These signals prioritize cases — they don't prove anything. Every flagged pair still
-          needs a human to look at it. The method narrows the field; it doesn't close the case.
-          I think that distinction matters a lot, and any real deployment should make it explicit.
+          These signals surface cases worth reviewing. They don't prove anything. Every flagged
+          pair still needs a human to look at it. The method narrows the field, but it doesn't
+          close the case. That distinction matters, and any real use of this should make it clear.
         </p>
 
         <p>
@@ -960,16 +959,16 @@
 
         <ul>
           <li><strong>Short-session colluders.</strong> Pairs who keep their cooperation to brief,
-            high-stakes bursts can stay under the statistical threshold. Sample size is a hard
-            requirement.</li>
+            high-stakes bursts without generating enough data for a pattern to show up. You need
+            enough hands to see anything reliable.</li>
           <li><strong>Rotating partners.</strong> If colluders switch who they're helping each
-            session, the flow patterns get diffuse enough to look normal on any individual edge.</li>
+            session, the flow patterns spread thin enough that no single pairing stands out.</li>
           <li><strong>Genuine bad luck against one opponent.</strong> Variance is real. You can
             run badly against the same person for weeks through pure misfortune. The method
-            reduces false positives but can't eliminate them.</li>
-          <li><strong>Three-way or larger groups.</strong> The pair-based structure misses
-            organized rings of three or more. Catching those requires looking at clusters of
-            players, not just pairs — a different problem entirely.</li>
+            cuts down on wrong flags but can't eliminate them entirely.</li>
+          <li><strong>Three-way or larger groups.</strong> This method only looks at pairs.
+            Organized rings of three or more players can hide in the noise. Catching those requires
+            a different approach entirely.</li>
         </ul>
 
         <h2 class="prose-heading">What this is an example of</h2>
@@ -1973,7 +1972,7 @@
       const VERDICTS = {
         coplay: {
           cls: 'miss',
-          html: '<strong>Co-play frequency:</strong> P3–P7 share 312 sessions — but so do 14 other pairs at similar stakes. High co-play is normal. This signal flags the whole room.'
+          html: '<strong>Co-play frequency:</strong> P3–P7 share 312 sessions, but so do 14 other pairs at similar stakes. High co-play is normal. This signal flags the whole room.'
         },
         chipflow: {
           cls: 'miss',
@@ -1981,11 +1980,11 @@
         },
         behavior: {
           cls: 'miss',
-          html: '<strong>Behavior shift alone:</strong> P3–P7 scores 74 — the highest in the pool. But one strong reading could be a small sample or a bad run against that opponent\'s style. Still not enough.'
+          html: '<strong>Behavior shift alone:</strong> P3–P7 scores 74, the highest in the pool. But one strong reading could be a small sample or a bad run against that opponent\'s style. Still not enough on its own.'
         },
         all: {
           cls: 'hit',
-          html: '<strong>All three together:</strong> Only one pair clears every threshold at once — P3–P7. High co-play, extreme chip concentration, and a dramatic behavior shift. Three independent angles. One answer.'
+          html: '<strong>All three together:</strong> Only one pair clears every threshold at once: P3–P7. High co-play, heavy chip concentration, and a clear behavior shift. Three separate signals pointing to the same pair.'
         }
       };
 
