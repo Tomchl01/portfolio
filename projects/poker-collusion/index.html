@@ -550,10 +550,9 @@
     </p>
 
     <p class="article-lede">
-      What makes it difficult is not that the behavior is exotic. It is that the behavior is
-      ordinary. Players fold, call, and bet all day long. Most of the time those decisions are
-      completely legitimate. The question is how you tell the difference when
-      <strong>the data looks the same either way.</strong>
+      It's hard to catch because the behavior looks completely normal. Players fold, call, and bet
+      all day long. Most of the time those decisions are completely legitimate. The question is how
+      you tell the difference when <strong>the data looks the same either way.</strong>
     </p>
 
     <!-- ── Sticky chapter nav ── -->
@@ -584,7 +583,7 @@
         </p>
 
         <p>
-          The anomaly lives in the relationship between them, not in either player alone.
+          The problem only shows up when you look at both of them together.
         </p>
 
         <p>
@@ -606,8 +605,8 @@
 
         <p>
           The hard part isn't finding something suspicious — it's knowing which suspicious things
-          are actually worth pursuing. Cast the net too wide and you drown in variance. Too narrow
-          and real cases stay hidden. The data has to do the filtering first, or nothing scales.
+          are actually worth pursuing. Cast too wide and you're chasing noise. Too narrow and real
+          cases stay hidden. The data has to narrow things down first, or the work becomes impossible.
         </p>
 
       </article>
@@ -660,8 +659,8 @@
 
         <p>
           <strong>No single signal is enough.</strong> Each question just narrows the field.
-          Something only moves up the list when several independent angles land on the same pair,
-          for different reasons, at the same time.
+          A pair only becomes worth pursuing when three separate questions all point to the same
+          two people, for different reasons, at the same time.
         </p>
 
       </article>
@@ -704,8 +703,8 @@
         <p>
           The unit of suspicion isn't a player — it's a pair. Two people whose history, laid out
           side by side, looks wrong in ways that neither of them would look wrong alone. Getting
-          there means cutting through a lot of ordinary data, and the only way to do it reliably
-          is to ask several independent questions and only care when more than one comes back hot.
+          there means cutting through a lot of ordinary data, and the only reliable approach is to
+          ask several separate questions and only flag a pair when more than one raises a concern.
         </p>
 
         <p>
@@ -727,17 +726,17 @@
         </p>
 
         <p>
-          Healthy players have diffuse chip flow — win some here, lose some there. What stands
-          out is concentration: one player sending a disproportionate share of their losses
-          consistently to the same destination. That alone doesn't prove anything, but it's a
+          In a normal game, a player's chip flow spreads around the table — win some here, lose
+          some there. What stands out is when one player sends a disproportionate share of their
+          losses consistently to the same person. That alone doesn't prove anything, but it's a
           meaningful filter. At this volume, any good filter matters.
         </p>
 
         <p>
           What matters is whether that concentration is unusual given how many opponents they
-          faced and how many hands they actually shared. You have to normalize for opportunity —
-          otherwise you're just flagging pairs who sat together a lot, which doesn't tell you
-          anything.
+          faced and how many hands they actually shared. You have to account for how much they
+          actually played against each other — otherwise you're just flagging pairs who sat
+          together a lot, which tells you nothing.
         </p>
 
         <h2 class="prose-heading">Layer two: behavior changes at the table</h2>
@@ -763,17 +762,18 @@
         <h2 class="prose-heading">Layer three: are the decisions defensible?</h2>
 
         <p>
-          The third layer is the most precise. Solver software can calculate what a rational player
-          should do in any given spot, and serious players tend to cluster close to those benchmarks
-          in aggregate. Nobody plays perfectly — but the distribution of their mistakes has a shape.
+          The third layer is the most precise. Solver software can calculate the mathematically
+          correct play for any given situation. Good players still make mistakes, but their mistakes
+          follow a predictable pattern — nothing too far off in any one direction, nothing too
+          consistent against one opponent.
         </p>
 
         <p>
-          When someone's decisions against one specific opponent consistently deviate from what
-          the math would suggest — and that deviation keeps costing them chips that land in the
-          same spot — the picture gets hard to dismiss. Chip flow concentrated on one edge.
-          Behavior that shifts around one person. Decisions that quietly work against their own
-          interest. Three separate observations. One pattern.
+          When someone's decisions against one specific opponent consistently fall short of what
+          the math would suggest — and the chips they lose keep going to the same place — the
+          picture gets hard to dismiss. Money flowing one way. Behavior that changes around one
+          person. Decisions that quietly work against their own interest. Three separate
+          observations. One pattern.
         </p>
 
       </article>
@@ -801,22 +801,22 @@
         <div class="graph-theory-aside">
           <p class="aside-label reveal" style="transition-delay:0ms">Why network methods work</p>
           <p class="reveal" style="transition-delay:130ms">
-            Model a poker table as a directed graph: each player is a node, every chip transfer
-            at the end of a hand becomes a weighted, directed edge. Run that over thousands of
-            hands and you have a complete record of who sent value where and how much —
-            something individual stat-sheets can't give you.
+            Think of the table as a map: each player is a dot, and every time chips move at the
+            end of a hand, an arrow is drawn between those two players — sized by how much moved
+            and pointing in which direction. Run that over thousands of hands and you have a
+            complete picture of who sent money where — something a per-player stat sheet can't show.
           </p>
           <div id="concept-chart" class="reveal" style="height:230px;margin:16px -2px 20px;border-radius:10px;overflow:hidden;transition-delay:190ms;"></div>
           <ul>
-            <li class="reveal" style="transition-delay:350ms"><strong>Edge weight concentration:</strong> in a fair game, losses distribute
-              roughly evenly across opponents. Unusual volume concentrated on one edge is a signal
-              that the relationship between those two nodes is not random.</li>
-            <li class="reveal" style="transition-delay:490ms"><strong>Local pair structure:</strong> repeated patterns between a specific pair
-              matter more than global table volume. Two players can look normal in aggregate while
-              being anomalous relative to each other.</li>
-            <li class="reveal" style="transition-delay:630ms"><strong>What graphs capture that stats hide:</strong> individual metrics flatten
-              relationships into per-player averages. Graph representation preserves direction,
-              pairing, and concentration. Those are exactly the dimensions where collusion lives.</li>
+            <li class="reveal" style="transition-delay:350ms"><strong>Concentrated losses:</strong> in a fair game, a player's losses spread
+              across many opponents. When a large share consistently goes to one specific person,
+              that stands out.</li>
+            <li class="reveal" style="transition-delay:490ms"><strong>Pair patterns:</strong> what a player does against one specific opponent can
+              look completely different from how they play overall. The relationship between two
+              players matters more than either player's total numbers.</li>
+            <li class="reveal" style="transition-delay:630ms"><strong>What a map shows that stats don't:</strong> a per-player stat table averages
+              everything out. A network diagram keeps the direction, the pairing, and the volume —
+              the exact things that reveal collusion.</li>
           </ul>
         </div>
 
@@ -828,7 +828,7 @@
           <span class="viz-number">01</span>
           <div>
             <div class="viz-title">Chip flow between players</div>
-            <div class="viz-subtitle">Each edge shows the direction and relative volume of chip movement between two players over a sample period. In a healthy game those flows are diffuse. The amber edge is where concentration appeared.</div>
+            <div class="viz-subtitle">Each line shows money moving between two players over time. In a normal game, those flows spread around the table. The amber line is where the money kept going one way.</div>
           </div>
         </div>
         <div id="net-chart" style="height: 420px;"></div>
@@ -863,7 +863,7 @@
           <span class="viz-number">02</span>
           <div>
             <div class="viz-title">Behavioral fingerprint comparison</div>
-            <div class="viz-subtitle">How the same player distributes their decisions across identical situations: first against the general player pool, then specifically against the player of interest. The shift in shape is the signal.</div>
+            <div class="viz-subtitle">How this player normally acts in a given situation, compared to how they act in that same situation against one specific opponent. The difference in shape is the problem.</div>
           </div>
         </div>
         <div id="radar-chart" style="height: 340px;"></div>
@@ -881,11 +881,10 @@
 
       <article class="prose">
         <p>
-          The blue polygon is normal behavior: the mix of decisions this player makes across all
-          opponents in comparable situations. The amber polygon is the same player, the same
-          situation types, but a different opponent. The shape collapses. Fold frequency climbs,
-          aggression disappears, raising drops to almost nothing. That shift does not happen by
-          itself.
+          The blue shape shows normal behavior: the mix of decisions this player makes across all
+          opponents in comparable situations. The amber shape is the same player, the same
+          situation types, but a different opponent. The shape collapses. They fold far more often,
+          stop betting into pots, and almost never raise. That shift does not happen by itself.
         </p>
       </article>
 
@@ -895,7 +894,7 @@
           <span class="viz-number">03</span>
           <div>
             <div class="viz-title">Value departure from optimal play</div>
-            <div class="viz-subtitle">Each point is one situation type, one sample window. The y-axis shows how far the player's observed EV fell below what solver-optimal play would have yielded. Two clear clusters emerge: one for normal matchups, one for the flagged pair.</div>
+            <div class="viz-subtitle">Each point is one situation type, one sample window. The y-axis shows how far each decision fell from what the mathematically correct play would have earned. Two clusters emerge: one for normal matchups, one for the flagged pair.</div>
           </div>
         </div>
         <div id="scatter-chart" style="height: 340px;"></div>
@@ -913,10 +912,10 @@
 
       <article class="prose">
         <p>
-          Everyone plays suboptimally sometimes. Variance, pressure, fatigue — it adds up, and
-          that's expected. What isn't expected is when the worst decisions cluster around one
-          specific opponent, and all the value that bleeds away keeps landing in the same spot.
-          At some point, variance isn't a satisfying answer.
+          Nobody makes the right decision every time. Variance, pressure, fatigue — it adds up,
+          and that's expected. What's harder to explain is when the worst decisions cluster around
+          one specific opponent, and all the chips lost in those situations keep going to the same
+          player. At some point, bad luck stops being a satisfying answer.
         </p>
       </article>
 
@@ -936,15 +935,15 @@
 
         <p>
           Each signal works independently — chip flow doesn't know what the behavioral analysis
-          found, and GTO deviation doesn't know what the network showed. When all three land on
-          the same pair anyway, it's hard to write off as coincidence. That's what makes the
+          found, and the decision scoring doesn't know what the network showed. When all three land
+          on the same pair anyway, it's hard to write off as coincidence. That's what makes the
           results worth acting on.
         </p>
 
         <p>
-          Individual player stats flatten everything into per-person averages and miss the point
-          entirely. A graph preserves direction, pairing, and concentration — exactly the
-          dimensions where collusion actually hides.
+          Looking at players individually averages everything out and misses the point. A network
+          view keeps the direction, the pairing, and the volume — exactly what collusion relies
+          on staying hidden.
         </p>
 
         <h2 class="prose-heading">Where it falls short</h2>
@@ -969,18 +968,19 @@
             run badly against the same person for weeks through pure misfortune. The method
             reduces false positives but can't eliminate them.</li>
           <li><strong>Three-way or larger groups.</strong> The pair-based structure misses
-            organized rings of three or more. Detecting those requires community detection rather
-            than edge concentration — a different problem entirely.</li>
+            organized rings of three or more. Catching those requires looking at clusters of
+            players, not just pairs — a different problem entirely.</li>
         </ul>
 
         <h2 class="prose-heading">What this is an example of</h2>
 
         <p>
           Poker works as a test case because the rules are precise and every decision gets logged.
-          But the same problem shows up across fraud, AML, and network security: actors who look
-          normal on their own and only reveal themselves through their relationships. The pair-first
-          structure and the layered-signal approach aren't poker-specific. They apply anywhere the
-          unit of wrongdoing is a relationship rather than an individual.
+          But the same problem shows up in financial fraud, money laundering, and network security:
+          people who look fine on their own and only give themselves away through their
+          relationships. This kind of analysis isn't specific to poker. It applies anywhere the
+          cheating only becomes visible in how two people relate to each other, not in what either
+          one does alone.
         </p>
 
       </article>
